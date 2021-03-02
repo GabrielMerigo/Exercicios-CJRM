@@ -40,12 +40,13 @@ function division(num1 = 0, num2 = 0) {
   "Esta é a Xª vez que essa string é exibida."
 */
 
-// const string = (number = p0) => {
-//   console.log(`Esta é a ${number} vez que essa string é exibida.`);
-// }
+const strings = (number = 0) => {
+  console.log(`Esta é a ${number} vez que essa string é exibida.`);
+}
 
-// for(let i = 0; i <= 7; i++){
-//   string(i + 1)
+// for(let i = 0; i < 7; i++){
+//   let counter = i + 1;
+//   string(counter)
 // }
 
 
@@ -60,18 +61,21 @@ function division(num1 = 0, num2 = 0) {
     função.
 */
 
-// const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
-// let newArray = []
+const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
 
-// const millennialWordsToUpperCase = (words) => {
-//   words.toUpperCase()
-// }
+const millennialWordsToUpperCase = (array) => {
+  let newArray = []
 
-// for (let i = 0; i < millennialWords.length; i++) {
-//   newArray = millennialWordsToUpperCase(millennialWords[i]).push()
-// }
+  for(let i = 0; i < array.length; i++){
+    const transformUpperCase = array[i].toUpperCase()
+    newArray.push(transformUpperCase)
+  }
+  return newArray
+}
 
-// console.log(newArray);
+const millennialWordsInUpperCase = millennialWordsToUpperCase(millennialWords);
+
+// console.log(millennialWordsInUpperCase);
 /*
   05
 
@@ -84,21 +88,23 @@ function division(num1 = 0, num2 = 0) {
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
-let numeroPositivo = 0
-let numeroNegativo = 0
-let cont = 0
+let numeroPositivos = 0
+let numeroNegativos = 0
+const tamanhoDoArray = randomNumbers.length;
 
-const verificarPositivo = () => {
-  for(let i = 0; i < randomNumbers.length; i++){
-    if(randomNumbers[i] > -1){
-      numeroPositivo += 1
-    }
-  }
-
- return numeroPositivo
+const isPositive = function(number) {
+  return number >= 1
 }
 
-console.log(`O array "randomNumbers" possui ${verificarPositivo()} números, sendo XX positivos e XX negativos.`);
+for(let i = 0; i < randomNumbers.length; i++){
+  if(isPositive(randomNumbers[i])){
+    numeroPositivos += 1
+  }else{
+    numeroNegativos += 1
+  }
+}
+
+// console.log(`O array "randomNumbers" possui ${tamanhoDoArray}, sendo ${numeroPositivos} positivos e ${numeroNegativos} negativos.`);
 
 /*
   06
@@ -110,8 +116,25 @@ console.log(`O array "randomNumbers" possui ${verificarPositivo()} números, sen
     função.
 */
 
-// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
 
+
+let newGetOddNumbers = []
+
+const getOddNumbers = (array) => {
+
+  for(let i = 0; i < array.length; i++ ){
+    const isOddNumber = array[i] % 2 !== 0;
+
+    if(isOddNumber){
+      newGetOddNumbers.push(array[i])
+    }
+  }
+  return newGetOddNumbers
+}
+
+getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+
+// console.log(newGetOddNumbers);
 /*
   07
 
@@ -148,3 +171,13 @@ const functions = [
   function () { return 'Índias' },
   function () { return 'Ocidentais.' }
 ]
+
+let phrase = ``
+
+for(let i = 0; i < functions.length; i++){
+  const string = `${functions[i]()}  `
+  phrase += string
+}
+
+console.log(phrase);
+
