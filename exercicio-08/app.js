@@ -7,6 +7,12 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
+const sumTwoNumbers = (num1 = 0, num2 = 0) => {
+  return num1 * num2
+}
+
+// console.log(sumTwoNumbers());
+
 /*
   02
 
@@ -14,6 +20,12 @@
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
+
+function division(num1 = 0, num2 = 0) {
+  return num1 / num2
+}
+
+// console.log(division(10, 2));
 
 /*
   03
@@ -28,6 +40,15 @@
   "Esta é a Xª vez que essa string é exibida."
 */
 
+// const string = (number = p0) => {
+//   console.log(`Esta é a ${number} vez que essa string é exibida.`);
+// }
+
+// for(let i = 0; i <= 7; i++){
+//   string(i + 1)
+// }
+
+
 /*
   04
 
@@ -39,8 +60,18 @@
     função.
 */
 
-const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+// const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+// let newArray = []
 
+// const millennialWordsToUpperCase = (words) => {
+//   words.toUpperCase()
+// }
+
+// for (let i = 0; i < millennialWords.length; i++) {
+//   newArray = millennialWordsToUpperCase(millennialWords[i]).push()
+// }
+
+// console.log(newArray);
 /*
   05
 
@@ -53,6 +84,21 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
+let numeroPositivo = 0
+let numeroNegativo = 0
+let cont = 0
+
+const verificarPositivo = () => {
+  for(let i = 0; i < randomNumbers.length; i++){
+    if(randomNumbers[i] > -1){
+      numeroPositivo += 1
+    }
+  }
+
+ return numeroPositivo
+}
+
+console.log(`O array "randomNumbers" possui ${verificarPositivo()} números, sendo XX positivos e XX negativos.`);
 
 /*
   06
