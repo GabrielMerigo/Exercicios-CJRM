@@ -5,7 +5,7 @@
   - O resultado exibido no console deve ser: false true.
 */
 
-console.log(true, false)
+// console.log(!true, !false)
 
 /*
   02
@@ -16,7 +16,13 @@ console.log(true, false)
   - Se existir, exiba no console a mensagem "Existe um leão no array animals.".
 */
 
-const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
+// const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
+
+// if(!animals.includes('leão')){
+//   console.log('Leão não existe no array.');
+// }else{
+//   console.log('Leão existe no array.');
+// }
 
 /*
   03
@@ -30,6 +36,15 @@ const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
 */
 
 const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
+let newNumber = 0
+
+for(let i = 0; i < randomNumbers.length; i++){
+  if(newNumber > 400){
+    break
+  }
+ newNumber += randomNumbers[i]
+}
+// console.log(newNumber);
 
 /*
   04
@@ -41,6 +56,7 @@ const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
 */
 
 const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sabedoria.']
+// console.log(sentence.join(' ').replace('certeza',''));
 
 /*
   05
@@ -58,6 +74,38 @@ const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sab
 */
 
 const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null]
+
+let strings = 0
+let stringsWord = []
+let boolean = 0
+let cont = 0
+
+for(let i = 0; i < randomValues.length; i++){
+  if(typeof randomValues[i] === 'string'){
+    strings += 1
+    stringsWord += `${randomValues[i]}, `
+  }
+
+  if(typeof randomValues[i] === 'boolean'){
+    boolean += 1
+  }
+
+  if(strings === 4){
+    break
+  }
+
+  cont += 1
+}
+
+
+const phrase = `
+3 informações sobre o array randomValues:
+- As primeiras 4 strings são ${stringsWord.replace('S, Git,', 'S e Git.')}
+- Até que as primeiras 4 strings fossem iteradas, ${boolean} booleans foram iterados;
+- O array foi iterado por ${cont} vezes.`
+
+console.log(phrase);
+
 
 /*
   06
