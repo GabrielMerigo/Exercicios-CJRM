@@ -50,10 +50,11 @@ const phraseLowerCase = string => string.toLowerCase()
 */
 
 const phraseAndIndexOf = (string, index) => {
-  return string.indexOf(index)
+  return string.indexOf(string, index)
 }
 
-console.log(phraseAndIndexOf('gabriel', 5));
+// console.log(phraseAndIndexOf('gabriel', 5));
+// console.log('gabrial'.indexOf('a',3))
 
 /*
   05
@@ -62,6 +63,19 @@ console.log(phraseAndIndexOf('gabriel', 5));
     passado por argumento existe no array (também passado por argumento).
 */
 
+const numbers2 = [1, 2, 3, 4, 5]
+
+const verificaSeExiste = (value) => {
+  for(let i = 0; i < numbers2.length; i++){
+    if(value[i] === numbers2[i]){
+      return true
+    }
+  }
+  return false
+}
+
+// console.log(verificaSeExiste(2));
+
 /*
   06
 
@@ -69,12 +83,28 @@ console.log(phraseAndIndexOf('gabriel', 5));
     argumentos em sua invocação;
 */
 
+const array1 = [1,2,3,4]
+const array2 = [5,6,7,8]
+
+const concatArrays = (array1, array2) => {
+  return array1.concat(array2)
+}
+
+// console.log(concatArrays(array1, array2));
+
 /*
   07
 
   - Crie uma função que retorna o array passado como argumento em sua invocação,  
     mas com o último item removido.
 */
+const lastItemArray = (array) => {
+  array.pop()
+  return array
+}
+
+// console.log(lastItemArray(array1))
+
 
 /*
   08
@@ -82,6 +112,15 @@ console.log(phraseAndIndexOf('gabriel', 5));
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+function verifyNull(value){
+  if(value === null){
+    return true
+  }
+  return false
+} 
+
+// console.log(verifyNull(null));
 
 /*
   09
@@ -94,6 +133,20 @@ console.log(phraseAndIndexOf('gabriel', 5));
     foi exibido.
 */
 
+const setMyName = (callback) =>{
+  callback()
+}
+
+const myName = () => {
+  console.log('Gabriel');
+}
+
+// setMyName(myName)
+
+
+
+
+
 /*
   10
 
@@ -104,6 +157,20 @@ console.log(phraseAndIndexOf('gabriel', 5));
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
+
+const tripleNumber = number => {
+  return number * 3
+}
+
+const myFunc = (callback) => {
+  const value = 33
+  
+  return callback(value)
+}
+
+
+// console.log(myFunc(tripleNumber));
+
 
 /*
   11
@@ -116,6 +183,10 @@ console.log(phraseAndIndexOf('gabriel', 5));
 
 const numbers = [1, 2, 3]
 
+// numbers.forEach((value, index) => {
+//   console.log(`O ${value}º item do array ${Array(numbers)} é ${index}.`);
+// })
+
 /*
   12
 
@@ -127,9 +198,11 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+letters.forEach(value => {
+  lettersCopy.push(value)
+})
+
+// console.log(lettersCopy);
 
 /*
   13
@@ -151,16 +224,21 @@ for (let i = 0; i < letters.length; i++) {
 
 const section = document.querySelector('[data-js="section"]')
 
-const review = [
+const frases = [
   'Eu sempre adorei o filme e quando descobri que tinha o livro também fiquei doido. Demorei um pouco mas acabei comprando e finalmente li \o/.',
   'O primeiro filme foi baseado nesse livro, porém o livro (como sempre) é muito mais completo, com mais personagens, mais acontecimentos e até mesmo mais dinossauros. Na verdade nesse livro tem coisas do segundo e terceiro filme também, eles mudaram bastante nos filmes, acho que pra ficar mais comercial, e se o filme é bom, o livro é 100 vezes melhor.',
   'Michael é um ótimo autor, esse sim pesquisa muito antes de escrever um livro, além da história que já prende sua atenção, ele fala bastante de genética (pra explicar como os dinossauros foram criados) e acaba falando um pouco de programação (informática), por causa dos programas avançados e modernos que o parque tinha. E isso foi uma das coisas que eu achei muito legal, ele explica as coisas com gráficos, tabelas, códigos ... enfim, o cara é foda hahaha.',
   'Recomendo esse livro pra quem curte uma boa história de ficção. Apesar de muita gente pensar que o livro não tem graça, porque o legal mesmo é ver o dinossauro no filme, com todos os efeitos especiais, eu digo pra deixar esse pensamento de lado, pois a história é tão bem contada e os detalhes são tão bem relatados, que você passa a fazer parte da história, e vive todas as emoções hahaha.'
 ]
 
-let paragraphs = ''
 
-// section.innerHTML = paragraphs
+let paragraphs = '';
+frases.forEach(frase => {
+  paragraphs += `<p>${frase}<p>`;
+})
+
+section.innerHTML = paragraphs;
+
 
 /*
   14
@@ -182,3 +260,11 @@ let paragraphs = ''
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+const arrayLikes = []
+
+const amountLikes = (array = "Ninguém curtiu isso") => {
+ 
+}
+
+console.log(amountLikes(arrayLikes));
