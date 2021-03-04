@@ -167,11 +167,15 @@ console.log(myFunc(tripleNumber, 33));
   "O Xº item do array [X, X, X] é X."
 */
 
-// const numbers = [1, 2, 3]
+const numbers = [1, 2, 3]
 
-// numbers.forEach((value, index) => {
-//   console.log(`O ${index + 1}º item do array ${Array(numbers)} é ${value}.`);
-// })
+numbers.forEach((value, index) => {
+  const itemPosition = index + 1;
+  const items = numbers.join(', ');
+
+
+  console.log(`O ${itemPosition}º item do array ${items} é ${value}.`);
+})
 
 /*
   12
