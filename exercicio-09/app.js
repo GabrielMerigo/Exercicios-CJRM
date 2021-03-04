@@ -13,7 +13,7 @@
     valor no console.
 */
 
-const convertToString = value => Number(value)
+const convertToString = value => String(value)
 
 // console.log((convertToString(123)))
 
@@ -49,11 +49,14 @@ const phraseLowerCase = string => string.toLowerCase()
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
 
-const phraseAndIndexOf = (string, index) => {
-  return string.indexOf(string, index)
+const phraseAndIndexOf = (string, caracter) => {
+  return string.indexOf(caracter)
 }
 
-// console.log(phraseAndIndexOf('gabriel', 5))
+
+
+
+// console.log(phraseAndIndexOf('gabriel','r'))
 
 
 /*
@@ -65,16 +68,9 @@ const phraseAndIndexOf = (string, index) => {
 
 const numbers2 = [1, 2, 3, 4, 5]
 
-const verificaSeExiste = (value) => {
-  for(let i = 0; i < numbers2.length; i++){
-    if(value[i] === numbers2[i]){
-      return true
-    }
-  }
-  return false
-}
+const verificaSeExiste = (value, array) => array.includes(value)
 
-// console.log(verificaSeExiste(2));
+console.log(verificaSeExiste(3, numbers2));
 
 /*
   06
@@ -86,9 +82,7 @@ const verificaSeExiste = (value) => {
 const array1 = [1,2,3,4]
 const array2 = [5,6,7,8]
 
-const concatArrays = (array1, array2) => {
-  return array1.concat(array2)
-}
+const concatArrays = (array1, array2) => array1.concat(array2)
 
 // console.log(concatArrays(array1, array2));
 
@@ -98,7 +92,7 @@ const concatArrays = (array1, array2) => {
   - Crie uma função que retorna o array passado como argumento em sua invocação,  
     mas com o último item removido.
 */
-const lastItemArray = (array) => {
+const lastItemArray = array => {
   array.pop()
   return array
 }
@@ -113,14 +107,9 @@ const lastItemArray = (array) => {
     invocação é null.
 */
 
-function verifyNull(value){
-  if(value === null){
-    return true
-  }
-  return false
-} 
+const verifyNull = value => value === null 
 
-// console.log(verifyNull(null));
+console.log(verifyNull(null));
 
 /*
   09
@@ -158,18 +147,15 @@ const myName = () => {
     resulte no triplo de 33.
 */
 
-// const tripleNumber = number => {
-//   return number * 3
-// }
 
-// const myFunc = (callback) => {
-//   const value = 33
-  
-//   return callback(value)
-// }
+const myFunc = (callback, value) => {  
+  return callback(value)
+}
+
+const tripleNumber = number => number * 3
 
 
-// console.log(myFunc(tripleNumber));
+console.log(myFunc(tripleNumber, 33));
 
 
 /*
@@ -181,10 +167,10 @@ const myName = () => {
   "O Xº item do array [X, X, X] é X."
 */
 
-const numbers = [1, 2, 3]
+// const numbers = [1, 2, 3]
 
 // numbers.forEach((value, index) => {
-//   console.log(`O ${value}º item do array ${Array(numbers)} é ${index}.`);
+//   console.log(`O ${index + 1}º item do array ${Array(numbers)} é ${value}.`);
 // })
 
 /*
@@ -284,4 +270,4 @@ const amountLikes = (array) => {
   return array
 }
 
-console.log(amountLikes(arrayLikes));
+// console.log(amountLikes(arrayLikes));
