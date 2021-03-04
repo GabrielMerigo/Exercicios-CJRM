@@ -255,25 +255,25 @@ section.innerHTML = paragraphs;
     pessoas já mencionadas no início da mensagem).
 */
 
-const arrayLikes = ['gabriel','carlos','josé', 'jorge','bob']
+const arrayLikes = ['gabriel','carlos']
 
 const getLikesMessage = (names = []) => {
-  const firstName = names[0];
-  const secondName = names[1];
-  const thirdName = names[2];
-  const amountPeople = names.length - 3;
+  const firstName = names[0]
+  const secondName = names[1]
+  const thirdName = names[2]
+  const morePeople = names.length - 2;
 
-  switch(names.length){
+  switch (names.length) {
     case 0:
-      return 'Ninguém Curtiu isso'
-    case 1: 
-      return `${firstName} curtiu isso`
-    case 2: 
-      return `${firstName} e ${secondName} curtiram isso.`
+      return `Ninguém curtiu isso`;
+    case 1:
+      return `${firstName} curtiu isso`;
+    case 2:
+      return `${firstName} e ${secondName} curtiram isso`;
     case 3:
-      return `${firstName}, ${secondName} e ${thirdName} curtiram isso.`
-    default: 
-      return `${firstName}, ${secondName}, ${thirdName} e mais ${amountPeople} pessoas curtiram isso.`  
+      return `${firstName}, ${secondName} e ${thirdName} curtiram isso`
+    default:
+      return `${firstName}, ${secondName} e mais ${morePeople} pessoas curtiram isso"`
   }
 }
 
