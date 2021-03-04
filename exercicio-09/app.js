@@ -155,7 +155,7 @@ const myFunc = (callback, value) => {
 const tripleNumber = number => number * 3
 
 
-console.log(myFunc(tripleNumber, 33));
+// console.log(myFunc(tripleNumber, 33));
 
 
 /*
@@ -174,7 +174,7 @@ numbers.forEach((value, index) => {
   const items = numbers.join(', ');
 
 
-  console.log(`O ${itemPosition}º item do array ${items} é ${value}.`);
+  // console.log(`O ${itemPosition}º item do array ${items} é ${value}.`);
 })
 
 /*
@@ -212,22 +212,26 @@ letters.forEach(value => {
   </article>
 */
 
-// const section = document.querySelector('[data-js="section"]')
+const section = document.querySelector('[data-js="section"]')
 
-// const frases = [
-//   'Eu sempre adorei o filme e quando descobri que tinha o livro também fiquei doido. Demorei um pouco mas acabei comprando e finalmente li \o/.',
-//   'O primeiro filme foi baseado nesse livro, porém o livro (como sempre) é muito mais completo, com mais personagens, mais acontecimentos e até mesmo mais dinossauros. Na verdade nesse livro tem coisas do segundo e terceiro filme também, eles mudaram bastante nos filmes, acho que pra ficar mais comercial, e se o filme é bom, o livro é 100 vezes melhor.',
-//   'Michael é um ótimo autor, esse sim pesquisa muito antes de escrever um livro, além da história que já prende sua atenção, ele fala bastante de genética (pra explicar como os dinossauros foram criados) e acaba falando um pouco de programação (informática), por causa dos programas avançados e modernos que o parque tinha. E isso foi uma das coisas que eu achei muito legal, ele explica as coisas com gráficos, tabelas, códigos ... enfim, o cara é foda hahaha.',
-//   'Recomendo esse livro pra quem curte uma boa história de ficção. Apesar de muita gente pensar que o livro não tem graça, porque o legal mesmo é ver o dinossauro no filme, com todos os efeitos especiais, eu digo pra deixar esse pensamento de lado, pois a história é tão bem contada e os detalhes são tão bem relatados, que você passa a fazer parte da história, e vive todas as emoções hahaha.'
-// ]
+const frases = [
+  'Eu sempre adorei o filme e quando descobri que tinha o livro também fiquei doido. Demorei um pouco mas acabei comprando e finalmente li \o/.',
+  'O primeiro filme foi baseado nesse livro, porém o livro (como sempre) é muito mais completo, com mais personagens, mais acontecimentos e até mesmo mais dinossauros. Na verdade nesse livro tem coisas do segundo e terceiro filme também, eles mudaram bastante nos filmes, acho que pra ficar mais comercial, e se o filme é bom, o livro é 100 vezes melhor.',
+  'Michael é um ótimo autor, esse sim pesquisa muito antes de escrever um livro, além da história que já prende sua atenção, ele fala bastante de genética (pra explicar como os dinossauros foram criados) e acaba falando um pouco de programação (informática), por causa dos programas avançados e modernos que o parque tinha. E isso foi uma das coisas que eu achei muito legal, ele explica as coisas com gráficos, tabelas, códigos ... enfim, o cara é foda hahaha.',
+  'Recomendo esse livro pra quem curte uma boa história de ficção. Apesar de muita gente pensar que o livro não tem graça, porque o legal mesmo é ver o dinossauro no filme, com todos os efeitos especiais, eu digo pra deixar esse pensamento de lado, pois a história é tão bem contada e os detalhes são tão bem relatados, que você passa a fazer parte da história, e vive todas as emoções hahaha.'
+]
 
 
-// let paragraphs = '';
-// frases.forEach(frase => {
-//   paragraphs += `<p>${frase}<p>`;
-// })
+let paragraphs = '';
 
-// section.innerHTML = paragraphs;
+const createParagrafs = frase => {
+    const markup = `<p>${frase}<p>`;
+    paragraphs += markup;
+}
+
+  frases.forEach(createParagrafs)
+
+section.innerHTML = paragraphs;
 
 
 /*
@@ -251,27 +255,26 @@ letters.forEach(value => {
     pessoas já mencionadas no início da mensagem).
 */
 
-const arrayLikes = ['gabriel','Carlão']
+const arrayLikes = ['gabriel','carlos','josé', 'jorge','bob']
 
+const getLikesMessage = (names = []) => {
+  const firstName = names[0];
+  const secondName = names[1];
+  const thirdName = names[2];
+  const amountPeople = names.length - 3;
 
-const amountLikes = (array) => {
-  if(array.length === 0){
-    array = 'Ninguém curtiu isso';
+  switch(names.length){
+    case 0:
+      return 'Ninguém Curtiu isso'
+    case 1: 
+      return `${firstName} curtiu isso`
+    case 2: 
+      return `${firstName} e ${secondName} curtiram isso.`
+    case 3:
+      return `${firstName}, ${secondName} e ${thirdName} curtiram isso.`
+    default: 
+      return `${firstName}, ${secondName}, ${thirdName} e mais ${amountPeople} pessoas curtiram isso.`  
   }
-
-  if(array.length === 1){
-    for(let i = 0; i < array.length; i++){
-      return array = ` o ${array[i]} curtiu isso`
-    }
-  }
-
-  if(array.length === 2){
-    for(let i = 0; i < array.length; i++){
-      return array = `${array[i]} e ${array[i]} curtiram isso`
-    }
-  }
-
-  return array
 }
 
-// console.log(amountLikes(arrayLikes));
+console.log(getLikesMessage(arrayLikes));
