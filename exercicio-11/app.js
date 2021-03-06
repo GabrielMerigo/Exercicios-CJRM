@@ -21,6 +21,15 @@ const gabriel = 'Gabriel'
   - Você sabe por que isso aconteceu?
 */
 
+const myAge = () => {
+  let age = 17;
+  console.log(age);
+}
+
+myAge()
+
+
+
 /*
   03
 
