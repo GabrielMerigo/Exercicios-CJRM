@@ -26,7 +26,7 @@ const myAge = () => {
   console.log(age);
 }
 
-myAge()
+// myAge()
 
 
 
@@ -49,8 +49,8 @@ myAge()
 */
 
 let car = {
-  name: 'Honda Civic',
-  brand: 'Honda',
+  name: 'Ecosport',
+  brand: 'Ford',
   colors: ['Cinza','Preto','Vermelho'],
   isRunning: false,
   run () {
@@ -63,6 +63,7 @@ let car = {
     return `O ${this.name} está disponível nas cores ${this.colors[0]}, ${this.colors[1]} e ${this.colors[2]}`
   }
 }
+console.log(car.getColorMessage());
 
 /*
   04
@@ -70,11 +71,15 @@ let car = {
   - Faça o carro andar e exiba no console se ele realmente está em movimento.
 */
 
+// console.log(car.run());
+
 /*
   05
 
   - Faça o carro parar e exiba no console se ele realmente está parado.
 */
+
+// console.log(car.stop());
 
 /*
   06
@@ -82,9 +87,16 @@ let car = {
   - Exiba, no console, a mensagem com as cores do carro.
 */
 
+// console.log(car.getColorMessage());
+
 /*
   07
 
   - Exiba, no console, a mensagem "O carro é um MARCA_DO_CARRO NOME_DO_CARRO";
   - Utilize a notação de colchetes para acessar as propriedades do carro.
 */
+
+const brand = car.brand;
+const carName = car.name;
+
+console.log(`O carro é um ${brand} - ${carName}`);
