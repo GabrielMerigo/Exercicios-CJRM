@@ -59,7 +59,7 @@ const addFriend = (friend, obj) => {
 addFriend('Claiton', cat)
 
 
-console.log(cat);
+// console.log(cat);
 
 /*
   05
@@ -124,18 +124,18 @@ const junçãoFrase = (dog, cat) => {
   - Como você refatoraria esta função?
 */
 
-const isAnSUV = car => {
-  const arraySUV = ['Honda HR-V','Jeep Renegade','Ford EcoSport','Hyundai iX35']
 
-  if (car.includes(arraySUV)) {
+const isAnSUV = car => {
+  const arraySUV = ['Honda HR-V', 'Jeep Renegade', 'Ford EcoSport', 'Hyundai iX35']
+
+  if (arraySUV.includes(car)) {
     return true
   }
-
   return false
 }
 
-console.log(isAnSUV('Honda Civic'))
-console.log(isAnSUV('Ford EcoSport'))
+// console.log(isAnSUV('Honda Civic'))
+// console.log(isAnSUV('Ford EcoSport'))
 
 /*
   09
@@ -156,15 +156,8 @@ const myFunc = (type) => {
     undefined: 'Representa um valor não-setado.',
     object: 'Arrays, Datas, Objetos literais, Funções, etc.'
   }
-  if(typeof type === 'object'){
-    return types.object
-  }else if(typeof type === 'undefined'){
-    return types.undefined
-  }else if(typeof type === 'null'){
-    return types.null
-  }
-}  
 
-const teste = null;
+  return types[type]
+}
 
-// console.log(myFunc(teste));
+// console.log(myFunc('null'));
