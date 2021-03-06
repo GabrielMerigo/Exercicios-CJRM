@@ -5,6 +5,8 @@
   - Ela deve ter um escopo global.
 */
 
+const gabriel = 'Gabriel'
+
 /*
   02
 
