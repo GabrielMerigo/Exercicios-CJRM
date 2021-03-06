@@ -16,11 +16,11 @@ let cat = {
   color: 'Laranja',
   bestFriends: ['Tob','Fred'],
   sound: function() {
-    console.log('Miau');
+    return 'Miau';
   }
 }
 
-console.log(cat.sound);
+// console.log(cat.sound());
 
 /*
   02
@@ -31,13 +31,18 @@ console.log(cat.sound);
   Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "X", "age", que recebeu "X", "color", que recebeu "X", "bestFriends", que recebeu um array com os itens "X" e "X", e "sound", que recebeu uma função que retorna "X".
 */
 
-console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "${cat.name}", "age", que recebeu "${cat.age}", "color", que recebeu "${cat.color}", "bestFriends", que recebeu um array com os itens "${cat.bestFriends[0]}" e "${cat.bestFriends[1]}", e "sound", que recebeu uma função que retorna ${cat.sound()}.`);
+// console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "${cat.name}", "age", que recebeu "${cat.age}", "color", que recebeu "${cat.color}", "bestFriends", que recebeu um array com os itens "${cat.bestFriends[0]}" e "${cat.bestFriends[1]}", e "sound", que recebeu uma função que retorna ${cat.sound()}.`);
 
 /*
   03
 
   - Adicione 2 anos à idade do gato e exiba a idade atualizada no console.
 */
+
+
+cat.age = cat.age + 2
+
+// console.log(cat.age);
 
 /*
   04
@@ -46,6 +51,10 @@ console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valore
   - Exiba o array de amigos no console para verificar se o novo amigo(a) foi  
     adicionado.
 */
+
+cat.bestFriends.push('Jorge')
+
+// console.log(cat.bestFriends);
 
 /*
   05
@@ -56,6 +65,10 @@ console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valore
     colchetes.
 */
 
+cat['color'] = cat['color'] + ' e Preto'
+
+console.log(cat);
+
 /*
   06
 
@@ -63,6 +76,10 @@ console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valore
     parâmetro é um objeto;
   - Utilize a função para exibir no console se "cat" é um objeto.
 */
+
+const isObject = (object) => typeof object === 'object'; 
+
+// console.log(isObject(cat))
 
 /*
   07
@@ -73,6 +90,26 @@ console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valore
 
   "A soma das idades de NOME_DO_GATO e NOME_DO_CACHORRO é RESULTADO_DA_SOMA."
 */
+
+let dog = {
+  name: 'Mel',
+  age: 1,
+  color: 'Amarelo',
+  bestFriends: ['Fred'],
+  sound: function() {
+    return 'Au Au';
+  }
+}
+
+const junçãoFrase = (dog, cat) => {
+  const catName = cat.name;
+  const dogName = dog.name;
+  const totalAge = cat.age + dog.age;
+
+  return `A soma das idades de ${catName} e ${dogName} é ${totalAge}.`;
+} 
+
+console.log(junçãoFrase(dog, cat));
 
 /*
   08
