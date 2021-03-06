@@ -1,3 +1,4 @@
+
 /*
   01
 
@@ -9,6 +10,8 @@
     - sound, que é um método que retorna o miado do gato.
   - Exiba o objeto no console.
 */
+
+
 
 let cat = {
   name: 'Garfield',
