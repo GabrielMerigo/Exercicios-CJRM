@@ -14,8 +14,8 @@ let cat = {
   name: 'Garfield',
   age: 3,
   color: 'Laranja',
-  bestFriends: ['Tob','Fred'],
-  sound: function() {
+  bestFriends: ['Tob', 'Fred'],
+  sound: function () {
     return 'Miau';
   }
 }
@@ -67,7 +67,7 @@ cat.bestFriends.push('Jorge')
 
 cat['color'] = cat['color'] + ' e Preto'
 
-console.log(cat);
+// console.log(cat);
 
 /*
   06
@@ -77,7 +77,7 @@ console.log(cat);
   - Utilize a função para exibir no console se "cat" é um objeto.
 */
 
-const isObject = (object) => typeof object === 'object'; 
+const isObject = (object) => typeof object === 'object';
 
 // console.log(isObject(cat))
 
@@ -96,7 +96,7 @@ let dog = {
   age: 1,
   color: 'Amarelo',
   bestFriends: ['Fred'],
-  sound: function() {
+  sound: function () {
     return 'Au Au';
   }
 }
@@ -107,9 +107,9 @@ const junçãoFrase = (dog, cat) => {
   const totalAge = cat.age + dog.age;
 
   return `A soma das idades de ${catName} e ${dogName} é ${totalAge}.`;
-} 
+}
 
-console.log(junçãoFrase(dog, cat));
+// console.log(junçãoFrase(dog, cat));
 
 /*
   08
@@ -120,7 +120,9 @@ console.log(junçãoFrase(dog, cat));
 */
 
 const isAnSUV = car => {
-  if (car === 'Honda HR-V' || car === 'Jeep Renegade' || car === 'Ford EcoSport' || car === 'Hyundai iX35') {
+  const isSUV = car === 'Honda HR-V' || car === 'Jeep Renegade' || car === 'Ford EcoSport' || car === 'Hyundai iX35'
+
+  if (isSUV) {
     return true
   }
 
@@ -143,3 +145,21 @@ const isAnSUV = car => {
   - Teste a função, exibindo no console a mensagem de cada propriedade.
 */
 
+const myFunc = (type) => {
+  let types = {
+    null: 'Seta, explicitamente, uma variável sem valor.',
+    undefined: 'Representa um valor não-setado.',
+    object: 'Arrays, Datas, Objetos literais, Funções, etc.'
+  }
+  if(typeof type === 'object'){
+    return types.object
+  }else if(typeof type === 'undefined'){
+    return types.undefined
+  }else if(typeof type === 'null'){
+    return types.null
+  }
+}
+
+const teste = null;
+
+console.log(myFunc(teste));
