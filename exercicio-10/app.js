@@ -52,9 +52,14 @@ cat.age = cat.age + 2
     adicionado.
 */
 
-cat.bestFriends.push('Jorge')
+const addFriend = (friend, obj) => {
+  obj.bestFriends.push(friend)
+}
 
-// console.log(cat.bestFriends);
+addFriend('Claiton', cat)
+
+
+console.log(cat);
 
 /*
   05
@@ -120,17 +125,17 @@ const junçãoFrase = (dog, cat) => {
 */
 
 const isAnSUV = car => {
-  const isSUV = car === 'Honda HR-V' || car === 'Jeep Renegade' || car === 'Ford EcoSport' || car === 'Hyundai iX35'
+  const arraySUV = ['Honda HR-V','Jeep Renegade','Ford EcoSport','Hyundai iX35']
 
-  if (isSUV) {
+  if (car.includes(arraySUV)) {
     return true
   }
 
   return false
 }
 
-// console.log(isAnSUV('Honda Civic'))
-// console.log(isAnSUV('Ford EcoSport'))
+console.log(isAnSUV('Honda Civic'))
+console.log(isAnSUV('Ford EcoSport'))
 
 /*
   09
@@ -158,8 +163,8 @@ const myFunc = (type) => {
   }else if(typeof type === 'null'){
     return types.null
   }
-}
+}  
 
 const teste = null;
 
-console.log(myFunc(teste));
+// console.log(myFunc(teste));
