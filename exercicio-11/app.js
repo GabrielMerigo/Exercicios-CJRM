@@ -18,7 +18,7 @@ const gabriel = 'Gabriel'
     dentro da função;
   - Um erro com a mensagem "Uncaught ReferenceError: SUA_VARIÁVEL is not  
     defined" será exibido no console;
-  - Você sabe por que isso aconteceu?
+  - Você sabe por que isso aconteceu? Por que o escopo da variavel "age" é local.
 */
 
 const myAge = () => {
@@ -47,6 +47,22 @@ myAge()
     - getColorsMessage, que é um método que retorna a mensagem  
       "O NOME_DO_CARRO está disponível nas cores COR_01, COR_02 e COR_03".
 */
+
+let car = {
+  name: 'Honda Civic',
+  brand: 'Honda',
+  colors: ['Cinza','Preto','Vermelho'],
+  isRunning: false,
+  run () {
+    return `O ${this.name} está em movimento`
+  },
+  stop () {
+    return `O ${this.name} está parado`
+  },
+  getColorMessage () {
+    return `O ${this.name} está disponível nas cores ${this.colors[0]}, ${this.colors[1]} e ${this.colors[2]}`
+  }
+}
 
 /*
   04
