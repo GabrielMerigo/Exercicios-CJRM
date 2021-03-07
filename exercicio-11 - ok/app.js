@@ -5,7 +5,7 @@
   - Ela deve ter um escopo global.
 */
 
-const gabriel = 'Gabriel'
+const name = 'Gabriel'
 
 /*
   02
@@ -23,7 +23,7 @@ const gabriel = 'Gabriel'
 
 const myAge = () => {
   let age = 17;
-  console.log(age);
+  // console.log(age);
 }
 
 // myAge()
@@ -54,16 +54,24 @@ let car = {
   colors: ['Cinza','Preto','Vermelho'],
   isRunning: false,
   run () {
-    return `O ${this.name} está em movimento`
+    const carName = this.name;
+    this.isRunning = true;
+    return `O ${carName} está em movimento`
   },
   stop () {
-    return `O ${this.name} está parado`
+    const carName = this.name;
+    this.isRunning = false;
+    return `O ${carName} está parado`
   },
   getColorMessage () {
-    return `O ${this.name} está disponível nas cores ${this.colors[0]}, ${this.colors[1]} e ${this.colors[2]}`
+    const carName = this.name;
+    const lastItemOfArray = this.colors[this.colors.length - 1];
+    const colors = this.colors.join(', ').replace(`, ${lastItemOfArray}`, ` e ${lastItemOfArray}`);
+
+    return `O ${carName} está disponível nas cores ${colors}`;
   }
 }
-console.log(car.getColorMessage());
+// console.log(car.getColorMessage());
 
 /*
   04
@@ -71,13 +79,18 @@ console.log(car.getColorMessage());
   - Faça o carro andar e exiba no console se ele realmente está em movimento.
 */
 
-// console.log(car.run());
+// console.log(car.run())
+// console.log(car.isRunning === true);
+
 
 /*
-  05
+05
 
-  - Faça o carro parar e exiba no console se ele realmente está parado.
+- Faça o carro parar e exiba no console se ele realmente está parado.
 */
+
+// console.log(car.stop())
+// console.log(car.isRunning === true);
 
 // console.log(car.stop());
 
@@ -94,9 +107,6 @@ console.log(car.getColorMessage());
 
   - Exiba, no console, a mensagem "O carro é um MARCA_DO_CARRO NOME_DO_CARRO";
   - Utilize a notação de colchetes para acessar as propriedades do carro.
-*/
+**/
 
-const brand = car.brand;
-const carName = car.name;
-
-console.log(`O carro é um ${brand} - ${carName}`);
+console.log(`O carro é um ${car['name']} - ${car['brand']}`);
