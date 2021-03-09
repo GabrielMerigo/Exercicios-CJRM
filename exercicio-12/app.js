@@ -31,7 +31,7 @@ best2019Movies.forEach(movie => {
   const movieName = `${movie.title}`
   const movieDirector = `${movie.directedBy}`
 
-  console.log(`- ${movieName}, dirigido por ${movieDirector}`);
+  // console.log(`- ${movieName}, dirigido por ${movieDirector}`);
 })
 
 /*
@@ -66,8 +66,16 @@ const youtubeUser = {
       gitHub: 'https://github.com/Roger-Melo'
     },
     country: 'Brasil'
+  },
+  showPhrase () {
+    return ` Vídeos recentes de ${this.name}:
+    ${this.videos.recentVideos[0].title};
+    ${this.videos.recentVideos[0].title};
+    ${this.videos.recentVideos[0].title}`;
   }
 }
+
+// console.log(youtubeUser.showPhrase());
 
 /*
   03
@@ -75,6 +83,7 @@ const youtubeUser = {
   - Exiba o valor do PI no console.
 */
 
+// console.log(Math.PI)
 
 
 /*
