@@ -12,7 +12,10 @@ const getCatInfo = () => {
   const name = 'Marcos'
   let age = 3
   const color = 'Cinza'
+  return `${name} é um gato ${color} de ${age} anos.`
 }
+
+// console.log(getCatInfo());
 
 /*
   02
@@ -29,10 +32,12 @@ const external = () => {
     const extraInternal = () => {
       console.log(movie.toUpperCase())
     }
+    extraInternal()
   }
+  internal()
 }
 
-external()
+// external()
 
 /*
   03
