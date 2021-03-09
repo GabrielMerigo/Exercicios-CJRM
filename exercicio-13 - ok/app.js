@@ -99,7 +99,7 @@ const dogs = [
 */
 
 const title = document.querySelector('.main-title'); 
-// console.log(title);
+console.log(title);
 
 
 /*
