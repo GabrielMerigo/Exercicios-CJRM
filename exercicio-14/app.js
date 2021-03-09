@@ -14,8 +14,15 @@
   - Cada número deve estar dentro de uma <li> com a classe "number".
 */
 
-const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
-
+const numbers = [53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55];
+const ul = document.querySelector('.numbers')
+numbers.forEach(number => {
+  if(number % 2 === 0){
+    ul.innerHTML += `<li style="color:lightblue;" class="number">${number}</li>`
+  }else{
+    ul.innerHTML += `<li style="color:pink;" class="number">${number}</li>`
+  }
+})
 /*
   03
 
@@ -24,7 +31,7 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
     - Se o número é ímpar, exiba-o na cor "pink".
 */
 
-
+//ok
 
 /*
   04
@@ -34,17 +41,21 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
   P.s: a classe "body-background" já está declarada no style.css.
 */
 
+const bodyBackground = document.querySelector('body');
+
+bodyBackground.classList.add('class', 'body-background')
 
 
 /*
   05
 
-  - Adicione o link 
-    https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo no href  
+  - Adicione o link
+    https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo no href
     do link do index.html.
 */
 
-
+const link = document.querySelector('.link')
+// link.setAttribute('href','https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo') 
 
 /*
   06
@@ -52,15 +63,19 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
   - Exiba o novo valor do atributo href do link no console.
 */
 
+console.log(link.getAttribute('href'));
 
 
 /*
   07
 
-  - Exiba, no console, um objeto com todas as propriedades CSS que podem ser  
+  - Exiba, no console, um objeto com todas as propriedades CSS que podem ser
     manipuladas via JS no h1.
 */
 
+const h1 = document.querySelector('h1');
+
+console.log(h1.style);
 
 
 /*
@@ -68,6 +83,8 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
 
   - Remova a classe "body-background", do elemento body.
 */
+
+// bodyBackground.classList.remove('class','body-background')
 
 
 
@@ -77,3 +94,5 @@ const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
   - Se o link da página possuir uma classe "link", remova-a;
   - Não utilize o método remove() para fazer isso.
 */
+
+link.setAttribute('class', '')
