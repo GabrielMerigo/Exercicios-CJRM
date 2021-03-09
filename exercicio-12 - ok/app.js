@@ -31,7 +31,7 @@ best2019Movies.forEach(movie => {
   const movieName = `${movie.title}`
   const movieDirector = `${movie.directedBy}`
 
-  console.log(`- ${movieName}, dirigido por ${movieDirector}`);
+  // console.log(`- ${movieName}, dirigido por ${movieDirector}`);
 })
 
 
@@ -69,15 +69,15 @@ const youtubeUser = {
     },
     country: 'Brasil'
   },
-  showPhrase () {
-    return ` Vídeos recentes de ${this.name}:
-    ${this.videos.recentVideos[0].title};
-    ${this.videos.recentVideos[0].title};
-    ${this.videos.recentVideos[0].title}`;
+  showPhrase() {
+    console.log(`Vídeos recentes de ${this.name}:`);
+    this.videos.recentVideos.forEach(video => {
+      console.log(video.title);
+    })
   }
 }
 
-// console.log(youtubeUser.showPhrase());
+console.log(youtubeUser.showPhrase());
 
 /*
   03
@@ -108,7 +108,7 @@ forma padrão, e exiba-o no console.
 
 const secondNumber = 3.5
 
-// console.log(Math.floor(secondNumber));
+// console.log(Math.round(secondNumber));
 
 /*
   06
@@ -119,7 +119,7 @@ const secondNumber = 3.5
 
 const thirdNumber = 8.9
 
-// console.log(Math.round(thirdNumber))
+console.log(Math.floor(thirdNumber))
 
 /*
   07
