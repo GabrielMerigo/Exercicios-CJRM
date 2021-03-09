@@ -49,6 +49,7 @@ const external = () => {
 */
 
 let randomNumbers = [3, 2, 1]
+console.log(randomNumbers.reverse());
 
 /*
   04
