@@ -31,8 +31,10 @@ best2019Movies.forEach(movie => {
   const movieName = `${movie.title}`
   const movieDirector = `${movie.directedBy}`
 
-  // console.log(`- ${movieName}, dirigido por ${movieDirector}`);
+  console.log(`- ${movieName}, dirigido por ${movieDirector}`);
 })
+
+
 
 /*
   02
