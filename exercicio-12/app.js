@@ -95,14 +95,18 @@ const youtubeUser = {
 
 const firstNumber = 8.3
 
-/*
-  05
+// console.log(Math.ceil(firstNumber));
 
-  - Arredonde o número que a constante abaixo armazena para 4, utilizando a  
-    forma padrão, e exiba-o no console.
+/*
+05
+
+- Arredonde o número que a constante abaixo armazena para 4, utilizando a  
+forma padrão, e exiba-o no console.
 */
 
 const secondNumber = 3.5
+
+// console.log(Math.floor(secondNumber));
 
 /*
   06
@@ -113,6 +117,8 @@ const secondNumber = 3.5
 
 const thirdNumber = 8.9
 
+// console.log(Math.round(thirdNumber))
+
 /*
   07
 
@@ -121,9 +127,15 @@ const thirdNumber = 8.9
 
 const fourthNumber = 5.5
 
+// console.log(Math.trunc(fourthNumber));
+
 /*
   08
 
   - A cada vez que o index.html for carregado, exiba no console um número  
     aleatório de 0 à 10, incluindo 0 e 10.
 */
+
+
+const randomNumber = Math.random()
+// console.log(Math.round(randomNumber * 10));
