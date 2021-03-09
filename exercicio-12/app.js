@@ -27,6 +27,13 @@ const best2019Movies = [
   { title: 'A Vida Invisível', directedBy: 'Karim Aïnouz' }
 ]
 
+best2019Movies.forEach(movie => {
+  const movieName = `${movie.title}`
+  const movieDirector = `${movie.directedBy}`
+
+  console.log(`- ${movieName}, dirigido por ${movieDirector}`);
+})
+
 /*
   02
 
