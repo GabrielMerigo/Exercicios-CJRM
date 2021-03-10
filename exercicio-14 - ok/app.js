@@ -19,11 +19,7 @@ const numbers = [53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55];
 const ul = document.querySelector('.numbers')
 
 const changeColorsPinkOrBlue = number => {
-  if(number % 2 === 0){
-    ul.innerHTML += `<li style="color:lightblue;" class="number">${number}</li>`
-  }else{
-    ul.innerHTML += `<li style="color:pink;" class="number">${number}</li>`
-  }
+  ul.innerHTML += `<li class="number">${number}</li>`
 }
 
 // console.log(changeColorsPinkOrBlue);
@@ -35,8 +31,19 @@ numbers.forEach(changeColorsPinkOrBlue)
     - Se o número é par, ele deve ser exibido na cor "lightblue";
     - Se o número é ímpar, exiba-o na cor "pink".
 */
+const lis = document.querySelectorAll('.number')
 
+const changeLiColor = li => {
+  const isEven = li.textContent % 2 === 0; 
+  if(isEven){
+    li.style.color = 'lightblue'
+    return
+  }
 
+  li.style.color = 'red'
+}
+
+// lis.forEach(changeLiColor)
 
 /*
   04
@@ -68,7 +75,7 @@ const link = document.querySelector('.link')
   - Exiba o novo valor do atributo href do link no console.
 */
 
-console.log(link.getAttribute('href'));
+// console.log(link.getAttribute('href'));
 
 
 /*
@@ -79,7 +86,7 @@ console.log(link.getAttribute('href'));
 */
 
 
-console.log(h1.style);
+// console.log(h1.style);
 
 
 /*
