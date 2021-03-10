@@ -5,12 +5,11 @@
     uma classe 'video';
   - Exiba no console os elementos filhos da ul com a classe já inserida.
 */
-const ul = document.querySelector('ul');
+// const ul = document.querySelector('ul');
 
-const array = Array.from(ul.children)
-array.forEach(item => {
-  item.setAttribute('class','video')
-})
+// 
+
+
 
 
 
@@ -33,6 +32,8 @@ const h2 = document.querySelector('h2');
 */
 
 const h1 = document.querySelector('h1');
+// console.log(h1.nextElementSiSbling);
+
 
 /*
   04
@@ -40,7 +41,7 @@ const h1 = document.querySelector('h1');
   - Descubra quem é o irmão anterior da ul e exiba-o no console;
 */
 
-
+// console.log(ul.previousElementSibling);
 
 /*
   05
@@ -49,7 +50,11 @@ const h1 = document.querySelector('h1');
     exibida no console.
 */
 
-
+array.forEach(li => {
+  li.addEventListener('click', event => {
+    console.log(event);
+  })
+})
 
 /*
   06
@@ -69,6 +74,15 @@ const videos = [{
   length: '00:02:55'
 }]
 
+const ul = document.querySelector('ul')
+// console.log(ul);
+
+const btn = document.querySelector('button')
+btn.addEventListener('click', () => {
+  videos.forEach(video => {
+    ul.innd
+  })
+})
 /*
   07
 
