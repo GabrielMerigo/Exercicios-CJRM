@@ -1,11 +1,12 @@
 /*
-  01
+01
 
-  - Faça com que o texto do h1 do index.html seja exibido com todas as letras  
-    maiúsculas.
+- Faça com que o texto do h1 do index.html seja exibido com todas as letras  
+maiúsculas.
 */
 
-
+let h1 = document.querySelector('h1')
+h1.textContent = h1.textContent.toUpperCase()
 
 /*
   02
@@ -16,13 +17,17 @@
 
 const numbers = [53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55];
 const ul = document.querySelector('.numbers')
-numbers.forEach(number => {
+
+const changeColorsPinkOrBlue = number => {
   if(number % 2 === 0){
     ul.innerHTML += `<li style="color:lightblue;" class="number">${number}</li>`
   }else{
     ul.innerHTML += `<li style="color:pink;" class="number">${number}</li>`
   }
-})
+}
+
+// console.log(changeColorsPinkOrBlue);
+numbers.forEach(changeColorsPinkOrBlue)
 /*
   03
 
@@ -31,7 +36,7 @@ numbers.forEach(number => {
     - Se o número é ímpar, exiba-o na cor "pink".
 */
 
-//ok
+
 
 /*
   04
@@ -73,7 +78,6 @@ console.log(link.getAttribute('href'));
     manipuladas via JS no h1.
 */
 
-const h1 = document.querySelector('h1');
 
 console.log(h1.style);
 
