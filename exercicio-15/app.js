@@ -5,6 +5,12 @@
     uma classe 'video';
   - Exiba no console os elementos filhos da ul com a classe já inserida.
 */
+const ul = document.querySelector('ul');
+
+const array = Array.from(ul.children)
+array.forEach(item => {
+  item.setAttribute('class','video')
+})
 
 
 
@@ -15,6 +21,9 @@
     e exiba-o no console;
 */
 
+const h2 = document.querySelector('h2');
+
+// console.log(h2.parentElement);
 
 
 /*
@@ -23,7 +32,7 @@
   - Descubra quem é o próximo elemento irmão do h1 e exiba-o no console;
 */
 
-
+const h1 = document.querySelector('h1');
 
 /*
   04
