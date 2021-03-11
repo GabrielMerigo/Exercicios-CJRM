@@ -5,10 +5,14 @@
     uma classe 'video';
   - Exiba no console os elementos filhos da ul com a classe já inserida.
 */
-// const ul = document.querySelector('ul');
+const ul = document.querySelector('ul');
+const lis = Array.from(ul.children)
 
-// 
+const insertVideoClass = item => {
+  item.classList.add('video')
+};
 
+lis.forEach(insertVideoClass)
 
 
 
@@ -50,11 +54,15 @@ const h1 = document.querySelector('h1');
     exibida no console.
 */
 
-array.forEach(li => {
-  li.addEventListener('click', event => {
-    console.log(event);
-  })
-})
+const showClikedLI = event => {
+  console.log(event.target);
+}
+
+const addEventClick = li => {
+  li.addEventListener('click', showClikedLI)
+}
+
+lis.forEach(addEventClick)
 
 /*
   06
@@ -74,18 +82,32 @@ const videos = [{
   length: '00:02:55'
 }]
 
-const ul = document.querySelector('ul')
-// console.log(ul);
+const insertVideoLi = ({ name, length }) => {
+  ul.innerHTML += `<li>${name } | ${length}</li>`
+}
+
+const handleClicK = () => {
+  videos.forEach(insertVideoLi)
+}
 
 const btn = document.querySelector('button')
-btn.addEventListener('click', () => {
-  videos.forEach(video => {
-    ul.innd
-  })
-})
+
+btn.addEventListener('click', handleClicK)
+
+
 /*
   07
 
   - Se um clique no h1 acontecer, faça com que todos os elementos dentro do body 
     sejam removidos.
 */
+
+const body = document.body  
+const bodyChildren = body.children
+const newArray = Array.from(bodyChildren)
+
+
+
+h1.addEventListener('click', () => {
+  body.innerHTML = ''
+})
