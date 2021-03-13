@@ -6,16 +6,10 @@
 */
 
 const div = document.querySelector('div')
-const elementsInsideDiv = Array.from(div.children)
 
-elementsInsideDiv.forEach(element => {
-  element.addEventListener('click', () => {
-    console.log('Clicou no filho da div.')
-  })
-})
-
-div.addEventListener('click', () => {
-  console.log('Clicou na div.')
+div.addEventListener('click', event => {
+  if(event.target.localName === 'p')
+    console.log(`Clicou na div Filha`);
 })
 
 /*
@@ -25,6 +19,8 @@ div.addEventListener('click', () => {
     exibida no console seja "Clicou no NOME_DA_TAG_COM_LETRAS_MINÚSCULAS, filho
     da div.".
 */
+
+
 
 /*
   03
