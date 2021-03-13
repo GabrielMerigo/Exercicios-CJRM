@@ -34,13 +34,13 @@ const div = document.querySelector('div')
 
 const h2 = document.querySelector('h2');
 
-div.addEventListener('click', event => {
-  if(event.target.localName === 'p'){
-    return h2.innerHTML = `Você clicou no P`
-  }
+// div.addEventListener('click', event => {
+//   if(event.target.localName === 'p'){
+//     return h2.innerHTML = `Você clicou no P`
+//   }
 
-  h2.innerHTML = 'Você Clicou no h1'
-})
+//   h2.innerHTML = 'Você Clicou no h1'
+// })
 
 
 
@@ -51,6 +51,10 @@ div.addEventListener('click', event => {
     seja exibida no console.
 */
 
+h2.addEventListener('copy', () => {
+  console.log('Texto Copiado!');
+})
+
 /*
   05
 
@@ -59,12 +63,24 @@ div.addEventListener('click', event => {
     "Eixo X: COORDENADA_EIXO_X | Eixo Y: COORDENADA_EIXO_Y".
 */
 
+const divEgg = document.querySelector('.egg')
+
+divEgg.addEventListener('mousemove', event => {
+  const eixoX = event.offsetX;
+  const eixoY = event.offsetY;
+  divEgg.textContent = `Eixo X: ${eixoX} | Eixo Y: ${eixoY}`;
+})
+
 /*
   06
 
   - Modifique a cor do ovo para "lightgoldenrodyellow" quando o botão for 
     clicado.
 */
+
+divEgg.addEventListener('click', () => {
+  divEgg.style.background = 'lightgoldenrodyellow'
+})
 
 /*
   07
