@@ -79,7 +79,7 @@ divEgg.addEventListener('mousemove', event => {
 */
 
 divEgg.addEventListener('click', () => {
-  divEgg.style.background = 'lightgoldenrodyellow'
+  divEgg.style.background = ''
 })
 
 /*
@@ -102,3 +102,8 @@ const people = [
   { id: 8, name: 'Matheus Manucci', profession: 'Piloto' },
   { id: 9, name: 'Hamilton Silva', profession: 'Advogado' }
 ]
+
+people.some(person => {
+ if(person.profession === 'Front-end developer')
+    console.log('O array people contém, no mínimo, um(a) Front-end developer.');
+})
