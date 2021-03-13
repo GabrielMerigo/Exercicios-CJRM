@@ -6,13 +6,16 @@
 */
 
 const div = document.querySelector('div')
+const button = document.querySelector('button')
 
-// div.addEventListener('click', event => {
-//   const targetName = event.target.localName;
-//   const tagUpperCase = targetName.toUpperCase();
+const transformPhraseLowerCase = event => {
+  const targetName = event.target.localName;
+  const tagLowerCase = targetName.toLowerCase();
 
-//   console.log(`Você clicou na tag ${tagUpperCase}`);
-// })
+  console.log(`Você clicou na tag ${tagLowerCase}`);
+}
+
+div.addEventListener('click', transformPhraseLowerCase)
 
 /*
   02
@@ -34,13 +37,20 @@ const div = document.querySelector('div')
 
 const h2 = document.querySelector('h2');
 
-// div.addEventListener('click', event => {
-//   if(event.target.localName === 'p'){
-//     return h2.innerHTML = `Você clicou no P`
-//   }
+const setPhraseInsideH2 = (event) => {
+  const targetIgualAp = event.target.localName === 'p'
+  const targetIgualAH1 = event.target.localName === 'h1'
 
-//   h2.innerHTML = 'Você Clicou no h1'
-// })
+  if (targetIgualAp) {
+    return h2.innerHTML = `Você clicou no P`
+  } else if (targetIgualAH1) {
+    return h2.innerHTML = 'Você Clicou no h1'
+  }
+
+  return h2.innerHTML = 'Você clicou na DIV.'
+}
+
+div.addEventListener('click', setPhraseInsideH2)
 
 
 
@@ -51,9 +61,11 @@ const h2 = document.querySelector('h2');
     seja exibida no console.
 */
 
-h2.addEventListener('copy', () => {
+const copyText = () => {
   console.log('Texto Copiado!');
-})
+}
+
+h2.addEventListener('copy', copyText)
 
 /*
   05
@@ -65,11 +77,13 @@ h2.addEventListener('copy', () => {
 
 const divEgg = document.querySelector('.egg')
 
-divEgg.addEventListener('mousemove', event => {
-  const eixoX = event.offsetX;
-  const eixoY = event.offsetY;
+const showEixoXandEixoY = ({ offsetX, offsetY }) => {
+  const eixoX = offsetX;
+  const eixoY = offsetY;
   divEgg.textContent = `Eixo X: ${eixoX} | Eixo Y: ${eixoY}`;
-})
+}
+
+divEgg.addEventListener('mousemove', showEixoXandEixoY)
 
 /*
   06
@@ -78,9 +92,11 @@ divEgg.addEventListener('mousemove', event => {
     clicado.
 */
 
-divEgg.addEventListener('click', () => {
-  divEgg.style.background = ''
+const changeEggColor = (() => {
+  divEgg.style.background = 'lightgoldenrodyellow'
 })
+
+button.addEventListener('click', changeEggColor)
 
 /*
   07
@@ -103,7 +119,9 @@ const people = [
   { id: 9, name: 'Hamilton Silva', profession: 'Advogado' }
 ]
 
-people.some(person => {
- if(person.profession === 'Front-end developer')
-    console.log('O array people contém, no mínimo, um(a) Front-end developer.');
-})
+const isSomePersonFrontDeveloper = people.some(({ profession }) =>
+  profession === 'Front-end developer');
+
+if (isSomePersonFrontDeveloper) {
+  console.log('O array people contém, no mínimo, um(a) Front-end developer.');
+}
