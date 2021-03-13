@@ -7,10 +7,12 @@
 
 const div = document.querySelector('div')
 
-div.addEventListener('click', event => {
-  if(event.target.localName === 'p')
-    console.log(`Clicou na div Filha`);
-})
+// div.addEventListener('click', event => {
+//   const targetName = event.target.localName;
+//   const tagUpperCase = targetName.toUpperCase();
+
+//   console.log(`Você clicou na tag ${tagUpperCase}`);
+// })
 
 /*
   02
@@ -20,7 +22,7 @@ div.addEventListener('click', event => {
     da div.".
 */
 
-
+//ok
 
 /*
   03
@@ -29,6 +31,18 @@ div.addEventListener('click', event => {
   - Faça com que a mensagem de clique na div e a mensagem de clique em algum
     filho da div, ao invés de ser exibida no console, seja inserida neste h2.
 */
+
+const h2 = document.querySelector('h2');
+
+div.addEventListener('click', event => {
+  if(event.target.localName === 'p'){
+    return h2.innerHTML = `Você clicou no P`
+  }
+
+  h2.innerHTML = 'Você Clicou no h1'
+})
+
+
 
 /*
   04
