@@ -16,7 +16,7 @@ form.addEventListener('submit', event => {
 */
 
 form.addEventListener('submit', event => {
-  console.log(event);
+  console.log(form.input.value);
 })
 
 
@@ -28,6 +28,11 @@ form.addEventListener('submit', event => {
   - Exiba no console o boolean no qual este teste resulta.
 */
 
+const a = document.querySelector('a');
+const pattern = /^[a-z]$/gm;
+const documentation = a.textContent;
+console.log(pattern.test(documentation));
+
 /*
   04
 
@@ -38,6 +43,9 @@ form.addEventListener('submit', event => {
 
 const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta'
 
+const regex = /^[A-Z][0-9]{3}$/
+
+console.log(regex.test(B99message));
 /*
   05
 
