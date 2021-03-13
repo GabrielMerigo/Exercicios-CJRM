@@ -3,6 +3,10 @@
 
   - No envio do form, faça com que a página não seja recarregada.
 */
+const form = document.querySelector('form');
+form.addEventListener('submit', event => {
+  event.preventDefault()
+})
 
 /*
   02
@@ -10,6 +14,11 @@
   - No envio do form obtenha, através do objeto event, o texto inserido no  
     input e exiba-o no console.
 */
+
+form.addEventListener('submit', event => {
+  console.log(event);
+})
+
 
 /*
   03
@@ -40,7 +49,7 @@ const word = 'O que a NASA fotografou no dia do seu aniversário?'
 const NASARegex = /^[A-Z]{4}$/
 const NASAResult = NASARegex.test(word)
 
-console.log(NASAResult)
+// console.log(NASAResult)
 
 /*
   06
