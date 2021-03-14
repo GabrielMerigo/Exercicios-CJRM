@@ -32,7 +32,7 @@ const a = document.querySelector('a');
 const wordDocumentation = a.textContent
 const pattern = /^[a-z]{0,}$/;
 
-console.log(pattern.test(wordDocumentation));
+// console.log(pattern.test(wordDocumentation));
 
 /*
   04
@@ -44,9 +44,9 @@ console.log(pattern.test(wordDocumentation));
 
 const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta'
 
-const regex = /^[A-Z][0-9]{3}$/
+const regex = /[A-Z][0-9]{1,3}/
 
-// console.log(regex.test(B99message));
+// console.log(B99message.search(regex));
 /*
   05
 
@@ -54,11 +54,11 @@ const regex = /^[A-Z][0-9]{3}$/
     resultado do teste entre a regex e a string exibido no console seja true.
 */
 
-const word = 'O que a NASA fotografou no dia do seu aniversário?'
+const word = 'NASA'
 const NASARegex = /^[A-Z]{4}$/
 const NASAResult = NASARegex.test(word)
 
-// console.log(NASAResult)
+console.log(NASAResult)
 
 /*
   06
@@ -72,6 +72,14 @@ const NASAResult = NASARegex.test(word)
     - "a[b@X7c" é um valor válido, pois contém 7 caracteres;
     - "jozeti" não é um valor válido, pois contém 6 caracteres.
 */
+
+const input = document.querySelector('#input')
+const pattern2 = /.{7,}/ 
+
+
+if(){
+
+}
 
 /*
   07
