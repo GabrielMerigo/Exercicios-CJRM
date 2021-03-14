@@ -99,3 +99,17 @@ const NASAResult = NASARegex.test(word)
     - "0xY79aYx54e" é um valor válido, pois contém 11 letras e números;
     - "eich_1961" não é um valor válido, pois contém um caractere especial.
 */
+
+const input = document.querySelector('#input')
+const pattern2 = /^[a-zA-Z0-9]{7,11}$/
+const form2 = document.querySelector('form');
+
+form2.addEventListener('submit', () => {
+  const inputValue = input.value;
+  const isPattern = pattern2.test(inputValue) === true;
+
+  if (isPattern) {
+    return console.log(`${inputValue}, sua senha é válida.`);
+  }
+  return console.log(`${inputValue} sua senha não é válida.`);
+})
