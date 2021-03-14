@@ -29,9 +29,10 @@ form.addEventListener('submit', event => {
 */
 
 const a = document.querySelector('a');
-const pattern = /^[a-z]$/gm;
-const documentation = a.textContent;
-console.log(pattern.test(documentation));
+const wordDocumentation = a.textContent
+const pattern = /^[a-z]{0,}$/;
+
+console.log(pattern.test(wordDocumentation));
 
 /*
   04
@@ -45,7 +46,7 @@ const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 
 
 const regex = /^[A-Z][0-9]{3}$/
 
-console.log(regex.test(B99message));
+// console.log(regex.test(B99message));
 /*
   05
 
