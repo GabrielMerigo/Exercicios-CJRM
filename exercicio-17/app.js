@@ -74,19 +74,25 @@ const NASAResult = NASARegex.test(word)
 */
 
 // const input = document.querySelector('#input')
-// const pattern2 = /^.{7,}/ 
+// const pattern2 = /^.{7,}/
 // const form2 = document.querySelector('form');
 
 // form2.addEventListener('submit', () => {
-//   console.log(pattern2.test(input.value));
+//   const inputValue = input.value;
+//   const isPattern = pattern2.test(inputValue) === true;
+
+//   if (isPattern) {
+//     return console.log(`${inputValue}, sua senha é válida.`);
+//   }
+//   return console.log(`${inputValue} sua senha não é válida.`);
 // })
 
 
 /*
   07
 
-  - Agora, no envio do form, faça com que o valor permitido contenha de 7 a 11 
-    caracteres mas não contenha caracteres especiais. Apenas letras maiúsculas  
+  - Agora, no envio do form, faça com que o valor permitido contenha de 7 a 11
+    caracteres mas não contenha caracteres especiais. Apenas letras maiúsculas
     ou minúsculas e números serão permitidos.
 
   Exemplos:
