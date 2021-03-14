@@ -58,7 +58,7 @@ const word = 'NASA'
 const NASARegex = /^[A-Z]{4}$/
 const NASAResult = NASARegex.test(word)
 
-console.log(NASAResult)
+// console.log(NASAResult)
 
 /*
   06
@@ -73,13 +73,14 @@ console.log(NASAResult)
     - "jozeti" não é um valor válido, pois contém 6 caracteres.
 */
 
-const input = document.querySelector('#input')
-const pattern2 = /.{7,}/ 
+// const input = document.querySelector('#input')
+// const pattern2 = /^.{7,}/ 
+// const form2 = document.querySelector('form');
 
+// form2.addEventListener('submit', () => {
+//   console.log(pattern2.test(input.value));
+// })
 
-if(){
-
-}
 
 /*
   07
