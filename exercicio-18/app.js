@@ -20,6 +20,13 @@
   
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
+const form = document.querySelector('form');
+const input = form.username;
+
+input.addEventListener('keyup', () => {
+  const inputValue = input.value;
+  
+})
 
 /*
   02
