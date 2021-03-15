@@ -15,9 +15,9 @@ form.addEventListener('submit', event => {
     input e exiba-o no console.
 */
 
-form.addEventListener('submit', event => {
-  console.log(form.input.value);
-})
+// form.addEventListener('submit', event => {
+//   console.log(form.input.value);
+// })
 
 
 /*
@@ -28,9 +28,9 @@ form.addEventListener('submit', event => {
   - Exiba no console o boolean no qual este teste resulta.
 */
 
-const a = document.querySelector('a');
-const wordDocumentation = a.textContent
-const pattern = /^[a-z]{0,}$/;
+const p = document.querySelector('p');
+const wordDocumentation = p.textContent
+const pattern = /documentation/;
 
 // console.log(pattern.test(wordDocumentation));
 
@@ -44,9 +44,9 @@ const pattern = /^[a-z]{0,}$/;
 
 const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta'
 
-const regex = /[A-Z][0-9]{1,3}/
+const regex = /[A-Z0-9]{3}/
 
-// console.log(B99message.search(regex));
+// console.log(regex.test(B99message));
 /*
   05
 
@@ -79,12 +79,13 @@ const NASAResult = NASARegex.test(word)
 
 // form2.addEventListener('submit', () => {
 //   const inputValue = input.value;
-//   const isPattern = pattern2.test(inputValue) === true;
+//   const isPattern = pattern2.test(inputValue);
 
 //   if (isPattern) {
-//     return console.log(`${inputValue}, sua senha é válida.`);
+//     return console.log(`O valor inserido no input é válido =).`);
 //   }
-//   return console.log(`${inputValue} sua senha não é válida.`);
+
+//   console.log(`Valor inválido =(.`);
 // })
 
 
@@ -104,12 +105,28 @@ const input = document.querySelector('#input')
 const pattern2 = /^[a-zA-Z0-9]{7,11}$/
 const form2 = document.querySelector('form');
 
-form2.addEventListener('submit', () => {
-  const inputValue = input.value;
+const cleanInput = () => {
+  form.input.value = ''
+  form.input.focus()
+}
+
+const logMessage = message => {
+  console.log(message);
+  cleanInput();
+}
+
+const handleSumbit = event => {
+  event.preventDefault()
+
+  const inputValue = event.target.input.value;
   const isPattern = pattern2.test(inputValue) === true;
 
   if (isPattern) {
-    return console.log(`${inputValue}, sua senha é válida.`);
+    logMessage(`${inputValue}, sua senha é válida.`);
+    return 
   }
-  return console.log(`${inputValue} sua senha não é válida.`);
-})
+  logMessage(`${inputValue} sua senha não é válida.`);
+  cleanInput()
+}
+
+form2.addEventListener('submit', handleSumbit)
