@@ -3,6 +3,18 @@
   padding-top: 7.5rem;
 }
 
+.border-success{
+  border: 2px solid green;
+}
+
+.border-error{
+  border: 2px solid rgb(240, 33, 33);
+}
+
+input{
+  outline:0;
+}
+
 .username-help-feedback {
   margin-bottom: 2.5rem;
   color: darkorange;

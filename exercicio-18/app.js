@@ -21,10 +21,18 @@
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
 const form = document.querySelector('form');
-const input = form.username;
+const regex = /^[a-zA-Z]{6,}/
+const input = form.username; //border-success
 
 input.addEventListener('keyup', () => {
   const inputValue = input.value;
+  if(regex.test(inputValue)){
+    return input.setAttribute('class','border-success')
+  }
+  return input.setAttribute('class','border-error')
+})
+
+form.addEventListener('submit', (() => {
   
 })
 
