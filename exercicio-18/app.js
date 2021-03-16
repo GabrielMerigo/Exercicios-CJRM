@@ -26,10 +26,21 @@ const regex = /^[a-zA-Z]{6,}$/
 const input = form.username;
 const p = document.createElement('p');
 const btn = document.querySelector('button')
+const paragraphSubmit = document.createElement('p')
 
 const validationInput = () => {
   const inputValue = input.value;
   const regexTest = regex.test(inputValue);
+
+  paragraphSubmit.setAttribute('data-feedback', 'submit-feedback')
+
+  const paragraphSubmitFeedbackExists =
+    document.querySelector('[data-feedback="submit-feedback"]');
+  
+    if(paragraphSubmitFeedbackExists){
+      paragraphSubmitFeedbackExists.remove()
+    }
+
 
   if (regexTest) {
     p.textContent = 'Username válido =)';
@@ -42,28 +53,31 @@ const validationInput = () => {
   input.insertAdjacentElement('afterend', p)
 }
 
-const parahraphSubmit = document.createElement('p')
+const insertParagraphIntoDOM = () => {
+  
+}
+
 
 const userSubmit = event => {
   event.preventDefault()
   const input = form.username;
   const inputValue = input.value;
 
-  
+
   if (!regex.test(inputValue)) {
-    parahraphSubmit.textContent = 'Por favor, insira um username válido';
-    parahraphSubmit.setAttribute('class','submit-help-feedback')
-    btn.insertAdjacentElement('afterend', parahraphSubmit)
+    paragraphSubmit.textContent = 'Por favor, insira um username válido';
+    paragraphSubmit.setAttribute('class', 'submit-help-feedback')
+    btn.insertAdjacentElement('afterend', paragraphSubmit)
     return
   }
-  parahraphSubmit.textContent = 'Dados enviados =)';
-  parahraphSubmit.setAttribute('class','username-success-feedback')
-  btn.insertAdjacentElement('afterend', parahraphSubmit)
+  paragraphSubmit.textContent = 'Dados enviados =)';
+  paragraphSubmit.setAttribute('class', 'username-success-feedback')
+  btn.insertAdjacentElement('afterend', paragraphSubmit)
 }
 
 
 
-input.addEventListener('keyup', validationInput)
+input.addEventListener('input', validationInput)
 form.addEventListener('submit', userSubmit)
 
 /*
