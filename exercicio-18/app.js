@@ -20,11 +20,12 @@
   
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
-const form = document.querySelector('form');
 
+const form = document.querySelector('form');
 const regex = /^[a-zA-Z]{6,}$/
 const input = form.username;
-let p = document.createElement('p');
+const p = document.createElement('p');
+const btn = document.querySelector('button')
 
 const validationInput = () => {
   const inputValue = input.value;
@@ -41,7 +42,29 @@ const validationInput = () => {
   input.insertAdjacentElement('afterend', p)
 }
 
+const parahraphSubmit = document.createElement('p')
+
+const userSubmit = event => {
+  event.preventDefault()
+  const input = form.username;
+  const inputValue = input.value;
+
+  
+  if (!regex.test(inputValue)) {
+    p.textContent = 'Por favor, insira um username válido';
+    p.setAttribute('class','submit-help-feedback')
+    btn.insertAdjacentElement('afterend', p)
+    return
+  }
+  p.textContent = 'Dados enviados =)';
+  p.setAttribute('class','username-success-feedback')
+  btn.insertAdjacentElement('afterend', p)
+}
+
+
+
 input.addEventListener('keyup', validationInput)
+form.addEventListener('submit', userSubmit)
 
 /*
   02
@@ -55,16 +78,7 @@ input.addEventListener('keyup', validationInput)
   - Não insira o parágrafo manualmente no index.html.
 */
 
-form.addEventListener('submit', event => {
-  event.preventDefault()
-  const input = form.username;
-  const inputValue = input.value;
 
-  if (!regex.test(inputValue)) {
-    return input.insertAdjacentHTML('afterend', `<p class="submit-help-feedback">Por favor, insira um username válido</p>`)
-  }
-  input.insertAdjacentHTML('afterend', `<p class="username-success-feedback">Dados enviados =)</p>`)
-})
 
 /*
   03
