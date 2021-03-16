@@ -51,14 +51,14 @@ const userSubmit = event => {
 
   
   if (!regex.test(inputValue)) {
-    p.textContent = 'Por favor, insira um username válido';
-    p.setAttribute('class','submit-help-feedback')
-    btn.insertAdjacentElement('afterend', p)
+    parahraphSubmit.textContent = 'Por favor, insira um username válido';
+    parahraphSubmit.setAttribute('class','submit-help-feedback')
+    btn.insertAdjacentElement('afterend', parahraphSubmit)
     return
   }
-  p.textContent = 'Dados enviados =)';
-  p.setAttribute('class','username-success-feedback')
-  btn.insertAdjacentElement('afterend', p)
+  parahraphSubmit.textContent = 'Dados enviados =)';
+  parahraphSubmit.setAttribute('class','username-success-feedback')
+  btn.insertAdjacentElement('afterend', parahraphSubmit)
 }
 
 
