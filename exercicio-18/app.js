@@ -22,12 +22,11 @@
 */
 const form = document.querySelector('form');
 const regex = /^[a-zA-Z]{6,}/
-const input = form.username;
 
+const input = form.username;
 
 input.addEventListener('keyup', () => {
   const inputValue = input.value;
-
   if (regex.test(inputValue)) {
     return input.setAttribute('class', 'border-success')
   }
@@ -37,14 +36,15 @@ input.addEventListener('keyup', () => {
 
 form.addEventListener('submit', event => {
   event.preventDefault()
+  const input = form.username;
   const inputValue = input.value;
   
   if (!regex.test(inputValue)) {
-   return input.insertAdjacentHTML('afterend', `<p class="username-help-feedback">O valor deve conter no mínimo 6 caracteres,  
+    input.insertAdjacentHTML('afterend', `<p class="username-help-feedback">O valor deve conter no mínimo 6 caracteres,  
    com apenas letras maiúsculas e/ou minúsculas</p>`)
+  }else{
+    input.insertAdjacentHTML('afterend', `<p class="Matricula Realizada."</p>`)
   }
-
-  return input.insertAdjacentHTML('afterend', `<p class="username-success-feedback">Username válido =)</p>`)
 
 })
 
