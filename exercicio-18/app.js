@@ -28,6 +28,20 @@ const p = document.createElement('p');
 const btn = document.querySelector('button')
 const paragraphSubmit = document.createElement('p')
 
+const invalidSubmit = {
+  paragraph: paragraphSubmit,
+  text: 'Por favor, insira um username válido',
+  className: 'submit-help-feedback',
+  previusSibling: btn
+}
+
+const validSubmit = {
+  paragraph: paragraphSubmit,
+  text: 'Dados enviados =)',
+  className: 'submit-success-feedback',
+  previusSibling: btn
+} 
+
 const validationInput = () => {
   const inputValue = input.value;
   const regexTest = regex.test(inputValue);
@@ -36,10 +50,10 @@ const validationInput = () => {
 
   const paragraphSubmitFeedbackExists =
     document.querySelector('[data-feedback="submit-feedback"]');
-  
-    if(paragraphSubmitFeedbackExists){
-      paragraphSubmitFeedbackExists.remove()
-    }
+
+  if (paragraphSubmitFeedbackExists) {
+    paragraphSubmitFeedbackExists.remove()
+  }
 
 
   if (regexTest) {
@@ -53,11 +67,10 @@ const validationInput = () => {
   input.insertAdjacentElement('afterend', p)
 }
 
-const insertParagraphIntoDOM = (paragraph, text, className, previusSibling) => {
+const insertParagraphIntoDOM = ({paragraph, text, className, previusSibling}) => {
   paragraph.textContent = text;
   paragraph.setAttribute('class', className)
   previusSibling.insertAdjacentElement('afterend', paragraph)
-  return
 }
 
 
@@ -65,16 +78,12 @@ const userSubmit = event => {
   event.preventDefault()
   const input = form.username;
   const inputValue = input.value;
-  
+
   if (!regex.test(inputValue)) {
-    paragraphSubmit.textContent = 'Por favor, insira um username válido';
-    paragraphSubmit.setAttribute('class', 'submit-help-feedback')
-    btn.insertAdjacentElement('afterend', paragraphSubmit)
+    insertParagraphIntoDOM(invalidSubmit)
     return
   }
-  paragraphSubmit.textContent = 'Dados enviados =)';
-  paragraphSubmit.setAttribute('class', 'username-success-feedback')
-  btn.insertAdjacentElement('afterend', paragraphSubmit)
+  insertParagraphIntoDOM(validSubmit)
 }
 
 
