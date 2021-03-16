@@ -21,32 +21,27 @@
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
 const form = document.querySelector('form');
-const regex = /^[a-zA-Z]{6,}/
 
+const regex = /^[a-zA-Z]{6,}$/
 const input = form.username;
+let p = document.createElement('p');
 
-input.addEventListener('keyup', () => {
+const validationInput = () => {
   const inputValue = input.value;
-  if (regex.test(inputValue)) {
-    return input.setAttribute('class', 'border-success')
+  const regexTest = regex.test(inputValue);
+
+  if (regexTest) {
+    p.textContent = 'Username válido =)';
+    p.setAttribute('class', 'username-success-feedback')
+    input.insertAdjacentElement('afterend', p)
+    return
   }
-  return input.setAttribute('class', 'border-error')
-})
+  p.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas'
+  p.setAttribute('class', 'username-help-feedback')
+  input.insertAdjacentElement('afterend', p)
+}
 
-
-form.addEventListener('submit', event => {
-  event.preventDefault()
-  const input = form.username;
-  const inputValue = input.value;
-  
-  if (!regex.test(inputValue)) {
-    input.insertAdjacentHTML('afterend', `<p class="username-help-feedback">O valor deve conter no mínimo 6 caracteres,  
-   com apenas letras maiúsculas e/ou minúsculas</p>`)
-  }else{
-    input.insertAdjacentHTML('afterend', `<p class="Matricula Realizada."</p>`)
-  }
-
-})
+input.addEventListener('keyup', validationInput)
 
 /*
   02
@@ -59,6 +54,17 @@ form.addEventListener('submit', event => {
   - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
   - Não insira o parágrafo manualmente no index.html.
 */
+
+form.addEventListener('submit', event => {
+  event.preventDefault()
+  const input = form.username;
+  const inputValue = input.value;
+
+  if (!regex.test(inputValue)) {
+    return input.insertAdjacentHTML('afterend', `<p class="submit-help-feedback">Por favor, insira um username válido</p>`)
+  }
+  input.insertAdjacentHTML('afterend', `<p class="username-success-feedback">Dados enviados =)</p>`)
+})
 
 /*
   03
@@ -80,3 +86,12 @@ form.addEventListener('submit', event => {
   Spoiler alert: este tipo de exercício será frequente em etapas mais avançadas
   do curso, onde falaremos sobre TDD. Vá se aquecendo =D
 */
+
+const array = [1, 2, 3];
+
+const some = (array, value) => {
+  return array.includes(value)
+}
+
+console.log(array.some(item => item === 3))
+console.log(some(array, 3))
