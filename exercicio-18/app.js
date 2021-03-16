@@ -53,8 +53,11 @@ const validationInput = () => {
   input.insertAdjacentElement('afterend', p)
 }
 
-const insertParagraphIntoDOM = () => {
-  
+const insertParagraphIntoDOM = (paragraph, text, className, previusSibling) => {
+  paragraph.textContent = text;
+  paragraph.setAttribute('class', className)
+  previusSibling.insertAdjacentElement('afterend', paragraph)
+  return
 }
 
 
@@ -62,8 +65,7 @@ const userSubmit = event => {
   event.preventDefault()
   const input = form.username;
   const inputValue = input.value;
-
-
+  
   if (!regex.test(inputValue)) {
     paragraphSubmit.textContent = 'Por favor, insira um username válido';
     paragraphSubmit.setAttribute('class', 'submit-help-feedback')
