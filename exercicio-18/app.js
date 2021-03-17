@@ -40,7 +40,28 @@ const validSubmit = {
   text: 'Dados enviados =)',
   className: 'submit-success-feedback',
   previusSibling: btn
-} 
+}
+
+const validInput = {
+  paragraph: p,
+  text: 'Username válido =)',
+  className: 'username-success-feedback',
+  previusSibling: input
+}
+
+const invalidInput = {
+  paragraph: p,
+  text: `O valor deve conter no mínimo 6 caracteres
+  com apenas letras maiúsculas e/ou minúsculas`,
+  className: 'username-help-feedback',
+  previusSibling: input
+}
+
+const insertParagraphIntoDOM = ({ paragraph, text, className, previusSibling }) => {
+  paragraph.textContent = text;
+  paragraph.setAttribute('class', className)
+  previusSibling.insertAdjacentElement('afterend', paragraph)
+}
 
 const validationInput = () => {
   const inputValue = input.value;
@@ -55,23 +76,14 @@ const validationInput = () => {
     paragraphSubmitFeedbackExists.remove()
   }
 
-
   if (regexTest) {
-    p.textContent = 'Username válido =)';
-    p.setAttribute('class', 'username-success-feedback')
-    input.insertAdjacentElement('afterend', p)
+    insertParagraphIntoDOM(validInput)
     return
   }
-  p.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas'
-  p.setAttribute('class', 'username-help-feedback')
-  input.insertAdjacentElement('afterend', p)
+  insertParagraphIntoDOM(invalidInput)
 }
 
-const insertParagraphIntoDOM = ({paragraph, text, className, previusSibling}) => {
-  paragraph.textContent = text;
-  paragraph.setAttribute('class', className)
-  previusSibling.insertAdjacentElement('afterend', paragraph)
-}
+
 
 
 const userSubmit = event => {
