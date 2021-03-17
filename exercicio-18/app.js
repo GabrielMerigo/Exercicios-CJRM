@@ -145,9 +145,20 @@ const array = [1, 2, 3];
 // }
 
 const some = (array, func) => {
-  
+  for(let i = 0; i < array.length; i++){
+    if(func(array[i])){
+      return true
+    }
+  }
+  return false
 }
 
+const verificaNumber = num => {
+  return num === 2
+}
 
-console.log(array.some(item => item === 3))
-console.log(some([1, 2, 3], 3))
+console.log(some([1, 2, 3], verificaNumber));
+
+
+// console.log(array.some(item => item === 3))
+
