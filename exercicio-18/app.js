@@ -13,20 +13,24 @@
   - Se o valor inserido não é válido, exiba um parágrafo laranja abaixo do  
     input com a seguinte mensagem: "O valor deve conter no mínimo 6 caracteres,  
     com apenas letras maiúsculas e/ou minúsculas";
-  - Se o valor é válido, o parágrafo deve ser verde e exibir a mensagem  
+    - Se o valor é válido, o parágrafo deve ser verde e exibir a mensagem  
     "Username válido =)";
-  - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
-  - Não insira o parágrafo manualmente no index.html.
-  
-  Dica: pesquise pelo método "insertAdjacentElement", no MDN;
-*/
+    - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
+    - Não insira o parágrafo manualmente no index.html.
+    
+    Dica: pesquise pelo método "insertAdjacentElement", no MDN;
+    */
 
 const form = document.querySelector('form');
 const regex = /^[a-zA-Z]{6,}$/
 const input = form.username;
+
 const p = document.createElement('p');
 const btn = document.querySelector('button')
 const paragraphSubmit = document.createElement('p')
+
+const inputValue = input.value;
+const regexTest = regex.test(inputValue);
 
 const invalidSubmit = {
   paragraph: paragraphSubmit,
@@ -63,18 +67,18 @@ const insertParagraphIntoDOM = ({ paragraph, text, className, previusSibling }) 
   previusSibling.insertAdjacentElement('afterend', paragraph)
 }
 
-const validationInput = () => {
-  const inputValue = input.value;
-  const regexTest = regex.test(inputValue);
-
+const removeSubmitParagraph = () => {
   paragraphSubmit.setAttribute('data-feedback', 'submit-feedback')
-
   const paragraphSubmitFeedbackExists =
     document.querySelector('[data-feedback="submit-feedback"]');
 
   if (paragraphSubmitFeedbackExists) {
     paragraphSubmitFeedbackExists.remove()
   }
+}
+
+const validationInput = () => {
+  removeSubmitParagraph()
 
   if (regexTest) {
     insertParagraphIntoDOM(validInput)
@@ -88,10 +92,8 @@ const validationInput = () => {
 
 const userSubmit = event => {
   event.preventDefault()
-  const input = form.username;
-  const inputValue = input.value;
 
-  if (!regex.test(inputValue)) {
+  if (regexTest) {
     insertParagraphIntoDOM(invalidSubmit)
     return
   }
