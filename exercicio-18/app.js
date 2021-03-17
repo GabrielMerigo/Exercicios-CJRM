@@ -13,24 +13,20 @@
   - Se o valor inserido não é válido, exiba um parágrafo laranja abaixo do  
     input com a seguinte mensagem: "O valor deve conter no mínimo 6 caracteres,  
     com apenas letras maiúsculas e/ou minúsculas";
-    - Se o valor é válido, o parágrafo deve ser verde e exibir a mensagem  
+  - Se o valor é válido, o parágrafo deve ser verde e exibir a mensagem  
     "Username válido =)";
-    - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
-    - Não insira o parágrafo manualmente no index.html.
-    
-    Dica: pesquise pelo método "insertAdjacentElement", no MDN;
-    */
+  - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
+  - Não insira o parágrafo manualmente no index.html.
+  
+  Dica: pesquise pelo método "insertAdjacentElement", no MDN;
+*/
 
 const form = document.querySelector('form');
 const regex = /^[a-zA-Z]{6,}$/
 const input = form.username;
-
 const p = document.createElement('p');
 const btn = document.querySelector('button')
 const paragraphSubmit = document.createElement('p')
-
-const inputValue = input.value;
-const regexTest = regex.test(inputValue);
 
 const invalidSubmit = {
   paragraph: paragraphSubmit,
@@ -78,6 +74,9 @@ const removeSubmitParagraph = () => {
 }
 
 const validationInput = () => {
+  const inputValue = input.value;
+  const regexTest = regex.test(inputValue);
+
   removeSubmitParagraph()
 
   if (regexTest) {
@@ -87,13 +86,12 @@ const validationInput = () => {
   insertParagraphIntoDOM(invalidInput)
 }
 
-
-
-
-const userSubmit = event => {
+const showSubmitInfo = event => {
   event.preventDefault()
+  const input = form.username;
+  const inputValue = input.value;
 
-  if (regexTest) {
+  if (!regex.test(inputValue)) {
     insertParagraphIntoDOM(invalidSubmit)
     return
   }
@@ -103,7 +101,7 @@ const userSubmit = event => {
 
 
 input.addEventListener('input', validationInput)
-form.addEventListener('submit', userSubmit)
+form.addEventListener('submit', showSubmitInfo)
 
 /*
   02
@@ -142,9 +140,14 @@ form.addEventListener('submit', userSubmit)
 
 const array = [1, 2, 3];
 
-const some = (array, value) => {
-  return array.includes(value)
+// const some = (array, value) => {
+//   return array.includes(value)
+// }
+
+const some = (array, func) => {
+  
 }
 
+
 console.log(array.some(item => item === 3))
-console.log(some(array, 3))
+console.log(some([1, 2, 3], 3))
