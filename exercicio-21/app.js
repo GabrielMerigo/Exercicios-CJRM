@@ -7,6 +7,9 @@
 
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 
+const oddNumbers = randomNumbers.filter(item => item % 2 !== 0)
+// console.log(oddNumbers);
+
 /*
   02
 
@@ -14,6 +17,9 @@ const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 */
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
+
+const numberGreaterThan501 = crazyNumbers.filter(number => number > 501)
+// console.log(numberGreaterThan501);
 
 /*
   03
@@ -23,6 +29,9 @@ const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 */
 
 const numbers = [5, 7, 3]
+
+const numbersElevareFour = numbers.map(number => number * 2)
+// console.log(numbersElevareFour);
 
 /*
   04
@@ -49,6 +58,13 @@ const cart = [
   - Nome 3
 */
 
+const games = cart.map(({ name, price }, index) => {
+  let phrase = `- Nome: ${name} ${index}  Preço:${price} \n`
+  return phrase
+})
+
+// console.log(String(games.join('')));
+
 /*
   05
 
@@ -70,6 +86,16 @@ const tarantinoMovies = [
   { name: 'Kill Bill: Volume 1', release: 2003 }
 ]
 
+
+const moviesBefore2000 = tarantinoMovies.reduce((acc, item) => {
+  if (item.release > 2000) {
+    acc.push(item) 
+  }
+  return acc
+}, [])
+
+// console.log(moviesBefore2000);
+
 /*
   06
 
@@ -90,7 +116,7 @@ const tvShows = [
 /*
   07
 
-  - Observe os loops da sua versão do quiz e considere se, baseado no que foi  
+  - Observe os loops da sua versão do quiz e considere se, baseado no que foi
     visto nessa aula, você deve refatorá-los.
 */
 
@@ -107,10 +133,33 @@ const tvShows = [
 
 // console.log(usersPremium);
 
-const numbers2 = [1,2,3]; 
+// const numbers2 = [1,2,3]; 
 
-const numReduce = numbers2.reduce((acc, number) => {
-  return acc + number
-}, 0)
+// const numReduce = numbers2.reduce((acc, number) => {
+//   return acc + number
+// }, 0)
 
-console.log(numReduce);
+// console.log(numReduce);
+
+// const phaseScores = [
+//   { name: 'Vinicius Costa', score: 337 },
+//   { name: 'Roger Melo', score: 43 },
+//   { name: 'Alfredo Braga', score: 234 },
+//   { name: 'Pedro H. Silva', score: 261 },
+//   { name: 'Ana Paula Rocha', score: 491 },
+//   { name: 'Vinicius Costa', score: 167 },
+//   { name: 'Roger Melo', score: 137 },
+//   { name: 'Alfredo Braga', score: 135 },
+//   { name: 'Ana Paula Rocha', score: 359 },
+//   { name: 'Pedro H. Silva', score: 133 }
+// ]
+
+
+// const playerScore = phaseScores.reduce((acc,{ name, score}) => {
+//   if(name === 'Roger Melo'){
+//     acc += score
+//   }
+//   return acc
+// }, 0)
+
+// console.log(playerScore);
