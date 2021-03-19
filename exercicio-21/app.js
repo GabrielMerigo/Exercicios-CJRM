@@ -113,6 +113,10 @@ const tvShows = [
   { name: 'Watchmen', releaseYear: 2019 }
 ]
 
+const tvShowsNames = tvShows.map(({name}) => name)
+
+console.log(tvShowsNames);
+
 /*
   07
 
