@@ -37,15 +37,17 @@ const incrementCounter = () => {
   counterContainer.innerText = incremetedCounter;
 }
 
+const stopCountered = () => {
+  counterContainer.innerText = 0
+  clearInterval(timer)
+}
+
+
 startCounter.addEventListener('click', () => {
   timer = setInterval(incrementCounter, 1000)
 })
 
-
-stopCounter.addEventListener('click', () => {
-  counterContainer.innerText = 0
-  clearInterval(timer)
-},1000)
+stopCounter.addEventListener('click', stopCountered)
 
 // let counter = 1;
 // let counterStop = 0;
