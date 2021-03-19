@@ -93,3 +93,24 @@ const tvShows = [
   - Observe os loops da sua versão do quiz e considere se, baseado no que foi  
     visto nessa aula, você deve refatorá-los.
 */
+
+
+// const users = [
+//   { name: 'Ada Lovelace', premium: true },
+//   { name: 'Grace Hopper', premium: false },
+//   { name: 'Alan Turing', premium: true },
+//   { name: 'Linus Torvalds', premium: false },
+//   { name: 'Margaret Hamilton', premium: true }
+// ]
+
+// const usersPremium = users.filter(({premium}) => premium)
+
+// console.log(usersPremium);
+
+const numbers2 = [1,2,3]; 
+
+const numReduce = numbers2.reduce((acc, number) => {
+  return acc + number
+}, 0)
+
+console.log(numReduce);
