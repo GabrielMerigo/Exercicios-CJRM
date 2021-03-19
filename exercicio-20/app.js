@@ -10,9 +10,11 @@
   - Após um segundo e meio do carregamento da página, exiba no console a  
     mensagem "Um segundo e meio se passaram desde que a página foi carregada".
 */
-// setTimeout(() => {
-//   console.log("Um segundo e meio se passaram desde que a página foi carregada");
-// }, 1500)
+const message = 'Um segundo e meio se passaram desde que a página foi carregada'
+
+setTimeout(message => {
+  console.log(message);
+}, 1500, message)
 
 
 /* 
@@ -24,32 +26,52 @@
 
 const container = document.querySelector('.container');
 const counterContainer = document.querySelector('.counter-container');
-let counter = 1;
-let counterStop = 0;
 
-const stopCounter = event => {
-  if (event.target.innerText === 'Parar contador') {
-    counterStop = 1
-    counter = 0
-  }
+const startCounter = document.querySelector('.button-init-counter')
+const stopCounter = document.querySelector('.button-stop-counter') 
+
+let timer = null
+
+const incrementCounter = () => {
+  const incremetedCounter = Number(counterContainer.innerText) + 1;
+  counterContainer.innerText = incremetedCounter;
 }
 
-const functionCounter = event => {
-  const findTarget = event.target.innerText === 'Iniciar contador';
+startCounter.addEventListener('click', () => {
+  timer = setInterval(incrementCounter, 1000)
+})
 
-  if (findTarget) {
-    const timer = setInterval(() => {
-      if (counterStop !== 0) {
-        clearInterval(timer)
-      }
-      counterContainer.innerText = counter++
-    }, 1000)
-  }
-}
 
-container.addEventListener('click', functionCounter)
+stopCounter.addEventListener('click', () => {
+  counterContainer.innerText = 0
+  clearInterval(timer)
+},1000)
 
-container.addEventListener('click', stopCounter)
+// let counter = 1;
+// let counterStop = 0;
+
+// const stopCounter = event => {
+//   if (event.target.innerText === 'Parar contador') {
+//     counterStop = 1
+//     counter = 0
+//   }
+// }
+
+// const functionCounter = event => {
+//   const findTarget = event.target.innerText === 'Iniciar contador';
+
+//   if (findTarget) {
+//     const timer = setInterval(() => {
+//       if (counterStop !== 0) {
+//         clearInterval(timer)
+//       }
+//       counterContainer.innerText = Number(counterContainer.innerText) + 1
+//     }, 1000)
+//   }
+// }
+
+// container.addEventListener('click', functionCounter)
+// container.addEventListener('click', stopCounter)
 
 
 
