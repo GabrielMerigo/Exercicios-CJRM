@@ -23,27 +23,33 @@
 */
 
 const container = document.querySelector('.container');
+const counterContainer = document.querySelector('.counter-container');
 let counter = 1;
 let counterStop = 0;
 
-container.addEventListener('click', event => {
-  if (event.target.innerText === 'Iniciar contador'){
-    const timer = setInterval(async () => {
-      if(counterStop !== 0){
+const stopCounter = event => {
+  if (event.target.innerText === 'Parar contador') {
+    counterStop = 1
+    counter = 0
+  }
+}
+
+const functionCounter = event => {
+  const findTarget = event.target.innerText === 'Iniciar contador';
+
+  if (findTarget) {
+    const timer = setInterval(() => {
+      if (counterStop !== 0) {
         clearInterval(timer)
       }
-      counter++
-      console.log(counter);
+      counterContainer.innerText = counter++
     }, 1000)
   }
-})
+}
 
-container.addEventListener('click', event => {
-  if (event.target.innerText === 'Parar contador'){
-    counterStop = 1
-    counter = -1
-  }
-})
+container.addEventListener('click', functionCounter)
+
+container.addEventListener('click', stopCounter)
 
 
 
@@ -56,12 +62,16 @@ container.addEventListener('click', event => {
   - Adicione mais 2 alternativas em cada pergunta do quiz.
 */
 
+//ok
+
 /*
   05
 
   - Modifique a ordem das alternativas corretas. Ou seja, faça com que a
     alternativa correta das perguntas não seja apenas a alternativa "B".
 */
+
+//ok
 
 /*
   06
@@ -73,6 +83,8 @@ container.addEventListener('click', event => {
       funções isoladas;
     - Depois, cuide da legibilidade das funções.
 */
+
+//ok
 
 /*
   07
