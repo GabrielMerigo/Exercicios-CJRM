@@ -18,12 +18,10 @@ const oddNumbers = randomNumbers.filter(randomNumber => randomNumber % 2 !== 0)
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 
-const numberGreaterThan501 = crazyNumbers.reduce((acc, number) => {
-  if(number < 501){
-    acc += 1
-  } 
-  return acc
-}, 0)
+const countNumber501 = (accumulator, number) => 
+  number < 501 ? ++accumulator : accumulator
+
+const numberGreaterThan501 = crazyNumbers.reduce(countNumber501, 0)
 
 console.log(numberGreaterThan501);
 
