@@ -7,7 +7,7 @@
 
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 
-const oddNumbers = randomNumbers.filter(item => item % 2 !== 0)
+const oddNumbers = randomNumbers.filter(randomNumber => randomNumber % 2 !== 0)
 // console.log(oddNumbers);
 
 /*
@@ -18,8 +18,14 @@ const oddNumbers = randomNumbers.filter(item => item % 2 !== 0)
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 
-const numberGreaterThan501 = crazyNumbers.filter(number => number > 501)
-// console.log(numberGreaterThan501);
+const numberGreaterThan501 = crazyNumbers.reduce((acc, number) => {
+  if(number < 501){
+    acc += 1
+  } 
+  return acc
+}, 0)
+
+console.log(numberGreaterThan501);
 
 /*
   03
@@ -113,7 +119,7 @@ const tvShows = [
   { name: 'Watchmen', releaseYear: 2019 }
 ]
 
-const tvShowsNames = tvShows.map(({name}) => name)
+const tvShowsNames = tvShows.map(({ name }) => name)
 
 console.log(tvShowsNames);
 
