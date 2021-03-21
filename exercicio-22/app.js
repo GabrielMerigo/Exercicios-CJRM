@@ -150,6 +150,7 @@ const agesPetsConverted = pets.map(pet => {
 
 // console.log(agesPetsConverted);
 
+const ul = document.querySelector('.list-group');
 
 /*
   09
@@ -157,6 +158,10 @@ const agesPetsConverted = pets.map(pet => {
   - Considerando o array topBrazilmovies, através do map ou do reduce, insira
     os nomes dos filmes na ul do index.html.
 */
+
+topBrazilmovies.map(({title}) => {
+  ul.innerHTML += `<li>Nome do Filme: ${title}</li>`
+})
 
 /*
   10
