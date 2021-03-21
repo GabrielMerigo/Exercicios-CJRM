@@ -7,7 +7,7 @@
 */
 
 const names = ['Caio', 'André', 'Dário'];
-// console.log(names[0].indexOf('a'));
+
 
 
 
