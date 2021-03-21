@@ -29,8 +29,8 @@ const characters = [
 
 const caracteresCrescente = characters.sort((item1, item2) => item2.id - item1.id)
 
-console.log(characters);
-console.log(caracteresCrescente);
+// console.log(characters);
+// console.log(caracteresCrescente);
 
 /*
   03
@@ -48,14 +48,14 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
   - Encontre e exiba no console o 1º item maior que 50 do array abaixo.
 */
 
-const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
+// const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 
-for (let i = 0; i < randomNumbers.length; i++) {
-  if (randomNumbers[i] > 50) {
-    console.log(randomNumbers[i]);
-    break
-  }
-}
+// for (let i = 0; i < randomNumbers.length; i++) {
+//   if (randomNumbers[i] > 50) {
+//     // console.log(randomNumbers[i]);
+//     break
+//   }
+// }
 
 
 /*
@@ -81,6 +81,14 @@ const reversePeople = people.reverse()
 
 const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
 
+const ingredientsPhrase = ingredients.map(ingredient => {
+  return `${ingredient} cozido`;
+})
+
+// console.log((ingredientsPhrase).join(', '));
+
+
+
 /*
   07
   
@@ -102,13 +110,13 @@ const topBrazilmovies = [
 ]
 
 const peopleDisney = topBrazilmovies.reduce((acc, item) => {
-  if (item.distributedBy) {
+  if (item.distributedBy === 'Disney') {
     acc += item.peopleAmount
   }
   return acc
 }, 0)
 
-console.log(peopleDisney);
+// console.log(peopleDisney);
 
 /*
   08
@@ -129,6 +137,14 @@ const pets = [
   { name: 'Cristal', age: 3, gender: 'Female', type: 'Dog' },
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
+
+const agesPetsConverted = pets.map(pet => {
+  pet.age = pet.age * 7
+  return pet
+})
+
+// console.log(agesPetsConverted);
+
 
 /*
   09
