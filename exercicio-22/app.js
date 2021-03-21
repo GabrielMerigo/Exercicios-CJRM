@@ -6,10 +6,10 @@
   - Exiba o array ordenado no console.
 */
 
-const names = ['Caio', 'André', 'Dário'];
+const names = ['Caio', 'André', 'Dário']
+const namesCopy = names.map(item => item)
 
-
-
+// console.log(names, namesCopy.sort());
 
 
 /*
@@ -27,10 +27,10 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
-const caracteresCrescente = characters.sort((item1, item2) => item2.id - item1.id)
+const copyCharacters = characters.map(item => item)
+copyCharacters.sort((item1, item2) => item2.id - item1.id)
 
-// console.log(characters);
-// console.log(caracteresCrescente);
+// console.log(copyCharacters);
 
 /*
   03
@@ -41,6 +41,10 @@ const caracteresCrescente = characters.sort((item1, item2) => item2.id - item1.i
 */
 
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
+const numbersCopy = numbers.map(item => item)
+
+numbersCopy.sort((item1, item2) => item2 - item1)
+// console.log(numbersCopy);
 
 /*
   04
@@ -67,7 +71,8 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
 */
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
-const reversePeople = people.reverse()
+const peopleCopy = people.map(item => item)
+console.log(people, peopleCopy.sort().reverse());
 
 // console.log(reversePeople);
 
