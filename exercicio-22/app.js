@@ -42,9 +42,10 @@ console.log(copyCharacters.sort((item2, item1) => item2.id - item1.id));
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
 
 const numbersCopy = numbers.map(item => item)
-numbersCopy.sort((item1, item2) => item2 - item1)
 
-// console.log(numbers,numbersCopy);
+numbersCopy.sort((item1, item2) => `Comparando: ${item1} e ${item2}`)
+
+console.log(numbers,numbersCopy);
 
 /*
   04
