@@ -51,7 +51,7 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 
 for (let i = 0; i < randomNumbers.length; i++) {
-  if(randomNumbers[i] > 50){
+  if (randomNumbers[i] > 50) {
     console.log(randomNumbers[i]);
     break
   }
@@ -101,6 +101,15 @@ const topBrazilmovies = [
   { title: 'Dona Flor e Seus Dois Maridos', peopleAmount: 10735524, distributedBy: 'Embrafilme' }
 ]
 
+const peopleDisney = topBrazilmovies.reduce((acc, item) => {
+  if (item.distributedBy) {
+    acc += item.peopleAmount
+  }
+  return acc
+}, 0)
+
+console.log(peopleDisney);
+
 /*
   08
   
@@ -123,18 +132,18 @@ const pets = [
 
 /*
   09
-  
-  - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
+
+  - Considerando o array topBrazilmovies, através do map ou do reduce, insira
     os nomes dos filmes na ul do index.html.
 */
 
 /*
   10
-  
-  - Na sua versão do Quiz, teste se ao enviar o form pela 2ª vez consecutiva, a 
+
+  - Na sua versão do Quiz, teste se ao enviar o form pela 2ª vez consecutiva, a
     pontuação do envio anterior é contabilizada;
-  - Exemplo: exibe 100% no 1º envio e 200% no 2º envio (sem modificar as 
+  - Exemplo: exibe 100% no 1º envio e 200% no 2º envio (sem modificar as
     alternativas entre os envios);
-    - Se isso está acontecendo, proponha uma solução para que o 2º submit não 
+    - Se isso está acontecendo, proponha uma solução para que o 2º submit não
       considere a pontuação do envio anterior.
 */
