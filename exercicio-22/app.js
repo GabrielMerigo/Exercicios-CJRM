@@ -27,10 +27,9 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
-const copyCharacters = characters.map(item => item)
-copyCharacters.sort((item1, item2) => item2.id - item1.id)
+const copyCharacters = characters.map(item => ({id:item.id, name:item.name}))
 
-// console.log(copyCharacters);
+console.log(copyCharacters.sort((item2, item1) => item2.id - item1.id));
 
 /*
   03
@@ -41,10 +40,11 @@ copyCharacters.sort((item1, item2) => item2.id - item1.id)
 */
 
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
-const numbersCopy = numbers.map(item => item)
 
+const numbersCopy = numbers.map(item => item)
 numbersCopy.sort((item1, item2) => item2 - item1)
-// console.log(numbersCopy);
+
+// console.log(numbers,numbersCopy);
 
 /*
   04
@@ -72,7 +72,7 @@ numbersCopy.sort((item1, item2) => item2 - item1)
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
 const peopleCopy = people.map(item => item)
-console.log(people, peopleCopy.sort().reverse());
+// console.log(people, peopleCopy.sort().reverse());
 
 // console.log(reversePeople);
 
