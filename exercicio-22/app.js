@@ -6,7 +6,11 @@
   - Exiba o array ordenado no console.
 */
 
-const names = ['Caio', 'André', 'Dário']
+const names = ['Caio', 'André', 'Dário'];
+// console.log(names[0].indexOf('a'));
+
+
+
 
 /*
   02
@@ -22,6 +26,11 @@ const characters = [
   { id: 01, name: 'Scar' },
   { id: 04, name: 'Mufasa' }
 ]
+
+const caracteresCrescente = characters.sort((item1, item2) => item2.id - item1.id)
+
+console.log(characters);
+console.log(caracteresCrescente);
 
 /*
   03
@@ -41,6 +50,14 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 
+for (let i = 0; i < randomNumbers.length; i++) {
+  if(randomNumbers[i] > 50){
+    console.log(randomNumbers[i]);
+    break
+  }
+}
+
+
 /*
   05
 
@@ -50,6 +67,9 @@ const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 */
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
+const reversePeople = people.reverse()
+
+// console.log(reversePeople);
 
 /*
   06
