@@ -99,11 +99,14 @@ const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
 // })
 
 const ingredientsPhrase = ingredients.reduce((acc, ingredient, index, array) => {
-  if (index === array.length - 1) {
-    return `${array[index]}`
+  if (ingredient[ingredient.length - 1].indexOf('a') !== -1){
+    return acc += `${ingredient} cozida, `
   }
-  acc += `${ingredient} cozido, `;
-  return acc
+
+  if (index === array.length - 1) {
+    return acc += `${ingredient} cozido`
+  }
+  return acc += `${ingredient} cozido, `;
 }, '')
 
 
@@ -134,14 +137,12 @@ const topBrazilmovies = [
   { title: 'Dona Flor e Seus Dois Maridos', peopleAmount: 10735524, distributedBy: 'Embrafilme' }
 ]
 
-const peopleDisney = topBrazilmovies.reduce((acc, item) => {
-  if (item.distributedBy === 'Disney') {
-    acc += item.peopleAmount
-  }
-  return acc
-}, 0)
+const peopleDisney = topBrazilmovies
+  .filter(movie => movie.distributedBy === 'Disney')
+  .reduce((acc, movie) => acc += movie.peopleAmount, 0)
 
-// console.log(peopleDisney);
+
+console.log(peopleDisney);
 
 /*
   08
@@ -163,12 +164,20 @@ const pets = [
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
 
-const agesPetsConverted = pets.map(pet => {
-  pet.age = pet.age * 7
-  return pet
-})
+// const agesPetsConverted = pets.map(pet => {
+//   pet.age = pet.age * 7
+//   return pet
+// })
 
-// console.log(agesPetsConverted);
+const dogsAgeInHuman = pets
+  .filter(pet => pet.type === 'Dog')
+  .map(dog => ({ 
+    name: dog.name, 
+    age: dog.age * 7, 
+    gender: dog.type}))
+
+console.log(dogsAgeInHuman);
+
 
 const ul = document.querySelector('.list-group');
 
