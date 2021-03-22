@@ -45,7 +45,7 @@ const numbersCopy = numbers.map(item => item)
 
 numbersCopy.sort((item1, item2) => item2 - item1)
 
-console.log(numbersCopy);
+// console.log(numbersCopy);
 
 /*
   04
@@ -76,7 +76,11 @@ randomNumbers.find(number => number > 50)
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
 const peopleCopy = people.map(item => item)
-// console.log(people, peopleCopy.sort().reverse());
+
+peopleCopy.sort()
+peopleCopy.reverse()
+
+console.log({people, peopleCopy});
 
 // console.log(reversePeople);
 
