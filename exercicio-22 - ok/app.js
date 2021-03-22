@@ -207,7 +207,8 @@ const ul = document.querySelector('.list-group');
 //   ul.innerHTML += `<li>Nome do Filme: ${title}</li>`
 // })
 
-const movies = topBrazilmovies.reduce((acc, { title }) => acc + `<li>${title}</li>`, '')
+const movies = topBrazilmovies
+  .reduce((acc, { title }) => acc + `<li>${title}</li>`, '')
 
 // console.log(topBrazilmovies);
 
