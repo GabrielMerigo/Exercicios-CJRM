@@ -1,3 +1,5 @@
+const getArrayCopy  = array => array.map(item => item)
+
 /*
   01
 
@@ -7,7 +9,7 @@
 */
 
 const names = ['Caio', 'André', 'Dário']
-const namesCopy = names.map(item => item)
+const namesCopy = getArrayCopy(names)
 
 // console.log(names, namesCopy.sort());
 
@@ -27,9 +29,11 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
-const copyCharacters = characters.map(item => ({ id: item.id, name: item.name }))
+const copyCharacters = characters
+  .map(({id, name}) => ({ id, name }))
+  .sort(({id: item2}, {id: item1}) => item2 - item1)
 
-// console.log(copyCharacters.sort((item2, item1) => item2.id - item1.id));
+console.log(copyCharacters);
 
 /*
   03
@@ -40,12 +44,10 @@ const copyCharacters = characters.map(item => ({ id: item.id, name: item.name })
 */
 
 const numbers = [41, 291, 63, 349, 25, 22, 143, 64, 59, 15]
+const numbersInAscendingOrder = getArrayCopy(numbers)
+  .sort((item1, item2) => item2 - item1)
 
-const numbersCopy = numbers.map(item => item)
-
-numbersCopy.sort((item1, item2) => item2 - item1)
-
-// console.log(numbersCopy);
+console.log(numbersInAscendingOrder);
 
 /*
   04
@@ -75,12 +77,12 @@ randomNumbers.find(number => number > 50)
 */
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
-const peopleCopy = people.map(item => item)
+const peopleCopy = getArrayCopy(people).sort().reverse()
 
-peopleCopy.sort()
-peopleCopy.reverse()
+peopleCopy
+peopleCopy
 
-console.log({ people, peopleCopy });
+// console.log({ people, peopleCopy });
 
 // console.log(reversePeople);
 
@@ -111,7 +113,7 @@ const ingredientsPhrase = ingredients.reduce((acc, ingredient, index, array) => 
 
 
 
-console.log(ingredientsPhrase);
+// console.log(ingredientsPhrase);
 
 // console.log((ingredientsPhrase).join(', '));
 
@@ -142,7 +144,7 @@ const peopleDisney = topBrazilmovies
   .reduce((acc, movie) => acc += movie.peopleAmount, 0)
 
 
-console.log(peopleDisney);
+// console.log(peopleDisney);
 
 /*
   08
@@ -177,7 +179,7 @@ const dogsAgeInHuman = pets
     gender: dog.type
   }))
 
-console.log(dogsAgeInHuman);
+// console.log(dogsAgeInHuman);
 
 
 
@@ -195,7 +197,7 @@ const ul = document.querySelector('.list-group');
 
 const movies = topBrazilmovies.reduce((acc, movie) => acc + `<li>${movie.title}</li>`, '')
 
-console.log(topBrazilmovies);
+// console.log(topBrazilmovies);
 
 ul.innerHTML = movies
 
