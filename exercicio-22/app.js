@@ -99,7 +99,7 @@ const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
 // })
 
 const ingredientsPhrase = ingredients.reduce((acc, ingredient, index, array) => {
-  if (ingredient[ingredient.length - 1].indexOf('a') !== -1){
+  if (ingredient[ingredient.length - 1].indexOf('a') !== -1) {
     return acc += `${ingredient} cozida, `
   }
 
@@ -171,10 +171,11 @@ const pets = [
 
 const dogsAgeInHuman = pets
   .filter(pet => pet.type === 'Dog')
-  .map(dog => ({ 
-    name: dog.name, 
-    age: dog.age * 7, 
-    gender: dog.type}))
+  .map(dog => ({
+    name: dog.name,
+    age: dog.age * 7,
+    gender: dog.type
+  }))
 
 console.log(dogsAgeInHuman);
 
@@ -188,9 +189,15 @@ os nomes dos filmes na ul do index.html.
 */
 const ul = document.querySelector('.list-group');
 
-topBrazilmovies.map(({ title }) => {
-  ul.innerHTML += `<li>Nome do Filme: ${title}</li>`
-})
+// topBrazilmovies.map(({ title }) => {
+//   ul.innerHTML += `<li>Nome do Filme: ${title}</li>`
+// })
+
+const movies = topBrazilmovies.reduce((acc, movie) => acc + `<li>${movie.title}</li>`, '')
+
+console.log(topBrazilmovies);
+
+ul.innerHTML = movies
 
 /*
   10
