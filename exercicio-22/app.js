@@ -179,14 +179,14 @@ const dogsAgeInHuman = pets
 console.log(dogsAgeInHuman);
 
 
-const ul = document.querySelector('.list-group');
 
 /*
-  09
+09
 
-  - Considerando o array topBrazilmovies, através do map ou do reduce, insira
-    os nomes dos filmes na ul do index.html.
+- Considerando o array topBrazilmovies, através do map ou do reduce, insira
+os nomes dos filmes na ul do index.html.
 */
+const ul = document.querySelector('.list-group');
 
 topBrazilmovies.map(({ title }) => {
   ul.innerHTML += `<li>Nome do Filme: ${title}</li>`
