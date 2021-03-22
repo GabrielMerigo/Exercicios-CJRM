@@ -43,11 +43,9 @@ const numbers = [41, 291, 63, 349, 25, 22, 143, 64, 59, 15]
 
 const numbersCopy = numbers.map(item => item)
 
-numbersCopy.sort((item1, item2) => {
-  console.log(`Comparando: ${item2} e ${item1}`)
-})
+numbersCopy.sort((item1, item2) => item2 - item1)
 
-// console.log(numbersCopy);
+console.log(numbersCopy);
 
 /*
   04
@@ -55,7 +53,7 @@ numbersCopy.sort((item1, item2) => {
   - Encontre e exiba no console o 1º item maior que 50 do array abaixo.
 */
 
-// const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
+const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 
 // for (let i = 0; i < randomNumbers.length; i++) {
 //   if (randomNumbers[i] > 50) {
@@ -63,6 +61,9 @@ numbersCopy.sort((item1, item2) => {
 //     break
 //   }
 // }
+
+randomNumbers.find(number => number > 50)
+
 
 
 /*
