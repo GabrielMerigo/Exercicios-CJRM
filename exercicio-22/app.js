@@ -80,7 +80,7 @@ const peopleCopy = people.map(item => item)
 peopleCopy.sort()
 peopleCopy.reverse()
 
-console.log({people, peopleCopy});
+console.log({ people, peopleCopy });
 
 // console.log(reversePeople);
 
@@ -94,9 +94,21 @@ console.log({people, peopleCopy});
 
 const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
 
-const ingredientsPhrase = ingredients.map(ingredient => {
-  return `${ingredient} cozido`;
-})
+// const ingredientsPhrase = ingredients.map(ingredient => {
+//   return `${ingredient} cozido`;
+// })
+
+const ingredientsPhrase = ingredients.reduce((acc, ingredient, index, array) => {
+  if (index === array.length - 1) {
+    return `${array[index]}`
+  }
+  acc += `${ingredient} cozido, `;
+  return acc
+}, '')
+
+
+
+console.log(ingredientsPhrase);
 
 // console.log((ingredientsPhrase).join(', '));
 
