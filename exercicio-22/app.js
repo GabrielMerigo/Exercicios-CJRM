@@ -27,9 +27,9 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
-const copyCharacters = characters.map(item => ({id:item.id, name:item.name}))
+const copyCharacters = characters.map(item => ({ id: item.id, name: item.name }))
 
-console.log(copyCharacters.sort((item2, item1) => item2.id - item1.id));
+// console.log(copyCharacters.sort((item2, item1) => item2.id - item1.id));
 
 /*
   03
@@ -39,13 +39,15 @@ console.log(copyCharacters.sort((item2, item1) => item2.id - item1.id));
   - Exiba o array ordenado no console.
 */
 
-const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
+const numbers = [41, 291, 63, 349, 25, 22, 143, 64, 59, 15]
 
 const numbersCopy = numbers.map(item => item)
 
-numbersCopy.sort((item1, item2) => `Comparando: ${item1} e ${item2}`)
+numbersCopy.sort((item1, item2) => {
+  console.log(`Comparando: ${item2} e ${item1}`)
+})
 
-console.log(numbers,numbersCopy);
+// console.log(numbersCopy);
 
 /*
   04
@@ -160,7 +162,7 @@ const ul = document.querySelector('.list-group');
     os nomes dos filmes na ul do index.html.
 */
 
-topBrazilmovies.map(({title}) => {
+topBrazilmovies.map(({ title }) => {
   ul.innerHTML += `<li>Nome do Filme: ${title}</li>`
 })
 
