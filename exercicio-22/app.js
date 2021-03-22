@@ -1,4 +1,4 @@
-const getArrayCopy  = array => array.map(item => item)
+const getArrayCopy = array => array.map(item => item)
 
 /*
   01
@@ -30,8 +30,8 @@ const characters = [
 ]
 
 const copyCharacters = characters
-  .map(({id, name}) => ({ id, name }))
-  .sort(({id: item2}, {id: item1}) => item2 - item1)
+  .map(({ id, name }) => ({ id, name }))
+  .sort(({ id: item2 }, { id: item1 }) => item2 - item1)
 
 console.log(copyCharacters);
 
@@ -77,13 +77,9 @@ randomNumbers.find(number => number > 50)
 */
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
-const peopleCopy = getArrayCopy(people).sort().reverse()
+const peopleInReverseAlphabeticalOrder = getArrayCopy(people).sort().reverse()
 
-peopleCopy
-peopleCopy
-
-// console.log({ people, peopleCopy });
-
+// console.log({ people, peopleInReverseAlphabeticalOrder });
 // console.log(reversePeople);
 
 /*
@@ -101,15 +97,35 @@ const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
 // })
 
 const ingredientsPhrase = ingredients.reduce((acc, ingredient, index, array) => {
-  if (ingredient[ingredient.length - 1].indexOf('a') !== -1) {
-    return acc += `${ingredient} cozida, `
-  }
+  const verifyArrayLength = index === array.length - 1;
+  const GenderLastLetter = /a$/.test(ingredient) ? 'cozida' : 'cozido';
+  const ingredientMessage = acc += `${ingredient} ${GenderLastLetter}`
 
-  if (index === array.length - 1) {
-    return acc += `${ingredient} cozido`
-  }
-  return acc += `${ingredient} cozido, `;
+  return verifyArrayLength ? `${ingredientMessage}` : `${ingredientMessage}, ` 
+
 }, '')
+
+console.log(ingredientsPhrase);
+
+// <!-------------------------------------------------->
+
+// const ingredientsPhrase = ingredients.reduce((acc, ingredient, index, array) => {
+//   const validateGenderLastLetterIngredient = ingredient[ingredient.length - 1]
+//     .indexOf('a') !== -1;
+//   const verifyArrayLength = index === array.length - 1; 
+//   const maleString =  `${ingredient} cozido`
+
+//   if (validateGenderLastLetterIngredient) {
+//     return acc += `${ingredient} cozida, `
+//   }
+
+//   if (verifyArrayLength) {
+//     return acc += `${maleString}`
+//   }
+
+//   return acc += `${maleString}, `;
+// }, '')
+
 
 
 
@@ -140,8 +156,8 @@ const topBrazilmovies = [
 ]
 
 const peopleDisney = topBrazilmovies
-  .filter(movie => movie.distributedBy === 'Disney')
-  .reduce((acc, movie) => acc += movie.peopleAmount, 0)
+  .filter(({ distributedBy }) => distributedBy === 'Disney')
+  .reduce((acc, { peopleAmount }) => acc += peopleAmount, 0)
 
 
 // console.log(peopleDisney);
@@ -173,11 +189,7 @@ const pets = [
 
 const dogsAgeInHuman = pets
   .filter(pet => pet.type === 'Dog')
-  .map(dog => ({
-    name: dog.name,
-    age: dog.age * 7,
-    gender: dog.type
-  }))
+  .map(({ name, age, gender }) => ({ name, age: age * 7, gender }))
 
 // console.log(dogsAgeInHuman);
 
@@ -195,7 +207,7 @@ const ul = document.querySelector('.list-group');
 //   ul.innerHTML += `<li>Nome do Filme: ${title}</li>`
 // })
 
-const movies = topBrazilmovies.reduce((acc, movie) => acc + `<li>${movie.title}</li>`, '')
+const movies = topBrazilmovies.reduce((acc, { title }) => acc + `<li>${title}</li>`, '')
 
 // console.log(topBrazilmovies);
 
