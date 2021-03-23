@@ -108,6 +108,7 @@ const data = [{
 }, {
   country: 'Indonesia',
   population: 263991379
-}]
+}].filter(({ country }) => country !== 'China')
+  .reduce((acc, { population }) => acc += population, 0)
 
-
+  debugger
