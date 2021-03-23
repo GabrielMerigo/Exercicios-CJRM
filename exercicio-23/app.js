@@ -7,6 +7,8 @@
 
 const myString = '    JS      '
 
+// console.log(myString.trim());
+
 /*
   02
 
