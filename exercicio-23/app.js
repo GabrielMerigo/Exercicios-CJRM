@@ -43,6 +43,8 @@ const orderingThePeopleArray = people
 */
 
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
+const animalsWithThreeLetters = animals.filter(animal => animal.length === 3)
+
 
 /*
   04
@@ -51,6 +53,7 @@ const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
     nome de cada animal. Ex.: [6, 8, 2].
 */
 
+const animalsLength = animals.map(animals => animals.length)
 
 
 /*
@@ -69,6 +72,9 @@ const friends = [
   { id: 5, name: 'Solange', nearMe: false }
 ]
 
+const friendsNearMe = friends
+  .map(item => item)
+  .filter(friend => friend.nearMe)
 
 
 /*
@@ -79,6 +85,9 @@ const friends = [
 */
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
+  .filter(oddNumber => oddNumber % 2 === 1)
+  .reduce((acc, oddNumber) => acc += oddNumber ,0)
+
 
 /*
   07
@@ -100,3 +109,5 @@ const data = [{
   country: 'Indonesia',
   population: 263991379
 }]
+
+
