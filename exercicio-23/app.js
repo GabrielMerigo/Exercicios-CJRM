@@ -25,6 +25,13 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ]
 
+const orderingThePeopleArray = people
+  .map(item => item)
+  .sort((score1, score2) => score1.score - score2.score)
+
+// console.log(orderingThePeopleArray);  
+// console.log(people);  
+
 /*
   03
 
