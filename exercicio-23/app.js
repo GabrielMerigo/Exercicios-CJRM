@@ -8,6 +8,7 @@
 const myString = '    JS      '
 
 // console.log(myString.trim());
+// console.log(myString);
 
 /*
   02
@@ -25,12 +26,14 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ]
 
-const orderingThePeopleArray = people
-  .map(item => item)
-  .sort((score1, score2) => score1.score - score2.score)
+const orderingThePeopleArray = people.map((person) => {
+  return {
+    firstName: person.firstName, 
+    lastName: person.lastName,
+    score: person.score }
+}).sort((score1, score2) => score1.score - score2.score)
 
-// console.log(orderingThePeopleArray);  
-// console.log(people);  
+console.log(orderingThePeopleArray);  
 
 /*
   03
