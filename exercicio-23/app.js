@@ -80,7 +80,7 @@ const friends = [
 const friendsNearMe = friends
   .filter(friend => friend.nearMe)
   .map(friendNearMe => friendNearMe.name)
-debugger
+
 /*
   06
 
@@ -90,8 +90,7 @@ debugger
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
   .filter(oddNumber => oddNumber % 2 === 1)
-  .reduce((acc, oddNumber) => acc += oddNumber, 0)
-
+  .reduce((acc, oddNumber) => acc + oddNumber, 0)
 
 /*
   07
