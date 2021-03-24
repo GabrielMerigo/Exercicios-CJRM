@@ -59,6 +59,7 @@ const animalsWithThreeLetters = animals.filter(animal => animal.length === 3)
 const animalsLength = animals.map(animals => animals.length)
 
 
+
 /*
   05
 
