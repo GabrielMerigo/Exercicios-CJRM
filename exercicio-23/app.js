@@ -26,13 +26,9 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ]
 
-const orderingThePeopleArray = people.map((person) => {
-  return {
-    firstName: person.firstName,
-    lastName: person.lastName,
-    score: person.score
-  }
-}).sort((score1, score2) => score1.score - score2.score)
+const orderingThePeopleArray = people
+  .map(({ firstName, lastName, score}) => ({firstName, lastName, score}))
+  .sort((score1, score2) => score1.score - score2.score)
 
 console.log(orderingThePeopleArray);
 
@@ -47,7 +43,8 @@ console.log(orderingThePeopleArray);
 */
 
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
-const animalsWithThreeLetters = animals.filter(animal => animal.length === 3)
+const animalsWithThreeLetters = animals.filter(({ length }) => length === 3)
+
 
 
 /*
@@ -115,4 +112,5 @@ const data = [{
   .reduce((acc, { population }) => acc += population, 0)
 
 
-
+const array = [1,8,2,7,9, 60].sort((score1, score2) => `item 1: ${score1} - item 2: ${score2}`)
+console.log(array);
