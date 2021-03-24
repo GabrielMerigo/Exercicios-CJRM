@@ -28,12 +28,13 @@ const people = [
 
 const orderingThePeopleArray = people.map((person) => {
   return {
-    firstName: person.firstName, 
+    firstName: person.firstName,
     lastName: person.lastName,
-    score: person.score }
+    score: person.score
+  }
 }).sort((score1, score2) => score1.score - score2.score)
 
-console.log(orderingThePeopleArray);  
+console.log(orderingThePeopleArray);
 
 /*
   03
@@ -77,10 +78,9 @@ const friends = [
 ]
 
 const friendsNearMe = friends
-  .map(item => item)
   .filter(friend => friend.nearMe)
-
-
+  .map(friendNearMe => friendNearMe.name)
+debugger
 /*
   06
 
@@ -90,7 +90,7 @@ const friendsNearMe = friends
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
   .filter(oddNumber => oddNumber % 2 === 1)
-  .reduce((acc, oddNumber) => acc += oddNumber ,0)
+  .reduce((acc, oddNumber) => acc += oddNumber, 0)
 
 
 /*
