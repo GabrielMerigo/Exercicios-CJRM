@@ -20,7 +20,7 @@ const months = [
   'Dezembro'
 ].indexOf('Fevereiro')
 
-console.log(months)
+// console.log(months)
 
 /*
   02
@@ -76,7 +76,7 @@ const future = new Date('May 08, 2025 18:00:20')
 
 const diffrence = future.getTime() - past.getTime();
 const diffrenceInDays = Math.round(diffrence / 1000 / 60 / 60 / 24)
-console.log(days);
+console.log(diffrenceInDays);
 
 /*
   08
