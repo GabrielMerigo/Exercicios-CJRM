@@ -78,8 +78,9 @@ const diffrence = future.getTime() - past.getTime();
 const seconds = Math.round(diffrence / 1000)
 const minutes = Math.round(seconds / 60)
 const hours = Math.round(minutes / 60)
+const days = Math.round(hours / 24)
 
-console.log(hours);
+console.log(days);
 
 /*
   08
