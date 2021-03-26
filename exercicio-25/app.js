@@ -20,7 +20,7 @@ const months = [
   'Dezembro'
 ].filter(month => month === 'Fevereiro')
 
-console.log(months.join())
+// console.log(months.join())
 
 /*
   02
@@ -30,14 +30,15 @@ console.log(months.join())
 */
 const present = new Date();
 
-console.log(present);
-
+// console.log(present);
 
 /*
   03
 
   - Baseado no objeto que você acabou de criar, exiba o ano atual no console.
 */
+
+// console.log(present.getFullYear());
 
 /*
   04
@@ -46,11 +47,16 @@ console.log(present);
   - Exiba o objeto no console.
 */
 
+const past = new Date('November 19, 2010 03:24:00')
+// console.log(past);
+
 /*
   05
 
   - Exiba, no console, a hora do objeto que você acabou de criar.
 */
+
+// console.log(past.getHours());
 
 /*
   06
@@ -59,11 +65,16 @@ console.log(present);
   - Exiba o objeto no console.
 */
 
+const future = new Date('May 08, 2025 18:00:20')
+// console.log(future);
+
 /*
   07
 
   - Exiba no console a quantidade de dias entre o momento futuro e o passado.
 */
+
+const diffrence = future.getTime() - past.getTime();
 
 /*
   08
