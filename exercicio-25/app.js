@@ -18,7 +18,9 @@ const months = [
   'Outubro',
   'Novembro',
   'Dezembro'
-]
+].filter(month => month === 'Fevereiro')
+
+console.log(months.join())
 
 /*
   02
@@ -26,6 +28,10 @@ const months = [
   - Crie um objeto de data que represente o momento presente;
   - Exiba o objeto no console.
 */
+const present = new Date();
+
+console.log(present);
+
 
 /*
   03
