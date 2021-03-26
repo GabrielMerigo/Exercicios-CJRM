@@ -18,9 +18,9 @@ const months = [
   'Outubro',
   'Novembro',
   'Dezembro'
-].filter(month => month === 'Fevereiro')
+].indexOf('Fevereiro')
 
-// console.log(months.join())
+console.log(months)
 
 /*
   02
@@ -75,11 +75,7 @@ const future = new Date('May 08, 2025 18:00:20')
 */
 
 const diffrence = future.getTime() - past.getTime();
-const seconds = Math.round(diffrence / 1000)
-const minutes = Math.round(seconds / 60)
-const hours = Math.round(minutes / 60)
-const days = Math.round(hours / 24)
-
+const diffrenceInDays = Math.round(diffrence / 1000 / 60 / 60 / 24)
 console.log(days);
 
 /*
