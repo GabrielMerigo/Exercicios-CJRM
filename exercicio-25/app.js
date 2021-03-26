@@ -75,6 +75,11 @@ const future = new Date('May 08, 2025 18:00:20')
 */
 
 const diffrence = future.getTime() - past.getTime();
+const seconds = Math.round(diffrence / 1000)
+const minutes = Math.round(seconds / 60)
+const hours = Math.round(minutes / 60)
+
+console.log(hours);
 
 /*
   08
