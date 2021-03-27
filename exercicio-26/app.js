@@ -7,9 +7,18 @@
 */
 const present = new Date()
 
-const fomateData = () => {
-  
+const formateData = data => {
+  const day = data.getDate()
+  const month = data.getMonth()
+  const year = data.getFullYear()
+
+  const dia = String(day.length) === 1 ? `${day}` : day
+  const mes = String(month).length === 1 ? `0${month + 1}` : month
+
+  console.log(`${dia}/${mes}/${year}`);
 }
+
+formateData(present)
 
 /*
   02
@@ -62,7 +71,7 @@ const c = 'c'
 */
 
 const useDataSomewhereElse = value => {
-  console.log(value)
+  // console.log(value)
 }
 
 const updateSomething = (data = {}) => {
