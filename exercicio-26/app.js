@@ -149,7 +149,7 @@ const updateSomething = (data = {}) => {
 }
 
 const object = { target: '1', property: '2', willChange: 'valor indesejado' }
-updateSomething(object);
+// updateSomething(object);
 
 /*
   07
@@ -167,17 +167,10 @@ const generateTime = (time) => {
 
 const updateClock = () => {
   const present = new Date()
-  const hours = present.getHours()
-  const minutes = present.getMinutes()
-  const seconds = present.getSeconds()
-
-  const formateTime = dateFns.format(present, 'HH|mm|ss')
-  console.log(formateTime);
+  const formateTime = dateFns.format(present, 'HH : mm : ss')
 
   const clockHTML = `
-    <span>${generateTime(hours)}</span> :
-    <span>${generateTime(minutes)}</span> :
-    <span>${generateTime(seconds)}</span>
+    <span>${formateTime}</span>
   `
 
   clockContainer.innerHTML = clockHTML
