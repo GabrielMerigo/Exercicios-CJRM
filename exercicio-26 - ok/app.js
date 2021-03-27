@@ -6,7 +6,7 @@
   - Não utilize a date-fns.
 */
 
-const generateTime = (time) => {
+const formatTime = (time) => {
   const smallerLengthOne = String(time).length === 1;
   return smallerLengthOne ? `0${time}` : time;
 }
@@ -14,14 +14,14 @@ const generateTime = (time) => {
 const present = new Date()
 
 const formateData = data => {
-  const day = data.getDate();
-  const month = data.getMonth() + 1;
-  const year = data.getFullYear();
+  const day = formatTime(data.getDate());
+  const month = formatTime(data.getMonth() + 1);
+  const year = formatTime(data.getFullYear());
 
-  console.log(`${generateTime(day)}/${generateTime(month)}/${year}`);
+  console.log(`${day}/${month}/${year}`);
 }
 
-// formateData(present)
+formateData(present)
 
 /*
   02
@@ -70,7 +70,7 @@ const getTimes = data => {
 
 const formateFullData = data => {
   const { hours, minutes, dayWeek, dayOfMonth, month, year } = getTimes(data);
-  const timeClock = `${generateTime(hours)}:${generateTime(minutes)}`;
+  const timeClock = `${formatTime(hours)}:${formatTime(minutes)}`;
   const weekDay = semana[dayWeek];
   const monthDay = meses[month];
 
@@ -90,7 +90,7 @@ console.log(formateFullData(present))
 */
 
 const user = { id: 42, isVerified: true }
-const {id, isVerified} = user
+const { id, isVerified } = user
 
 // console.log(id, isVerified);
 
@@ -125,7 +125,7 @@ const a = 'a'
 const b = 'b'
 const c = 'c'
 
-const obj = { a,b,c }
+const obj = { a, b, c }
 
 // console.log(obj);
 
@@ -137,8 +137,8 @@ const obj = { a,b,c }
 
 const useDataSomewhereElse = value => console.log(value);
 
-const updateSomething = ({target, property, willChange}) => {
-  const obj = {target, property, willChange}
+const updateSomething = ({ target, property, willChange }) => {
+  const obj = { target, property, willChange }
 
   willChange === 'valor indesejado' ? willChange = 'valor desejado' : '';
 
