@@ -74,7 +74,7 @@ const getTimes = data => {
   return times
 }
 
-console.log(formateFullData(present))
+// console.log(formateFullData(present))
 
 
 
@@ -87,6 +87,9 @@ console.log(formateFullData(present))
 */
 
 const user = { id: 42, isVerified: true }
+const {id, isVerified} = user
+
+// console.log(id, isVerified);
 
 /*
   04
@@ -100,6 +103,11 @@ const user = { id: 42, isVerified: true }
 
 const robotA = { name: 'Bender' }
 const robotB = { name: 'HAL 9000' }
+
+const { name: nameA } = robotA;
+const { name: nameB } = robotB;
+console.log(nameA, nameB);
+
 
 /*
   05
