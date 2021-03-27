@@ -125,11 +125,7 @@ const a = 'a'
 const b = 'b'
 const c = 'c'
 
-const obj = {
-  a,
-  b,
-  c
-}
+const obj = { a,b,c }
 
 // console.log(obj);
 
@@ -139,11 +135,9 @@ const obj = {
   - Refatore o código abaixo.
 */
 
-const useDataSomewhereElse = value => console.log(value)
+const useDataSomewhereElse = value => console.log(value);
 
-const updateSomething = (data = {}) => {
-  const { target, property } = data;
-  let willChange = data.willChange;
+const updateSomething = ({target, property, willChange}) => {
   const obj = {target, property, willChange}
 
   willChange === 'valor indesejado' ? willChange = 'valor desejado' : '';
@@ -152,7 +146,7 @@ const updateSomething = (data = {}) => {
 }
 
 const object = { target: '1', property: '2', willChange: 'valor indesejado' }
-// updateSomething(object);
+updateSomething(object);
 
 /*
   07
@@ -163,15 +157,17 @@ const object = { target: '1', property: '2', willChange: 'valor indesejado' }
 
 const clockContainer = document.querySelector('.clock-container')
 
+const insertTimeIntoDOM = formateTime => {
+  return clockContainer.innerHTML = `
+    <span>${formateTime}</span>
+  `
+}
+
 const updateClock = () => {
   const present = new Date()
   const formateTime = dateFns.format(present, 'HH : mm : ss')
 
-  const clockHTML = `
-    <span>${formateTime}</span>
-  `
-
-  clockContainer.innerHTML = clockHTML
+  insertTimeIntoDOM(formateTime)
 }
 
 setInterval(updateClock, 1000)
