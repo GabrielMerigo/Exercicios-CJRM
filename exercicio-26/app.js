@@ -160,16 +160,24 @@ updateSomething(object);
 
 const clockContainer = document.querySelector('.clock-container')
 
+const generateTime = (time) => {
+  const smallerLengthOne = String(time).length === 1;
+  return smallerLengthOne ? `0${time}` : time;
+}
+
 const updateClock = () => {
   const present = new Date()
   const hours = present.getHours()
   const minutes = present.getMinutes()
   const seconds = present.getSeconds()
 
+  const formateTime = dateFns.format(present, 'HH|mm|ss')
+  console.log(formateTime);
+
   const clockHTML = `
-    <span>${String(hours).length === 1 ? `0${hours}` : hours}</span> :
-    <span>${String(minutes).length === 1 ? `0${minutes}` : minutes}</span> :
-    <span>${String(seconds).length === 1 ? `0${seconds}` : seconds}</span>
+    <span>${generateTime(hours)}</span> :
+    <span>${generateTime(minutes)}</span> :
+    <span>${generateTime(seconds)}</span>
   `
 
   clockContainer.innerHTML = clockHTML
