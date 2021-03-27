@@ -18,7 +18,7 @@ const formateData = data => {
   console.log(`${dia}/${mes}/${year}`);
 }
 
-formateData(present)
+// formateData(present)
 
 /*
   02
@@ -27,6 +27,56 @@ formateData(present)
     data na formatação: "03:07 - domingo, 7 de junho de 2020";
   - Não utilize a date-fns.
 */
+const semana = [
+  "Domingo",
+  "Segunda-Feira",
+  "Terça-Feira",
+  "Quarta-Feira",
+  "Quinta-Feira",
+  "Sexta-Feira",
+  "Sábado"
+];
+
+const meses = [
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro'
+];
+  
+// semana[d.getDay()]
+const formateFullData = data => {
+  const { hours, minutes, dayWeek, dayOfMonth, month, year } = getTimes(data)
+
+  return `${hours}:0${minutes} - ${semana[dayWeek]}, ${dayOfMonth} de ${meses[month]} de ${year}`
+}
+
+
+
+const getTimes = data => {
+  const times = {
+    hours: data.getHours(),
+    minutes: data.getMinutes(),
+    dayWeek: data.getDay(),
+    dayOfMonth: data.getDate(),
+    month: data.getMonth(),
+    year: data.getFullYear()
+  }
+
+  return times
+}
+
+console.log(formateFullData(present))
+
+
 
 /*
   03
