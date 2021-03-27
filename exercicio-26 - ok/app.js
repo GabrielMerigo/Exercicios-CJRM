@@ -5,17 +5,20 @@
     formatação "DD/MM/AAAA". Exemplo: 03/07/2021;
   - Não utilize a date-fns.
 */
+
+const generateTime = (time) => {
+  const smallerLengthOne = String(time).length === 1;
+  return smallerLengthOne ? `0${time}` : time;
+}
+
 const present = new Date()
 
 const formateData = data => {
-  const day = data.getDate()
-  const month = data.getMonth()
-  const year = data.getFullYear()
+  const day = data.getDate();
+  const month = data.getMonth() + 1;
+  const year = data.getFullYear();
 
-  const dia = String(day.length) === 1 ? `${day}` : day
-  const mes = String(month).length === 1 ? `0${month + 1}` : month
-
-  console.log(`${dia}/${mes}/${year}`);
+  console.log(`${generateTime(day)}/${generateTime(month)}/${year}`);
 }
 
 // formateData(present)
@@ -51,15 +54,6 @@ const meses = [
   'Novembro',
   'Dezembro'
 ];
-  
-// semana[d.getDay()]
-const formateFullData = data => {
-  const { hours, minutes, dayWeek, dayOfMonth, month, year } = getTimes(data)
-
-  return `${hours}:0${minutes} - ${semana[dayWeek]}, ${dayOfMonth} de ${meses[month]} de ${year}`
-}
-
-
 
 const getTimes = data => {
   const times = {
@@ -74,7 +68,16 @@ const getTimes = data => {
   return times
 }
 
-// console.log(formateFullData(present))
+const formateFullData = data => {
+  const { hours, minutes, dayWeek, dayOfMonth, month, year } = getTimes(data);
+  const timeClock = `${generateTime(hours)}:${generateTime(minutes)}`;
+  const weekDay = semana[dayWeek];
+  const monthDay = meses[month];
+
+  return `${timeClock} - ${weekDay}, ${dayOfMonth} de ${monthDay} de ${year}`
+}
+
+console.log(formateFullData(present))
 
 
 
@@ -159,11 +162,6 @@ const object = { target: '1', property: '2', willChange: 'valor indesejado' }
 */
 
 const clockContainer = document.querySelector('.clock-container')
-
-const generateTime = (time) => {
-  const smallerLengthOne = String(time).length === 1;
-  return smallerLengthOne ? `0${time}` : time;
-}
 
 const updateClock = () => {
   const present = new Date()
