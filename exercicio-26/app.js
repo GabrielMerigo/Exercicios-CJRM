@@ -106,7 +106,7 @@ const robotB = { name: 'HAL 9000' }
 
 const { name: nameA } = robotA;
 const { name: nameB } = robotB;
-console.log(nameA, nameB);
+// console.log(nameA, nameB);
 
 
 /*
@@ -122,6 +122,14 @@ const a = 'a'
 const b = 'b'
 const c = 'c'
 
+const obj = {
+  a,
+  b,
+  c
+}
+
+// console.log(obj);
+
 /*
   06
 
@@ -129,26 +137,21 @@ const c = 'c'
 */
 
 const useDataSomewhereElse = value => {
-  // console.log(value)
+  console.log(value)
 }
 
 const updateSomething = (data = {}) => {
-  const target = data.target
-  const property = data.property
-  let willChange = data.willChange
+  const { target, property } = data;
+  let willChange = data.willChange;
 
-  if (willChange === 'valor indesejado') {
-    willChange = 'valor desejado'
-  }
+  willChange === 'valor indesejado' ? willChange = 'valor desejado' : '';
 
-  useDataSomewhereElse({
-    target: target,
-    property: property,
-    willChange: willChange
-  })
+  useDataSomewhereElse({target, property, willChange});
 }
 
-updateSomething({ target: '1', property: '2', willChange: 'valor indesejado' })
+const object = { target: '1', property: '2', willChange: 'valor indesejado' }
+
+updateSomething(object);
 
 /*
   07
