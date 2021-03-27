@@ -136,21 +136,19 @@ const obj = {
   - Refatore o código abaixo.
 */
 
-const useDataSomewhereElse = value => {
-  console.log(value)
-}
+const useDataSomewhereElse = value => console.log(value)
 
 const updateSomething = (data = {}) => {
   const { target, property } = data;
   let willChange = data.willChange;
+  const obj = {target, property, willChange}
 
   willChange === 'valor indesejado' ? willChange = 'valor desejado' : '';
 
-  useDataSomewhereElse({target, property, willChange});
+  useDataSomewhereElse(obj);
 }
 
 const object = { target: '1', property: '2', willChange: 'valor indesejado' }
-
 updateSomething(object);
 
 /*
