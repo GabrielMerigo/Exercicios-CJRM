@@ -52,7 +52,7 @@ console.log(lesserThanFive)
 */
 
 const prices = [12, 19, 7, 209]
-const totalPrice = prices.reduce((acc, price) => acc + price, 0) 
+const totalPrice = prices.reduce((acc, price) => acc + price, 0)
 
 // console.log(`Preço total: ${totalPrice}`)
 
@@ -78,10 +78,10 @@ car['color'] = 'azul'
 */
 
 
-function myFunc(){
+function myFunc() {
   const phraseFalse = 'A função deve ser invocada com 3 argumentos';
   const phraseTrue = ' função foi invocada com 3 argumentos';
-  return arguments.length !== 3 ?  phraseFalse : phraseTrue;
+  return arguments.length !== 3 ? phraseFalse : phraseTrue;
 }
 
 // console.log(myFunc(0,5))
@@ -115,3 +115,14 @@ let booksBox = {
   spaces: 5,
   booksIn: 0
 }
+
+const placeBooks = bookNumber => {
+  const interval = setInterval(() => {
+    if (bookNumber = booksBox.booksIn) {
+      clearInterval(interval)
+    }
+  }, 2000);
+  booksBox.booksIn += 1
+}
+
+console.log(placeBooks(4));
