@@ -42,7 +42,7 @@ function x(callback) {
 
 
 const lesserThanFive = numbers.filter(num => num < 5)
-console.log(lesserThanFive)
+// console.log(lesserThanFive)
 
 
 /*
@@ -117,12 +117,11 @@ let booksBox = {
 }
 
 const placeBooks = bookNumber => {
-  const interval = setInterval(() => {
-    if (bookNumber = booksBox.booksIn) {
-      clearInterval(interval)
-    }
-  }, 2000);
-  booksBox.booksIn += 1
+  let { booksIn } = booksBox
+  for(let i = 0; i < bookNumber; i++){
+    ++booksBox.booksIn
+  }
+  return booksBox
 }
 
 console.log(placeBooks(4));
