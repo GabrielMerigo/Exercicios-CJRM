@@ -28,11 +28,11 @@ function logGreeting(name) {
   console.log(`olá, ${name}`)
 }
 
-function x(callback) {
-  callback()
-}
+const x = (callback) => {
+  callback('Gabriel')
+} 
 
-// x(logGreeting('Gabriel'))
+// x(logGreeting)
 
 /*
   03
@@ -40,8 +40,9 @@ function x(callback) {
   - O código abaixo possui uma parte que pode ser isolada. Isole-a.
 */
 
+const numberLessThan5 = num => num < 5;
 
-const lesserThanFive = numbers.filter(num => num < 5)
+const lesserThanFive = numbers.filter(numberLessThan5)
 // console.log(lesserThanFive)
 
 
@@ -63,10 +64,14 @@ const totalPrice = prices.reduce((acc, price) => acc + price, 0)
   - Não insira `car.color = azul`.
 */
 
-let car = { color: 'amarelo' }
-car['color'] = 'azul'
+let car = { color: 'amarelo' };
+let secondCar = car;
 
-// console.log(car);
+secondCar.color = 'azul'
+
+// console.log(car, secondCar);
+
+
 /*
   06
 
@@ -84,7 +89,7 @@ function myFunc() {
   return arguments.length !== 3 ? phraseFalse : phraseTrue;
 }
 
-// console.log(myFunc(0,5))
+console.log(myFunc(0, 4))
 
 
 
@@ -117,11 +122,20 @@ let booksBox = {
 }
 
 const placeBooks = bookNumber => {
-  let { booksIn } = booksBox
-  for(let i = 0; i < bookNumber; i++){
+
+  for (let i = 0; i < bookNumber; i++) {
     ++booksBox.booksIn
+    --booksBox.spaces
   }
-  return booksBox
+
+  const booksInBox = `Já há ${booksBox.booksIn} livros na caixa`;
+  let phraseAlert = ``
+
+  if (booksBox.spaces === 0) {
+    return phraseAlert = `A caixa já está cheia`
+  }
+  let bookOrBooks = booksBox.spaces === 1 ? 'livro' : 'livros'
+  phraseAlert = `Só cabem mais ${booksBox.spaces} ${bookOrBooks} na caixa`
 }
 
-console.log(placeBooks(4));
+// console.log(placeBooks(5));
