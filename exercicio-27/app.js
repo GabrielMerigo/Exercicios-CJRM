@@ -89,7 +89,7 @@ function myFunc() {
   return arguments.length !== 3 ? phraseFalse : phraseTrue;
 }
 
-console.log(myFunc(0, 4))
+// console.log(myFunc(0, 4))
 
 
 
@@ -121,21 +121,25 @@ let booksBox = {
   booksIn: 0
 }
 
-const placeBooks = bookNumber => {
-
-  for (let i = 0; i < bookNumber; i++) {
-    ++booksBox.booksIn
-    --booksBox.spaces
+booksBox.addBook = booksQuantity => {
+  
+  if(booksBox.booksIn === booksBox.spaces){
+    return `A caixa já está cheia`
   }
+  
+  if(booksBox.booksIn + booksQuantity > booksBox.spaces){
+    const avaiableSpace = booksBox.spaces - booksBox.booksIn;
+    const booksOrBook = avaiableSpace === 1 ? 'livro' : 'livros'
+    const firstPluralOrSingular = avaiableSpace === 1 ? 'cabe' : 'cabem'
 
-  const booksInBox = `Já há ${booksBox.booksIn} livros na caixa`;
-  let phraseAlert = ``
-
-  if (booksBox.spaces === 0) {
-    return phraseAlert = `A caixa já está cheia`
+    return `Só ${firstPluralOrSingular} mais ${avaiableSpace} ${booksOrBook}`
   }
-  let bookOrBooks = booksBox.spaces === 1 ? 'livro' : 'livros'
-  phraseAlert = `Só cabem mais ${booksBox.spaces} ${bookOrBooks} na caixa`
+  
+  booksBox.booksIn += booksQuantity
+  const firstPluralOrSingular = booksBox.booksIn === 1 ? 'livro' : 'livros'
+  return `Já há '${booksBox.booksIn}' ${firstPluralOrSingular} na caixa`
 }
 
-// console.log(placeBooks(5));
+console.log(booksBox.addBook(1))
+
+
