@@ -3,18 +3,19 @@
 
   - Implemente um código assíncrono entre os console.log() abaixo.
 */
+const numbers = [3, 4, 10, 20]
 
-console.log('Linha 1')
-console.log('Linha 2')
-console.log('Linha 3')
-console.log('Linha 4')
+// console.log('Linha 1')
+// console.log('Linha 2')
+// console.log('Linha 3')
+// console.log('Linha 4')
 
-setTimeout(() => console.log('Callback'),2000)
+// setTimeout(() => console.log('Callback'),2000)
 
-console.log('Linha 5')
-console.log('Linha 6')
-console.log('Linha 7')
-console.log('Linha 8')
+// console.log('Linha 5')
+// console.log('Linha 6')
+// console.log('Linha 7')
+// console.log('Linha 8')
 
 /*
   02
@@ -23,11 +24,15 @@ console.log('Linha 8')
     "logGreeting" ser exibida no console.
 */
 
-function logGreeting (name) {
+function logGreeting(name) {
   console.log(`olá, ${name}`)
 }
 
-// x(logGreeting)
+function x(callback) {
+  callback()
+}
+
+// x(logGreeting('Gabriel'))
 
 /*
   03
@@ -35,10 +40,10 @@ function logGreeting (name) {
   - O código abaixo possui uma parte que pode ser isolada. Isole-a.
 */
 
-const numbers = [3, 4, 10, 20]
-const lesserThanFive = numbers.filter(num => num < 5)
 
+const lesserThanFive = numbers.filter(num => num < 5)
 console.log(lesserThanFive)
+
 
 /*
   04
@@ -47,13 +52,9 @@ console.log(lesserThanFive)
 */
 
 const prices = [12, 19, 7, 209]
-let totalPrice = 0
+const totalPrice = prices.reduce((acc, price) => acc + price, 0) 
 
-for (let i = 0; i < prices.length; i++) {
-  totalPrice += prices[i]
-}
-
-console.log(`Preço total: ${totalPrice}`)
+// console.log(`Preço total: ${totalPrice}`)
 
 /*
   05
@@ -63,7 +64,9 @@ console.log(`Preço total: ${totalPrice}`)
 */
 
 let car = { color: 'amarelo' }
+car['color'] = 'azul'
 
+// console.log(car);
 /*
   06
 
@@ -73,6 +76,18 @@ let car = { color: 'amarelo' }
   - Se todos os argumentos forem passados, retorne a string 'A função foi 
     invocada com 3 argumentos'.
 */
+
+
+function myFunc(){
+  const phraseFalse = 'A função deve ser invocada com 3 argumentos';
+  const phraseTrue = ' função foi invocada com 3 argumentos';
+  return arguments.length !== 3 ?  phraseFalse : phraseTrue;
+}
+
+// console.log(myFunc(0,5))
+
+
+
 
 /*
   07
