@@ -30,7 +30,7 @@ function logGreeting(name) {
 
 const x = (callback) => {
   callback('Gabriel')
-} 
+}
 
 // x(logGreeting)
 
@@ -121,25 +121,39 @@ let booksBox = {
   booksIn: 0
 }
 
+const generatesMessageFromBox = (spaces, booksIn) => {
+  const avaiableSpace = spaces - booksIn;
+  const booksOrBook =
+    getPluralOrSingular(avaiableSpace, 'livros', 'livro')
+  const firstPluralOrSingular =
+    getPluralOrSingular(avaiableSpace, 'cabem', 'cabe')
+
+  return `Só ${firstPluralOrSingular} mais ${avaiableSpace} ${booksOrBook}`
+}
+
+
+const getPluralOrSingular = (quantity, plural, singular) =>
+  quantity === 1 ? singular : plural
+
 booksBox.addBook = booksQuantity => {
+  let { spaces } = booksBox;
+  const isBoxFilled = booksBox.booksIn === spaces;
+  const boxSpacesAreNotEnough = booksBox.booksIn + booksQuantity > spaces;
   
-  if(booksBox.booksIn === booksBox.spaces){
+  if (isBoxFilled) {
     return `A caixa já está cheia`
   }
   
-  if(booksBox.booksIn + booksQuantity > booksBox.spaces){
-    const avaiableSpace = booksBox.spaces - booksBox.booksIn;
-    const booksOrBook = avaiableSpace === 1 ? 'livro' : 'livros'
-    const firstPluralOrSingular = avaiableSpace === 1 ? 'cabe' : 'cabem'
-
-    return `Só ${firstPluralOrSingular} mais ${avaiableSpace} ${booksOrBook}`
+  if (boxSpacesAreNotEnough) {
+    return generatesMessageFromBox(spaces, booksBox.booksIn)
   }
   
   booksBox.booksIn += booksQuantity
-  const firstPluralOrSingular = booksBox.booksIn === 1 ? 'livro' : 'livros'
+  const firstPluralOrSingular = getPluralOrSingular(booksBox.booksIn, 'livros', 'livro')
   return `Já há '${booksBox.booksIn}' ${firstPluralOrSingular} na caixa`
 }
 
-console.log(booksBox.addBook(1))
-
-
+console.log(booksBox.addBook(2));
+console.log(booksBox.addBook(2));
+console.log(booksBox.addBook(1));
+console.log(booksBox.addBook(5));
