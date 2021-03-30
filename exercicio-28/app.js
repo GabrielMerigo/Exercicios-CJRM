@@ -139,7 +139,11 @@ myPerson.phraseMessage()
 */
 
 const isTruthyOrFalsy = value => {
-  return typeof value === true ? true : false
+  if(value){
+    return true;
+  }else{
+    return false;
+  }
 }
 // Falsys
 console.log(isTruthyOrFalsy(undefined))
@@ -155,8 +159,7 @@ console.log(isTruthyOrFalsy('rua'))
 console.log(isTruthyOrFalsy([1,2]))
 console.log(isTruthyOrFalsy({a: 1, b: 2}))
 console.log(isTruthyOrFalsy(true))
-console.log(isTruthyOrFalsy())
-console.log(isTruthyOrFalsy(""))
+
 
 
 /*
