@@ -54,7 +54,7 @@ let myPerson = {
   gender: 'Male',
   age: 17,
   height: 1.74,
-  weigth: 60,
+  weight: 60,
   isWalking: false,
   meters: 0
 }
@@ -70,12 +70,12 @@ let myPerson = {
 */
 
 
-myPerson.addAge = function () {
-  this.age++
-}
-for (let i = 0; i < 5; i++) {
-  myPerson.addAge()
-}
+// myPerson.addAge = function () {
+//   this.age++
+// }
+// for (let i = 0; i < 5; i++) {
+//   myPerson.addAge()
+// }
 
 
 // console.log(myPerson);
@@ -96,6 +96,11 @@ myPerson.metersWalking = function (meters) {
   this.isWalking = true
 }
 
+const defferenceMeters = [8,22,63,14]
+defferenceMeters.forEach(meters => {
+  myPerson.metersWalking(meters)
+})
+
 console.log(myPerson);
 
 
@@ -115,18 +120,22 @@ console.log(myPerson);
     - Se a quantidade de metros caminhados for 1, substitua "metros" por
       "metro", no singular.
 */
-myPerson.phraseMessage = function () {
-  const { name, age, height, weigth, meters, gender } = this
-  const genderPerson = gender !== 'Male' ? `a ${name}` : `o ${name}`
-  const ageSingularOrPlural = age === 1 ? `${age} ano` : `${age} anos`
-  const metersQuantity = meters === 1 ? `${meters} metro` : `${meters} metros`
 
-  const phrase = `Oi. Eu sou ${genderPerson}, tenho ${ageSingularOrPlural}, ${height} metros de altura,
-  peso ${weigth} quilos e, só hoje, eu já caminhei ${metersQuantity}.`;
+const getPluralOrSingular = (value, quantity, singular, plural) => {
+  return value === quantity ? singular : plural
+}
+
+myPerson.phraseMessage = function () {
+  const { name, age, height, weight, meters, gender } = this
+  const genderPerson = getPluralOrSingular(gender, 'Male','o','a')
+  const ageSingularOrPlural = age === 1 ? `ano` : `anos`
+
+  const phrase = `Oi. Eu sou ${genderPerson} ${name}, tenho ${age} ${ageSingularOrPlural}, ${height} ${height} de altura,
+  peso ${weight} quilos e, só hoje, eu já caminhei ${meters} ${meters}.`;
   console.log(phrase);
 }
 
-// myPerson.phraseMessage()
+myPerson.phraseMessage()
 
 
 /*
