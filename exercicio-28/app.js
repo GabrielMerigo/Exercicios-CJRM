@@ -16,21 +16,21 @@
   - Teste também a verificação do item acima.
 */
 
-const request = new XMLHttpRequest();
+// const request = new XMLHttpRequest();
 
-request.addEventListener('readystatechange', () => {
-  if (request.readyState === 4 && request.status === 200) {
-    return console.log(request.response);
-  }
+// request.addEventListener('readystatechange', () => {
+//   if (request.readyState === 4 && request.status === 200) {
+//     return console.log(request.response);
+//   }
 
-  if(request.readyState === 4){
-    console.log('Não foi possível obter os dados do pokémon');
-  }
+//   if(request.readyState === 4){
+//     console.log('Não foi possível obter os dados do pokémon');
+//   }
 
-})
+// })
 
-request.open('GET', 'https://pokeapi.co/api/v2/pokemon/pikachu')
-request.send()
+// request.open('GET', 'https://pokeapi.co/api/v2/pokemon/pikachu')
+// request.send()
 
 
 /*
@@ -48,11 +48,11 @@ request.send()
     - Quantos metros você caminhou (number iniciado em 0).
 */
 
-const myPerson = {
+let myPerson = {
   name: 'Gabriel',
   lastName: 'Merigo',
   gender: 'Male',
-  age: 1,
+  age: 17,
   height: 1.74,
   weigth: 60,
   isWalking: false,
@@ -70,10 +70,12 @@ const myPerson = {
 */
 
 
-myPerson.addAge = function(one) {
-  this.age += one;
+myPerson.addAge = function () {
+  this.age++
 }
-
+for (let i = 0; i < 5; i++) {
+  myPerson.addAge()
+}
 
 
 // console.log(myPerson);
@@ -89,12 +91,10 @@ myPerson.addAge = function(one) {
     método 4x, com diferentes metragens passadas por parâmetro.
 */
 
-myPerson.metersWalking = function(meters){
+myPerson.metersWalking = function (meters) {
   this.meters += meters
   this.isWalking = true
 }
-myPerson.metersWalking(1)
-
 
 console.log(myPerson);
 
@@ -115,7 +115,7 @@ console.log(myPerson);
     - Se a quantidade de metros caminhados for 1, substitua "metros" por
       "metro", no singular.
 */
-myPerson.phraseMessage = function(){
+myPerson.phraseMessage = function () {
   const { name, age, height, weigth, meters, gender } = this
   const genderPerson = gender !== 'Male' ? `a ${name}` : `o ${name}`
   const ageSingularOrPlural = age === 1 ? `${age} ano` : `${age} anos`
@@ -126,7 +126,7 @@ myPerson.phraseMessage = function(){
   console.log(phrase);
 }
 
-myPerson.phraseMessage()
+// myPerson.phraseMessage()
 
 
 /*
@@ -142,26 +142,25 @@ myPerson.phraseMessage()
 */
 
 const isTruthyOrFalsy = value => {
-  if(value){
+  if (value) {
     return true;
-  }else{
-    return false;
   }
+  return false;
 }
 // Falsys
-console.log(isTruthyOrFalsy(undefined))
-console.log(isTruthyOrFalsy(false))
-console.log(isTruthyOrFalsy(null))
-console.log(isTruthyOrFalsy(NaN))
-console.log(isTruthyOrFalsy(''))
-console.log(isTruthyOrFalsy(``))
-console.log(isTruthyOrFalsy(""))
-console.log('-----------------');
-console.log(isTruthyOrFalsy(7))
-console.log(isTruthyOrFalsy('rua'))
-console.log(isTruthyOrFalsy([1,2]))
-console.log(isTruthyOrFalsy({a: 1, b: 2}))
-console.log(isTruthyOrFalsy(true))
+// console.log(isTruthyOrFalsy(undefined))
+// console.log(isTruthyOrFalsy(false))
+// console.log(isTruthyOrFalsy(null))
+// console.log(isTruthyOrFalsy(NaN))
+// console.log(isTruthyOrFalsy(''))
+// console.log(isTruthyOrFalsy(``))
+// console.log(isTruthyOrFalsy(""))
+// console.log('-----------------');
+// console.log(isTruthyOrFalsy(7))
+// console.log(isTruthyOrFalsy('rua'))
+// console.log(isTruthyOrFalsy([1,2]))
+// console.log(isTruthyOrFalsy({a: 1, b: 2}))
+// console.log(isTruthyOrFalsy(true))
 
 
 
