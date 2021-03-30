@@ -18,12 +18,23 @@
 
 const request = new XMLHttpRequest();
 
+// request.addEventListener('readystatechange', () => {
+//   if (request.readyState === 4 && request.status === 200) {
+//     console.log(request.response);
+//   }
+
+//   return console.log('Não foi possível obter os dados do pokémon');
+// })
+
+// request.open('GET', 'https://pokeapi.co/api/v2/pokemon/pikachu')
+// request.send()
+
 
 /*
   02
 
   - Crie um objeto que contém suas informações pessoais;
-  - As propriedades devem armazenar: 
+  - As propriedades devem armazenar:
     - Seu nome;
     - Seu sobrenome;
     - Seu sexo;
@@ -34,23 +45,47 @@ const request = new XMLHttpRequest();
     - Quantos metros você caminhou (number iniciado em 0).
 */
 
+const myPerson = {
+  name: 'Gabriel',
+  lastName: 'Merigo',
+  gender: 'Male',
+  age: 17,
+  height: 1.74,
+  weigth: 60,
+  isWalking: false,
+  meters: 0
+}
+
+
 /*
   03
 
-  - Logo abaixo, adicione ao objeto um método que adiciona 1 ao valor da 
+  - Logo abaixo, adicione ao objeto um método que adiciona 1 ao valor da
     propriedade que armazena a idade;
   - A cada vez que o método é invocado, 1 deve ser somado à idade atual;
   - Após criar o método, adicione 5 anos à idade do objeto.
 */
 
+
+myPerson.addAge = one => {
+  myPerson.age += one;
+}
+
+myPerson.addAge(1)
+myPerson.addAge(1)
+myPerson.addAge(1)
+
+
+// console.log(myPerson);
+
 /*
   04
 
-  - Logo abaixo, adicione ao objeto um método que soma a quantidade de metros 
+  - Logo abaixo, adicione ao objeto um método que soma a quantidade de metros
     caminhados ao valor que foi recebido como parâmetro do método;
-  - Este método também deve modificar o boolean do objeto que indica se a 
+  - Este método também deve modificar o boolean do objeto que indica se a
     pessoa representada pelo objeto está, ou não, andando;
-  - Após criar o método, faça a pessoa caminhar alguns metros, invocando o 
+  - Após criar o método, faça a pessoa caminhar alguns metros, invocando o
     método 4x, com diferentes metragens passadas por parâmetro.
 */
 
@@ -58,27 +93,27 @@ const request = new XMLHttpRequest();
   05
 
   - Logo abaixo, adicione ao objeto um método que retorna a seguinte string:
-  
-  'Oi. Eu sou o NOME_COMPLETO, tenho IDADE anos, ALTURA metros de altura, 
-  peso PESO quilos e, só hoje, eu já caminhei QUANTIDADE_DE_METROS_CAMINHADOS 
+
+  'Oi. Eu sou o NOME_COMPLETO, tenho IDADE anos, ALTURA metros de altura,
+  peso PESO quilos e, só hoje, eu já caminhei QUANTIDADE_DE_METROS_CAMINHADOS
   metros.'
-  
+
   - Antes de retornar a string, faça as seguintes validações:
     - Se o sexo do objeto for "Feminino", antes do nome da pessoa, substitua "o"
       por "a";
     - Se a idade for 1, substitua "anos" por "ano", no singular;
-    - Se a quantidade de metros caminhados for 1, substitua "metros" por 
+    - Se a quantidade de metros caminhados for 1, substitua "metros" por
       "metro", no singular.
 */
 
 /*
   06
 
-  - Crie uma função que recebe um valor como argumento e retorna um boolean 
+  - Crie uma função que recebe um valor como argumento e retorna um boolean
     indicando se o valor é truthy ou falsy;
   - Invoque a função e, a cada invocação, passe como argumento um valor falsy.
     - Faça isso até passar todos os valores falsy;
-  - Invoque a função e, desta vez, a cada invocação, passe como argumento um 
+  - Invoque a função e, desta vez, a cada invocação, passe como argumento um
     valor truthy;
     - Faça isso até que 7 valores truthy sejam passados.
 */
@@ -87,16 +122,16 @@ const request = new XMLHttpRequest();
   07
 
   - Crie uma função que recebe um parâmetro, que será o nome de um livro;
-  - Essa função deve conter um objeto com 3 propriedades, que são nomes de 
+  - Essa função deve conter um objeto com 3 propriedades, que são nomes de
     livros;
-  - Cada uma dessas 3 propriedades deve armazenar um novo objeto que terá 
+  - Cada uma dessas 3 propriedades deve armazenar um novo objeto que terá
     outras 3 propriedades que armazenam:
       - A quantidade de páginas (number);
       - Autor;
       - Editora.
-  - Faça a função retornar o objeto que representa o livro passado por 
+  - Faça a função retornar o objeto que representa o livro passado por
     parâmetro;
-  - Se o parâmetro não for passado, faça a função retornar o objeto com todos 
+  - Se o parâmetro não for passado, faça a função retornar o objeto com todos
     os livros.
 
   Dica: propriedades de objetos podem ser declaradas como strings.
