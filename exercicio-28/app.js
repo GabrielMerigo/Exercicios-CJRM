@@ -16,6 +16,9 @@
   - Teste também a verificação do item acima.
 */
 
+const request = new XMLHttpRequest();
+
+
 /*
   02
 
