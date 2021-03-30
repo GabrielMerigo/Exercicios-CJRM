@@ -49,7 +49,7 @@ const myPerson = {
   name: 'Gabriel',
   lastName: 'Merigo',
   gender: 'Male',
-  age: 17,
+  age: 1,
   height: 1.74,
   weigth: 60,
   isWalking: false,
@@ -67,13 +67,10 @@ const myPerson = {
 */
 
 
-myPerson.addAge = one => {
-  myPerson.age += one;
+myPerson.addAge = function(one) {
+  this.age += one;
 }
 
-myPerson.addAge(1)
-myPerson.addAge(1)
-myPerson.addAge(1)
 
 
 // console.log(myPerson);
@@ -88,6 +85,16 @@ myPerson.addAge(1)
   - Após criar o método, faça a pessoa caminhar alguns metros, invocando o
     método 4x, com diferentes metragens passadas por parâmetro.
 */
+
+myPerson.metersWalking = function(meters){
+  this.meters += meters
+  this.isWalking = true
+}
+myPerson.metersWalking(1)
+
+
+console.log(myPerson);
+
 
 /*
   05
@@ -105,6 +112,19 @@ myPerson.addAge(1)
     - Se a quantidade de metros caminhados for 1, substitua "metros" por
       "metro", no singular.
 */
+myPerson.phraseMessage = function(){
+  const { name, age, height, weigth, meters, gender } = this
+  const genderPerson = gender !== 'Male' ? `a ${name}` : `o ${name}`
+  const ageSingularOrPlural = age === 1 ? `${age} ano` : `${age} anos`
+  const metersQuantity = meters === 1 ? `${meters} metro` : `${meters} metros`
+
+  const phrase = `Oi. Eu sou ${genderPerson}, tenho ${ageSingularOrPlural}, ${height} metros de altura,
+  peso ${weigth} quilos e, só hoje, eu já caminhei ${metersQuantity}.`;
+  console.log(phrase);
+}
+
+myPerson.phraseMessage()
+
 
 /*
   06
@@ -117,6 +137,27 @@ myPerson.addAge(1)
     valor truthy;
     - Faça isso até que 7 valores truthy sejam passados.
 */
+
+const isTruthyOrFalsy = value => {
+  return typeof value === true ? true : false
+}
+// Falsys
+console.log(isTruthyOrFalsy(undefined))
+console.log(isTruthyOrFalsy(false))
+console.log(isTruthyOrFalsy(null))
+console.log(isTruthyOrFalsy(NaN))
+console.log(isTruthyOrFalsy(''))
+console.log(isTruthyOrFalsy(``))
+console.log(isTruthyOrFalsy(""))
+console.log('-----------------');
+console.log(isTruthyOrFalsy(7))
+console.log(isTruthyOrFalsy('rua'))
+console.log(isTruthyOrFalsy([1,2]))
+console.log(isTruthyOrFalsy({a: 1, b: 2}))
+console.log(isTruthyOrFalsy(true))
+console.log(isTruthyOrFalsy())
+console.log(isTruthyOrFalsy(""))
+
 
 /*
   07
