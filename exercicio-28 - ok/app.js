@@ -19,17 +19,19 @@
 // const request = new XMLHttpRequest();
 
 // request.addEventListener('readystatechange', () => {
-//   if (request.readyState === 4 && request.status === 200) {
+//   const isRequestOk = request.readyState === 4 && request.status === 200;
+//   const isRequestNotOK = request.readyState === 4;
+//   if (isRequestOk) {
 //     return console.log(request.response);
 //   }
 
-//   if(request.readyState === 4){
+//   if(isRequestNotOK){
 //     console.log('Não foi possível obter os dados do pokémon');
 //   }
 
 // })
 
-// request.open('GET', 'https://pokeapi.co/api/v2/pokemon/pikachu')
+// request.open('GET', 'https://pokeapi.co/api/v2/pokemon/pikachus')
 // request.send()
 
 
@@ -91,17 +93,15 @@ let myPerson = {
     método 4x, com diferentes metragens passadas por parâmetro.
 */
 
-// myPerson.metersWalking = function (meters) {
-//   this.meters += meters
-//   this.isWalking = true
-// }
+myPerson.metersWalking = function (meters) {
+  this.meters += meters
+  this.isWalking = true
+}
 
-// const defferenceMeters = [8, 22, 63, 14]
-// defferenceMeters.forEach(meters => {
-//   myPerson.metersWalking(meters)
-// })
+const defferenceMeters = [8, 22, 63, 14]
+defferenceMeters.forEach(meters => myPerson.metersWalking(meters))
 
-// console.log(myPerson);
+console.log(myPerson);
 
 
 /*
@@ -154,18 +154,16 @@ let myPerson = {
     - Faça isso até que 7 valores truthy sejam passados.
 */
 
-// const isTruthyOrFalsy = value => Boolean(value);
+const isTruthyOrFalsy = value => Boolean(value);
 
-// const arrayFalsy = ['', "", ``, 0, null, undefined, NaN, false]
-// const arrayTruthy = [1, '123', [1, 6], {a: 1, b:2}, () => {}, true]
+const arrayFalsy = ['', "", ``, 0, null, undefined, NaN, false]
+const arrayTruthy = [1, '123', [1, 6], {a: 1, b:2}, () => {}, true]
 
-// arrayFalsy.forEach(value => {
-//   console.log(isTruthyOrFalsy(value));
-// })
+const logFalsyValues = (value) => console.log(isTruthyOrFalsy(value));
+const logTruthyValues = (value) => console.log(isTruthyOrFalsy(value));
 
-// arrayTruthy.forEach(value => {
-//   console.log(isTruthyOrFalsy(value));
-// })
+arrayFalsy.forEach(value => logFalsyValues(value))
+arrayTruthy.forEach(value => logTruthyValues(value))
 
 // Falsys
 
@@ -214,4 +212,4 @@ const getBook = bookName => {
   return  books[bookName] || books
 }
 
-console.log(getBook('Jurascic W'))
+console.log(getBook('Bomb Down'))
