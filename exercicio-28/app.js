@@ -91,17 +91,17 @@ let myPerson = {
     método 4x, com diferentes metragens passadas por parâmetro.
 */
 
-myPerson.metersWalking = function (meters) {
-  this.meters += meters
-  this.isWalking = true
-}
+// myPerson.metersWalking = function (meters) {
+//   this.meters += meters
+//   this.isWalking = true
+// }
 
-const defferenceMeters = [8, 22, 63, 14]
-defferenceMeters.forEach(meters => {
-  myPerson.metersWalking(meters)
-})
+// const defferenceMeters = [8, 22, 63, 14]
+// defferenceMeters.forEach(meters => {
+//   myPerson.metersWalking(meters)
+// })
 
-console.log(myPerson);
+// console.log(myPerson);
 
 
 /*
@@ -194,26 +194,24 @@ console.log(myPerson);
 
 const getBook = bookName => {
   const books = {
-    'Pequeno Principe': {
-      totalPages: 134,
-      author: 'Machado de Assis',
-      publisher: 'Nosts'
+    'Bomb Down': {
+      TotalPages: 123,
+      author: 'Gabriel',
+      publisher: 'Sextante'
     },
-    'Codigo Bill Gates': {
-      totalPages: 203,
-      author: 'Bill Gates',
-      publisher: 'Microsoft'
+    'Swicf': {
+      TotalPages: 99,
+      author: 'Roger',
+      publisher: 'Nopsdaum'
     },
-    'Web Hacking': {
-      totalPages: 78,
-      author: 'Gabriel Pato',
-      publisher: 'Facebook'
+    'Jurascic Wordls': {
+      TotalPages: 256,
+      author: 'Merigo',
+      publisher: 'odiséia'
     }
   }
 
-
-
-  return books[bookName]
+  return Boolean(books[bookName]) === false ? books : books[bookName]
 }
 
-console.log(getBook('Codigo Bill Gates'))
+console.log(getBook('Jurascic W'))
