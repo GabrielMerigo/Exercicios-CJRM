@@ -4,7 +4,7 @@
   - Crie um objeto de request;
   - Abra este website https://pokeapi.co/;
   - Baseado no exemplo de endpoint exibido no website, abra uma requisição do 
-    tipo GET para obter dados do pokémon 'pikachu';
+    tipo GET para obter dados do pokémon pikachu';
   - Envie a requisição e trackeie ela usando o listener de evento adequado;
   - Verifique se o estado da requisição representa que a operação foi completada
     e se o status http do request indica que a requisição foi bem sucedida;
@@ -96,7 +96,7 @@ myPerson.metersWalking = function (meters) {
   this.isWalking = true
 }
 
-const defferenceMeters = [8,22,63,14]
+const defferenceMeters = [8, 22, 63, 14]
 defferenceMeters.forEach(meters => {
   myPerson.metersWalking(meters)
 })
@@ -121,17 +121,21 @@ console.log(myPerson);
       "metro", no singular.
 */
 
-const getPluralOrSingular = (value, quantity, singular, plural) => {
-  return value === quantity ? singular : plural
-}
+const getPluralOrSingular = (value, quantity, singular, plural) =>
+  value === quantity ? singular : plural
+
 
 myPerson.phraseMessage = function () {
   const { name, age, height, weight, meters, gender } = this
-  const genderPerson = getPluralOrSingular(gender, 'Male','o','a')
-  const ageSingularOrPlural = age === 1 ? `ano` : `anos`
+  const genderPerson =
+    getPluralOrSingular(gender, 'Male', 'o', 'a')
+  const ageSingularOrPlural =
+    getPluralOrSingular(age, 1, 'ano', 'anos')
+  const metersSingularOrPlural =
+    getPluralOrSingular(meters, 1, 'metro', 'metros')
 
-  const phrase = `Oi. Eu sou ${genderPerson} ${name}, tenho ${age} ${ageSingularOrPlural}, ${height} ${height} de altura,
-  peso ${weight} quilos e, só hoje, eu já caminhei ${meters} ${meters}.`;
+  const phrase = `Oi. Eu sou ${genderPerson} ${name}, tenho ${age} ${ageSingularOrPlural}, ${height}  de altura,
+  peso ${weight} quilos e, só hoje, eu já caminhei ${meters} ${metersSingularOrPlural}.`;
   console.log(phrase);
 }
 
@@ -150,26 +154,21 @@ myPerson.phraseMessage()
     - Faça isso até que 7 valores truthy sejam passados.
 */
 
-const isTruthyOrFalsy = value => {
-  if (value) {
-    return true;
-  }
-  return false;
-}
+const isTruthyOrFalsy = value => Boolean(value);
+
+const arrayFalsy = ['', "", ``, 0, null, undefined, NaN, false]
+const arrayTruthy = [1, '123', [1, 6], {a: 1, b:2}, () => {}, true]
+
+arrayFalsy.forEach(value => {
+  console.log(isTruthyOrFalsy(value));
+})
+
+arrayTruthy.forEach(value => {
+  console.log(isTruthyOrFalsy(value));
+})
+
 // Falsys
-// console.log(isTruthyOrFalsy(undefined))
-// console.log(isTruthyOrFalsy(false))
-// console.log(isTruthyOrFalsy(null))
-// console.log(isTruthyOrFalsy(NaN))
-// console.log(isTruthyOrFalsy(''))
-// console.log(isTruthyOrFalsy(``))
-// console.log(isTruthyOrFalsy(""))
-// console.log('-----------------');
-// console.log(isTruthyOrFalsy(7))
-// console.log(isTruthyOrFalsy('rua'))
-// console.log(isTruthyOrFalsy([1,2]))
-// console.log(isTruthyOrFalsy({a: 1, b: 2}))
-// console.log(isTruthyOrFalsy(true))
+
 
 
 
@@ -191,3 +190,29 @@ const isTruthyOrFalsy = value => {
 
   Dica: propriedades de objetos podem ser declaradas como strings.
 */
+
+
+const book = bookName => {
+  const bookNames = {
+    PequenoPrincipe: {
+      pages: 134,
+      author: 'Machado de Assis',
+      publishingCompany: 'Nosts'
+    },
+    CodigoBillGates: {
+      pages: 203,
+      author: 'Bill Gates',
+      publishingCompany: 'Microsoft'
+    },
+    WebHacking: {
+      pages: 78,
+      author: 'Gabriel Pato',
+      publishingCompany: 'Facebook'
+    }
+  }
+
+
+  return bookNames
+}
+
+console.log(book())
