@@ -211,7 +211,7 @@ const getBook = bookName => {
     }
   }
 
-  return Boolean(books[bookName]) === false ? books : books[bookName]
+  return  books[bookName] || books
 }
 
 console.log(getBook('Jurascic W'))
