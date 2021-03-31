@@ -121,25 +121,25 @@ console.log(myPerson);
       "metro", no singular.
 */
 
-const getPluralOrSingular = (value, quantity, singular, plural) =>
-  value === quantity ? singular : plural
+// const getPluralOrSingular = (value, quantity, singular, plural) =>
+//   value === quantity ? singular : plural
 
 
-myPerson.phraseMessage = function () {
-  const { name, age, height, weight, meters, gender } = this
-  const genderPerson =
-    getPluralOrSingular(gender, 'Male', 'o', 'a')
-  const ageSingularOrPlural =
-    getPluralOrSingular(age, 1, 'ano', 'anos')
-  const metersSingularOrPlural =
-    getPluralOrSingular(meters, 1, 'metro', 'metros')
+// myPerson.phraseMessage = function () {
+//   const { name, age, height, weight, meters, gender } = this
+//   const genderPerson =
+//     getPluralOrSingular(gender, 'Male', 'o', 'a')
+//   const ageSingularOrPlural =
+//     getPluralOrSingular(age, 1, 'ano', 'anos')
+//   const metersSingularOrPlural =
+//     getPluralOrSingular(meters, 1, 'metro', 'metros')
 
-  const phrase = `Oi. Eu sou ${genderPerson} ${name}, tenho ${age} ${ageSingularOrPlural}, ${height}  de altura,
-  peso ${weight} quilos e, só hoje, eu já caminhei ${meters} ${metersSingularOrPlural}.`;
-  console.log(phrase);
-}
+//   const phrase = `Oi. Eu sou ${genderPerson} ${name}, tenho ${age} ${ageSingularOrPlural}, ${height}  de altura,
+//   peso ${weight} quilos e, só hoje, eu já caminhei ${meters} ${metersSingularOrPlural}.`;
+//   console.log(phrase);
+// }
 
-myPerson.phraseMessage()
+// myPerson.phraseMessage()
 
 
 /*
@@ -154,18 +154,18 @@ myPerson.phraseMessage()
     - Faça isso até que 7 valores truthy sejam passados.
 */
 
-const isTruthyOrFalsy = value => Boolean(value);
+// const isTruthyOrFalsy = value => Boolean(value);
 
-const arrayFalsy = ['', "", ``, 0, null, undefined, NaN, false]
-const arrayTruthy = [1, '123', [1, 6], {a: 1, b:2}, () => {}, true]
+// const arrayFalsy = ['', "", ``, 0, null, undefined, NaN, false]
+// const arrayTruthy = [1, '123', [1, 6], {a: 1, b:2}, () => {}, true]
 
-arrayFalsy.forEach(value => {
-  console.log(isTruthyOrFalsy(value));
-})
+// arrayFalsy.forEach(value => {
+//   console.log(isTruthyOrFalsy(value));
+// })
 
-arrayTruthy.forEach(value => {
-  console.log(isTruthyOrFalsy(value));
-})
+// arrayTruthy.forEach(value => {
+//   console.log(isTruthyOrFalsy(value));
+// })
 
 // Falsys
 
@@ -192,27 +192,28 @@ arrayTruthy.forEach(value => {
 */
 
 
-const book = bookName => {
-  const bookNames = {
-    PequenoPrincipe: {
-      pages: 134,
+const getBook = bookName => {
+  const books = {
+    'Pequeno Principe': {
+      totalPages: 134,
       author: 'Machado de Assis',
-      publishingCompany: 'Nosts'
+      publisher: 'Nosts'
     },
-    CodigoBillGates: {
-      pages: 203,
+    'Codigo Bill Gates': {
+      totalPages: 203,
       author: 'Bill Gates',
-      publishingCompany: 'Microsoft'
+      publisher: 'Microsoft'
     },
-    WebHacking: {
-      pages: 78,
+    'Web Hacking': {
+      totalPages: 78,
       author: 'Gabriel Pato',
-      publishingCompany: 'Facebook'
+      publisher: 'Facebook'
     }
   }
 
 
-  return bookNames
+
+  return books[bookName]
 }
 
-console.log(book())
+console.log(getBook('Codigo Bill Gates'))
