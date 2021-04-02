@@ -16,20 +16,20 @@
   - Teste também a verificação do item acima.
 */
 
-const request = new XMLHttpRequest();
+// const request = new XMLHttpRequest();
 
-request.addEventListener('readystatechange', () => {
-  const isRequestOk = request.readyState === 4 && request.status === 200;
-  const isRequestNotOK = request.readyState === 4;
-  if (isRequestOk) {
-    return console.log(request.response);
-  }
+// request.addEventListener('readystatechange', () => {
+//   const isRequestOk = request.readyState === 4 && request.status === 200;
+//   const isRequestNotOK = request.readyState === 4;
+//   if (isRequestOk) {
+//     return console.log(request.response);
+//   }
 
-  if(isRequestNotOK){
-    console.log('Não foi possível obter os dados do pokémon');
-  }
+//   if(isRequestNotOK){
+//     console.log('Não foi possível obter os dados do pokémon');
+//   }
 
-})
+// })
 
 request.open('GET', 'https://pokeapi.co/api/v2/pokemon/pikachus')
 request.send()
