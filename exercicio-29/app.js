@@ -78,12 +78,12 @@
     objeto person.
 */
 
-const person = {
-  name: 'Roger',
-  getName () { return this.name }
-}
+// const person = {
+//   name: 'Roger',
+//   getName () { return this.name }
+// }
 
-console.log(person.getName())
+// console.log(person.getName())
 
 /*
   04
@@ -108,11 +108,11 @@ console.log(person.getName())
     conseguir.
 */
 
-const getFullName = (user) => {
-  const firstName = user.firstName
-  const lastName = user.lastName
+const getFullName = ({firstName, lastName}) => {
+  const firstNameV = firstName;
+  const lastNameV = lastName;
 
-  return `${firstName} ${lastName}`
+  return `${firstNameV} ${lastNameV}`
 }
 
 console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
