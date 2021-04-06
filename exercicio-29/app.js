@@ -94,8 +94,12 @@ console.log(person.getName())
     delas.
 */
 
-const x = 'x'
-const x = 'y'
+// const x = 'x'
+// console.log(x);
+// {
+//   const x = 'y'
+//   console.log(x);
+// }
 
 /*
   05
