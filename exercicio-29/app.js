@@ -63,13 +63,13 @@
   curso, onde falaremos sobre TDD. Vá se aquecendo =)
 */
 
-const map2 = (array, callback) => {
-  return array.forEach(callback())
-}
+// function map2(array, callback){
+//   return array.forEach(callback)
+// }
 
-const newArray = map2([1, 2, 3, 4], item => item * 3);
+// const newArray = map2([1, 2, 3, 4], item => item * 3);
 
-console.log(newArray);
+// console.log(newArray);
 
 /*
   03
@@ -80,10 +80,10 @@ console.log(newArray);
 
 const person = {
   name: 'Roger',
-  getName: () => this.name
+  getName () { return this.name }
 }
 
-// console.log(person.getName())
+console.log(person.getName())
 
 /*
   04
@@ -95,7 +95,7 @@ const person = {
 */
 
 const x = 'x'
-// const x = 'y'
+const x = 'y'
 
 /*
   05
