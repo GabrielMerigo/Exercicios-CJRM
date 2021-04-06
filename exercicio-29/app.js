@@ -13,36 +13,33 @@
       executado quando o request anterior for finalizado.
 */
 
-const getPokemon = (url, callback) => {
-  const request = new XMLHttpRequest();
-  request.addEventListener('readystatechange', () => {
-    if(request.readyState === 4 && request.status === 200){
-      callback(request.responseText, null)
-      return
-    }
+// const getPokemon = (url, callback) => {
+//   const request = new XMLHttpRequest();
+//   request.addEventListener('readystatechange', () => {
+//     if(request.readyState === 4 && request.status === 200){
+//       callback(request.responseText, null)
+//       return
+//     }
 
-    if(request.readyState === 4){
-      callback(null, 'Não foi possível obter o seu pokemon.')
-    }
-  })
+//     if(request.readyState === 4){
+//       callback(null, 'Não foi possível obter o seu pokemon.')
+//     }
+//   })
 
-  request.open('GET', url)
-  request.send()
-}
+//   request.open('GET', url)
+//   request.send()
+// }
 
-getPokemon('https://pokeapi.co/api/v2/pokemon/ditto', (data, erro) => {
-  if(data){
-    const pokemonName = JSON.parse(data).name;
-    return console.log(`Pokémon obtido: ${pokemonName}`);
-  }
+// getPokemon('https://pokeapi.co/api/v2/pokemon/ditto', (data, erro) => {
+//   if(data){
+//     const pokemonName = JSON.parse(data).name;
+//     return console.log(`Pokémon obtido: ${pokemonName}`);
+//   }
 
-  if(erro){
-    console.log(erro);
-  }
-})
-
-
-
+//   if(erro){
+//     console.log(erro);
+//   }
+// })
 
 /*
   02
@@ -65,6 +62,14 @@ getPokemon('https://pokeapi.co/api/v2/pokemon/ditto', (data, erro) => {
   Reforço: este tipo de exercício será frequente em etapas mais avançadas do 
   curso, onde falaremos sobre TDD. Vá se aquecendo =)
 */
+
+const map2 = (array, callback) => {
+  return array.forEach(callback())
+}
+
+const newArray = map2([1, 2, 3, 4], item => item * 3);
+
+console.log(newArray);
 
 /*
   03
