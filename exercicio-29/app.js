@@ -107,15 +107,10 @@
   - O código abaixo está funcionando. Refatore-o da forma mais concisa que você 
     conseguir.
 */
+const obj = { firstName: 'Afonso', lastName: 'Solano' };
+const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
 
-const getFullName = ({firstName, lastName}) => {
-  const firstNameV = firstName;
-  const lastNameV = lastName;
-
-  return `${firstNameV} ${lastNameV}`
-}
-
-console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
+// console.log(getFullName(obj))
 
 /*
   06
@@ -131,6 +126,37 @@ console.log(getFullName({ firstName: 'Afonso', lastName: 'Solano' }))
   - Exiba o hexadecimal de 8 cores diferentes usando a função criada acima.
 */
 
+/*
+  vermelho: #fc0330;
+  azul: #0303fc;
+  verde: #03fc90;
+  amarelo: #fff700;
+  roxo: #c300ff;
+*/
+
+const convertToHex = color => {
+  const hexadecimais = ['#fc0330', '#0303fc', '#03fc90', '#fff700', '#c300ff']
+  switch (color) {
+    case color === 'vermelho':
+      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[0]}`);
+      break;
+    case color === 'azul':
+      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[1]}`);
+      break;
+    case color === 'verde':
+      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[2]}`);
+      break;
+    case color === 'amarelo':
+      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[3]}`);
+      break;
+    case color === 'roxo':
+      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[4]}`);
+      break;
+    default:
+      console.log(`Não temos o equivalente hexadecimal para ${color}`);
+      break;
+  }
+}
 
 /*
   07
