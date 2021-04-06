@@ -133,30 +133,32 @@ const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
   amarelo: #fff700;
   roxo: #c300ff;
 */
+// let msg = '';
+// const convertToHex = color => {
+//   const hexadecimais = ['#fc0330', '#0303fc', '#03fc90', '#fff700', '#c300ff']
+//   switch (color) {
+//     case String(color) === 'vermelho':
+//       msg = `O Hexadecimal para a cor ${color} é ${hexadecimais[0]}`;
+//       break;
+//     case color === 'azul':
+//       msg = `O Hexadecimal para a cor ${color} é ${hexadecimais[1]}`;
+//       break;
+//     case color === 'verde':
+//       msg = `O Hexadecimal para a cor ${color} é ${hexadecimais[2]}`;
+//       break;
+//     case color === 'amarelo':
+//       msg = `O Hexadecimal para a cor ${color} é ${hexadecimais[3]}`;
+//       break;
+//     case color === 'roxo':
+//       msg = `O Hexadecimal para a cor ${color} é ${hexadecimais[4]}`;
+//       break;
+//     default:
+//       console.log(`Não temos o equivalente hexadecimal para ${color}`);
+//   }
+// }
+// convertToHex('vermelho')
 
-const convertToHex = color => {
-  const hexadecimais = ['#fc0330', '#0303fc', '#03fc90', '#fff700', '#c300ff']
-  switch (color) {
-    case color === 'vermelho':
-      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[0]}`);
-      break;
-    case color === 'azul':
-      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[1]}`);
-      break;
-    case color === 'verde':
-      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[2]}`);
-      break;
-    case color === 'amarelo':
-      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[3]}`);
-      break;
-    case color === 'roxo':
-      console.log(`O Hexadecimal para a cor ${color} é ${hexadecimais[4]}`);
-      break;
-    default:
-      console.log(`Não temos o equivalente hexadecimal para ${color}`);
-      break;
-  }
-}
+
 
 /*
   07
