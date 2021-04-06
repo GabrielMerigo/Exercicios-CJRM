@@ -183,3 +183,10 @@ const people = [
   { id: 9, name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
   { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
 ]
+
+let obj2 = {}
+people.forEach((item) => {
+  if(item.age === 18){
+    obj2
+  }
+})
