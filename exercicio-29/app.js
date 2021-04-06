@@ -17,7 +17,12 @@ const getPokemon = (url, callback) => {
   const request = new XMLHttpRequest();
   request.addEventListener('readystatechange', () => {
     if(request.readyState === 4 && request.status === 200){
-      callback()
+      callback(request.responseText, null)
+      return
+    }
+
+    if(request.readyState === 4){
+      callback(null, 'Não foi possível obter o seu pokemon.')
     }
   })
 
@@ -25,8 +30,15 @@ const getPokemon = (url, callback) => {
   request.send()
 }
 
-getPokemon('https://pokeapi.co/api/v2/pokemon/ditto', () => {
-  console.log('Deu boa!');
+getPokemon('https://pokeapi.co/api/v2/pokemon/ditto', (data, erro) => {
+  if(data){
+    const pokemonName = JSON.parse(data).name;
+    return console.log(`Pokémon obtido: ${pokemonName}`);
+  }
+
+  if(erro){
+    console.log(erro);
+  }
 })
 
 
