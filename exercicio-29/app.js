@@ -63,13 +63,14 @@
   curso, onde falaremos sobre TDD. Vá se aquecendo =)
 */
 
-function map2(array, callback){
-  return array.forEach(callback)
+const map2 = (array, callback) => {
+  array.forEach(callback())
 }
 
-const newArray = map2([1, 2, 3, 4], item => item * 3);
+// const newArray = map2([1, 2, 3, 4], item => item * 3);
 
-console.log(newArray);
+
+// console.log(newArray);
 
 /*
   03
@@ -193,10 +194,16 @@ const people = [
   { id: 9, name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
   { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
 ]
+let obj3 = {};
+people.map((item, index) => obj3[index] = item);
+let i = 18;
 
-let obj2 = {}
-people.forEach((item) => {
-  if(item.age === 18){
-    obj2
-  }
-})
+console.log({ age } = obj3);
+
+const objectfy = {
+  [i]: obj3.age === 18,
+  // [i++]: person.age === 19,
+  // [i++]: person.age === 20
+}
+
+console.log(objectfy);
