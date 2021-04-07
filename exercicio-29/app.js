@@ -13,33 +13,45 @@
       executado quando o request anterior for finalizado.
 */
 
-// const getPokemon = (url, callback) => {
-//   const request = new XMLHttpRequest();
-//   request.addEventListener('readystatechange', () => {
-//     if(request.readyState === 4 && request.status === 200){
-//       callback(request.responseText, null)
-//       return
-//     }
+const getPokemon = (url, callback) => {
+  const request = new XMLHttpRequest();
+  request.addEventListener('readystatechange', () => {
+    if (request.readyState === 4 && request.status === 200) {
+      callback(request.responseText, null)
+      return
+    }
 
-//     if(request.readyState === 4){
-//       callback(null, 'Não foi possível obter o seu pokemon.')
-//     }
-//   })
+    if (request.readyState === 4) {
+      callback(null, 'Não foi possível obter o seu pokemon.')
+    }
+  })
 
-//   request.open('GET', url)
-//   request.send()
-// }
+  request.open('GET', url)
+  request.send()
+}
 
-// getPokemon('https://pokeapi.co/api/v2/pokemon/ditto', (data, erro) => {
-//   if(data){
-//     const pokemonName = JSON.parse(data).name;
-//     return console.log(`Pokémon obtido: ${pokemonName}`);
-//   }
+getPokemon('https://pokeapi.co/api/v2/pokemon/bulbasaur', (data, erro) => {
+  if (data) {
+    const pokemonName = JSON.parse(data).name;
+    console.log(`Pokémon obtido: ${pokemonName}`);
+  }
+  getPokemon('https://pokeapi.co/api/v2/pokemon/charmander', (data, erro) => {
+    if (data) {
+      const pokemonName = JSON.parse(data).name;
+      console.log(`Pokémon obtido: ${pokemonName}`);
+    }
+    getPokemon('https://pokeapi.co/api/v2/pokemon/squirtle', (data, erro) => {
+      if (data) {
+        const pokemonName = JSON.parse(data).name;
+        return console.log(`Pokémon obtido: ${pokemonName}`);
+      }
+    })
+  })
 
-//   if(erro){
-//     console.log(erro);
-//   }
-// })
+  if (erro) {
+    console.log(erro);
+  }
+})
 
 /*
   02
@@ -137,27 +149,27 @@ const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
 
 let colorHexa = '';
 const convertToHex = color => {
-  if(color === 'vermelho'){
+  if (color === 'vermelho') {
     colorHexa = '#fc0330';
     return showMessage(color, colorHexa)
   }
-  
-  if(color === 'azul'){
+
+  if (color === 'azul') {
     colorHexa = '#0303fc'
     return showMessage(color, colorHexa)
   }
 
-  if(color === 'verde'){
+  if (color === 'verde') {
     colorHexa = '#03fc90'
     return showMessage(color, colorHexa)
   }
 
-  if(color === 'amarelo'){
+  if (color === 'amarelo') {
     colorHexa = '#fff700'
     return showMessage(color, colorHexa)
   }
 
-  if(color === 'roxo'){
+  if (color === 'roxo') {
     colorHexa = '#c300ff'
     return showMessage(color, colorHexa)
   }
@@ -198,7 +210,7 @@ let obj3 = {};
 people.map((item, index) => obj3[index] = item);
 let i = 18;
 
-console.log({ age } = obj3);
+// console.log({ age } = obj3);
 
 const objectfy = {
   [i]: obj3.age === 18,
@@ -206,4 +218,4 @@ const objectfy = {
   // [i++]: person.age === 20
 }
 
-console.log(objectfy);
+// console.log(objectfy);
