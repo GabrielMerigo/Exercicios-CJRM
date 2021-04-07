@@ -13,48 +13,48 @@
       executado quando o request anterior for finalizado.
 */
 
-const getPokemon = (url, callback) => {
-  const request = new XMLHttpRequest();
-  request.addEventListener('readystatechange', () => {
-    const requestIsOK = request.readyState === 4 && request.status === 200;
-    const isRequestNotOK = request.readyState === 4;
+// const getPokemon = (url, callback) => {
+//   const request = new XMLHttpRequest();
+//   request.addEventListener('readystatechange', () => {
+//     const requestIsOK = request.readyState === 4 && request.status === 200;
+//     const isRequestNotOK = request.readyState === 4;
 
-    if (requestIsOK) {
-      callback(request.responseText, null)
-      return
-    }
+//     if (requestIsOK) {
+//       callback(request.responseText, null)
+//       return
+//     }
 
-    if (isRequestNotOK) {
-      callback(null, 'Não foi possível obter o seu pokemon.')
-    }
-  })
+//     if (isRequestNotOK) {
+//       callback(null, 'Não foi possível obter o seu pokemon.')
+//     }
+//   })
 
-  request.open('GET', url)
-  request.send()
-}
+//   request.open('GET', url)
+//   request.send()
+// }
 
-const logPokemom = (data, erro) => {
-  const pokemonName = JSON.parse(data).name;
-  if (erro) {
-    return console.log(erro);
-  }
-  console.log(`Pokémon obtido: ${pokemonName}`);
-}
+// const logPokemom = (data, erro) => {
+//   const pokemonName = JSON.parse(data).name;
+//   if (erro) {
+//     return console.log(erro);
+//   }
+//   console.log(`Pokémon obtido: ${pokemonName}`);
+// }
 
-const getPokemonURL = id => `https://pokeapi.co/api/v2/pokemon/${id}`
+// const getPokemonURL = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 
-getPokemon(getPokemonURL('bulbasaur'), (data, erro) => {
-  logPokemom(data, erro)
-  
-  getPokemon(getPokemonURL('charmander'), (data, erro) => {
-    logPokemom(data, erro)
-    
-    getPokemon(getPokemonURL('squirtle'), (data, erro) => {
-      logPokemom(data, erro)
+// getPokemon(getPokemonURL('bulbasaur'), (data, erro) => {
+//   logPokemom(data, erro)
 
-    })
-  })
-})
+//   getPokemon(getPokemonURL('charmander'), (data, erro) => {
+//     logPokemom(data, erro)
+
+//     getPokemon(getPokemonURL('squirtle'), (data, erro) => {
+//       logPokemom(data, erro)
+
+//     })
+//   })
+// })
 
 /*
   02
@@ -78,14 +78,15 @@ getPokemon(getPokemonURL('bulbasaur'), (data, erro) => {
   curso, onde falaremos sobre TDD. Vá se aquecendo =)
 */
 
-const map2 = (array, callback) => {
-  array.forEach(callback())
+const map = (array, callback) => {
+  let newArray = [];
+  array.forEach(item => {
+    newArray.push(callback(item))
+  });
+  return newArray;
 }
 
-// const newArray = map2([1, 2, 3, 4], item => item * 3);
-
-
-// console.log(newArray);
+console.log(map([1, 2, 3], function (number) { return number * 3 }));
 
 /*
   03
