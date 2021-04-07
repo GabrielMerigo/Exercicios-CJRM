@@ -63,13 +63,13 @@
   curso, onde falaremos sobre TDD. Vá se aquecendo =)
 */
 
-// function map2(array, callback){
-//   return array.forEach(callback)
-// }
+function map2(array, callback){
+  return array.forEach(callback)
+}
 
-// const newArray = map2([1, 2, 3, 4], item => item * 3);
+const newArray = map2([1, 2, 3, 4], item => item * 3);
 
-// console.log(newArray);
+console.log(newArray);
 
 /*
   03
@@ -167,7 +167,7 @@ const convertToHex = color => {
 const showMessage = (color, colorHexa) => {
   return console.log(`O hexadecimal para a cor ${color} é ${colorHexa}`);
 }
-convertToHex('verde')
+// convertToHex('verde')
 
 
 /*
