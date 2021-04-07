@@ -16,12 +16,15 @@
 const getPokemon = (url, callback) => {
   const request = new XMLHttpRequest();
   request.addEventListener('readystatechange', () => {
-    if (request.readyState === 4 && request.status === 200) {
+    const requestIsOK = request.readyState === 4 && request.status === 200;
+    const isRequestNotOK = request.readyState === 4;
+
+    if (requestIsOK) {
       callback(request.responseText, null)
       return
     }
 
-    if (request.readyState === 4) {
+    if (isRequestNotOK) {
       callback(null, 'Não foi possível obter o seu pokemon.')
     }
   })
@@ -30,27 +33,27 @@ const getPokemon = (url, callback) => {
   request.send()
 }
 
-getPokemon('https://pokeapi.co/api/v2/pokemon/bulbasaur', (data, erro) => {
-  if (data) {
-    const pokemonName = JSON.parse(data).name;
-    console.log(`Pokémon obtido: ${pokemonName}`);
+const logPokemom = (data, erro) => {
+  const pokemonName = JSON.parse(data).name;
+  if (erro) {
+    return console.log(erro);
   }
-  getPokemon('https://pokeapi.co/api/v2/pokemon/charmander', (data, erro) => {
-    if (data) {
-      const pokemonName = JSON.parse(data).name;
-      console.log(`Pokémon obtido: ${pokemonName}`);
-    }
-    getPokemon('https://pokeapi.co/api/v2/pokemon/squirtle', (data, erro) => {
-      if (data) {
-        const pokemonName = JSON.parse(data).name;
-        return console.log(`Pokémon obtido: ${pokemonName}`);
-      }
+  console.log(`Pokémon obtido: ${pokemonName}`);
+}
+
+const getPokemonURL = id => `https://pokeapi.co/api/v2/pokemon/${id}`
+
+getPokemon(getPokemonURL('bulbasaur'), (data, erro) => {
+  logPokemom(data, erro)
+  
+  getPokemon(getPokemonURL('charmander'), (data, erro) => {
+    logPokemom(data, erro)
+    
+    getPokemon(getPokemonURL('squirtle'), (data, erro) => {
+      logPokemom(data, erro)
+
     })
   })
-
-  if (erro) {
-    console.log(erro);
-  }
 })
 
 /*
