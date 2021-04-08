@@ -193,6 +193,37 @@ const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
 // }
 // convertToHex('verde')
 
+const convertToHex = color => {
+  const colors = {
+    red: '#fc0330',
+    blue: '#0303fc',
+    green: '#03fc90',
+    yellow: '#fff700',
+    purple: '#c300ff'
+  }
+  
+  return colors[color] 
+    ? `O hexadecimal para a cor ${color} é ${colors[color]}`
+    : `Não temos o equivalente hexadecimal para ${color}`
+}
+
+const newColors = [
+  'blue',
+  'red',
+  'green',
+  'purple',
+  'yellow',
+  'black',
+  'pink',
+  'brown'
+]
+
+newColors.forEach(item => console.log(convertToHex(item)))
+
+// for(let i = 0; i < newColors.length; i++){
+//   console.log(convertToHex(newColors[i]));
+// }
+
 
 /*
   07
