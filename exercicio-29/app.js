@@ -218,7 +218,9 @@ const newColors = [
   'brown'
 ]
 
-newColors.forEach(item => console.log(convertToHex(item)))
+const logColorMessage = item => console.log(convertToHex(item));
+
+newColors.forEach(logColorMessage)
 
 // for(let i = 0; i < newColors.length; i++){
 //   console.log(convertToHex(newColors[i]));
