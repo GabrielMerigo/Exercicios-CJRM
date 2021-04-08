@@ -46,6 +46,18 @@ const getUser = url => new Promise((resolve, reject) => {
   - Se o operador não for válido, retorne a mensagem "Operação inválida."
 */
 
+// const calculator = signal => {
+//   let sinal = signal;
+//   const seconfFunction = () => {
+//     let expression = `4 ${sinal} 4`
+//     return 
+//   }
+
+//   return seconfFunction()
+// }
+
+// calculator()
+
 /*
   03
 
