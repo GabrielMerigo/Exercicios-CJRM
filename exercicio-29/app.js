@@ -78,15 +78,22 @@
   curso, onde falaremos sobre TDD. Vá se aquecendo =)
 */
 
+
+
 const map = (array, callback) => {
   let newArray = [];
-  array.forEach(item => {
-    newArray.push(callback(item))
-  });
+
+  const addItemInArray = item => {
+    const newItem = callback(item); 
+    newArray.push(newItem)
+  }
+
+  array.forEach(addItemInArray)
   return newArray;
 }
 
-console.log(map([1, 2, 3], function (number) { return number * 3 }));
+
+// console.log(map([1, 10, 3], function (number) { return number * 3 }));
 
 /*
   03
