@@ -118,12 +118,12 @@ const person = {
     delas.
 */
 
-const x = 'x'
-console.log(x);
-{
-  const x = 'y'
-  console.log(x);
-}
+// const x = 'x'
+// console.log(x);
+// {
+//   const x = 'y'
+//   console.log(x);
+// }
 
 /*
   05
@@ -131,8 +131,8 @@ console.log(x);
   - O código abaixo está funcionando. Refatore-o da forma mais concisa que você 
     conseguir.
 */
-const obj = { firstName: 'Afonso', lastName: 'Solano' };
-const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
+// const obj = { firstName: 'Afonso', lastName: 'Solano' };
+// const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
 
 // console.log(getFullName(obj))
 
@@ -218,9 +218,9 @@ const newColors = [
   'brown'
 ]
 
-const logColorMessage = item => console.log(convertToHex(item));
+// const logColorMessage = item => console.log(convertToHex(item));
 
-newColors.forEach(logColorMessage)
+// newColors.forEach(logColorMessage)
 
 // for(let i = 0; i < newColors.length; i++){
 //   console.log(convertToHex(newColors[i]));
@@ -250,16 +250,10 @@ const people = [
   { id: 9, name: 'Gabriel', age: 20, federativeUnit: 'São Paulo' },
   { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
 ]
-let obj3 = {};
-people.map((item, index) => obj3[index] = item);
-let i = 18;
 
-// console.log({ age } = obj3);
+const agesFrequency = people.reduce((acc, person) => {
+  acc[person.age] = 1
+  return acc
+}, {})
 
-const objectfy = {
-  [i]: obj3.age === 18,
-  // [i++]: person.age === 19,
-  // [i++]: person.age === 20
-}
-
-// console.log(objectfy);
+console.log(agesFrequency);
