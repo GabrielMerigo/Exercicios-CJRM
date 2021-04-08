@@ -158,39 +158,39 @@ const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
   roxo: #c300ff;
 */
 
-let colorHexa = '';
-const convertToHex = color => {
-  if (color === 'vermelho') {
-    colorHexa = '#fc0330';
-    return showMessage(color, colorHexa)
-  }
+// let colorHexa = '';
+// const convertToHex = color => {
+//   if (color === 'vermelho') {
+//     colorHexa = '#fc0330';
+//     return showMessage(color, colorHexa)
+//   }
 
-  if (color === 'azul') {
-    colorHexa = '#0303fc'
-    return showMessage(color, colorHexa)
-  }
+//   if (color === 'azul') {
+//     colorHexa = '#0303fc'
+//     return showMessage(color, colorHexa)
+//   }
 
-  if (color === 'verde') {
-    colorHexa = '#03fc90'
-    return showMessage(color, colorHexa)
-  }
+//   if (color === 'verde') {
+//     colorHexa = '#03fc90'
+//     return showMessage(color, colorHexa)
+//   }
 
-  if (color === 'amarelo') {
-    colorHexa = '#fff700'
-    return showMessage(color, colorHexa)
-  }
+//   if (color === 'amarelo') {
+//     colorHexa = '#fff700'
+//     return showMessage(color, colorHexa)
+//   }
 
-  if (color === 'roxo') {
-    colorHexa = '#c300ff'
-    return showMessage(color, colorHexa)
-  }
+//   if (color === 'roxo') {
+//     colorHexa = '#c300ff'
+//     return showMessage(color, colorHexa)
+//   }
 
-  console.log(`Não temos o equivalente hexadecimal para ${color}`);
-}
+//   console.log(`Não temos o equivalente hexadecimal para ${color}`);
+// }
 
-const showMessage = (color, colorHexa) => {
-  return console.log(`O hexadecimal para a cor ${color} é ${colorHexa}`);
-}
+// const showMessage = (color, colorHexa) => {
+//   return console.log(`O hexadecimal para a cor ${color} é ${colorHexa}`);
+// }
 // convertToHex('verde')
 
 
