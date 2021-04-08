@@ -84,7 +84,7 @@ const map = (array, callback) => {
   let newArray = [];
 
   const addItemInArray = item => {
-    const newItem = callback(item); 
+    const newItem = callback(item);
     newArray.push(newItem)
   }
 
@@ -104,7 +104,7 @@ const map = (array, callback) => {
 
 const person = {
   name: 'Roger',
-  getName () { return this.name }
+  getName() { return this.name }
 }
 
 // console.log(person.getName())
@@ -201,8 +201,8 @@ const convertToHex = color => {
     yellow: '#fff700',
     purple: '#c300ff'
   }
-  
-  return colors[color] 
+
+  return colors[color]
     ? `O hexadecimal para a cor ${color} é ${colors[color]}`
     : `Não temos o equivalente hexadecimal para ${color}`
 }
@@ -251,9 +251,13 @@ const people = [
   { id: 73, name: 'Aline', age: 19, federativeUnit: 'Brasília' }
 ]
 
-const agesFrequency = people.reduce((acc, person) => {
-  acc[person.age] = 1
+
+
+const createOrIncrementAgeFrequency = (acc, { age }) => {
+  acc[age] = acc[age] + 1 || 1
   return acc
-}, {})
+}
+
+const agesFrequency = people.reduce(createOrIncrementAgeFrequency, {})
 
 console.log(agesFrequency);
