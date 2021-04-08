@@ -102,10 +102,10 @@ const map = (array, callback) => {
     objeto person.
 */
 
-// const person = {
-//   name: 'Roger',
-//   getName () { return this.name }
-// }
+const person = {
+  name: 'Roger',
+  getName () { return this.name }
+}
 
 // console.log(person.getName())
 
@@ -118,12 +118,12 @@ const map = (array, callback) => {
     delas.
 */
 
-// const x = 'x'
-// console.log(x);
-// {
-//   const x = 'y'
-//   console.log(x);
-// }
+const x = 'x'
+console.log(x);
+{
+  const x = 'y'
+  console.log(x);
+}
 
 /*
   05
