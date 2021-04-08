@@ -72,6 +72,9 @@ const getUser = url => new Promise((resolve, reject) => {
     pegando do array `brasil`. Não remova esses itens de `brasil`.
 */
 
+const sul = ['Rio Grande do Sul', 'Paraná', 'Santa Catarina']
+
+
 /*
   04
 
