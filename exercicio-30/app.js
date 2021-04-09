@@ -79,15 +79,13 @@ const sudeste =
     'Rio de Janeiro',
     'São Paulo'
   ];
-  
-  sudeste.unshift('Amapá', 'Amazonas', 'Tocantins')
+
+sudeste.unshift('Amapá', 'Amazonas', 'Tocantins')
 const brasil = sul.concat(sudeste)
 brasil.shift()
 
 const newSul = brasil.splice(0, 2);
 // console.log(newSul);
-
-
 
 /*
   04
@@ -108,8 +106,31 @@ const newSul = brasil.splice(0, 2);
     every.
 */
 
-const nordeste = []
+const nordeste = [
+  'Maranhão',
+  'Piauí',
+  'Ceará',
+  'Rio Grande do Norte',
+  'Paraíba',
+  'Pernambuco',
+  'Alagoas',
+  'Sergipe'
+]
 
+const newSudeste = brasil.splice(3,);
+
+nordeste.forEach(estado => {
+  brasil.push(estado);
+})
+
+const statesGreaterThanSevenLetters = brasil
+  .every(estado => estado.length >= 7);
+
+const condition = statesGreaterThanSevenLetters 
+  ? 'Sim, todos os estados tem mais de 7 letras.'
+  : 'Nem todos os estados tem mais de 7 letras.';
+
+// console.log(condition);
 /*
   05
 
@@ -123,3 +144,7 @@ const nordeste = []
   - Filtre o array criado acima, retornando somente os estados que tiverem ID
     par. Atribua este novo array à uma constante.
 */
+
+const cearaIsIncluded = brasil.includes('Ceará') 
+  ? 'Ceará está incluído.' 
+  : 'Ceará não foi incluído =/'
