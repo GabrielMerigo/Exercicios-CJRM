@@ -83,13 +83,10 @@ const sudeste =
   sudeste.unshift('Amapá', 'Amazonas', 'Tocantins')
 const brasil = sul.concat(sudeste)
 brasil.shift()
-console.log(brasil);
 
-// const newSul = brasil.filter(state => {
-  
-// })
-
+const newSul = brasil.splice(0, 2);
 // console.log(newSul);
+
 
 
 /*
@@ -110,6 +107,8 @@ console.log(brasil);
     console: "Nem todos os estados tem mais de 7 letras.". Pesquise pelo método
     every.
 */
+
+const nordeste = []
 
 /*
   05
