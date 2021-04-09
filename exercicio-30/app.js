@@ -72,7 +72,24 @@ const getUser = url => new Promise((resolve, reject) => {
     pegando do array `brasil`. Não remova esses itens de `brasil`.
 */
 
-const sul = ['Rio Grande do Sul', 'Paraná', 'Santa Catarina']
+const sul = ['Rio Grande do Sul', 'Paraná', 'Santa Catarina'];
+const sudeste =
+  ['Espírito Santo',
+    'Minas Gerais',
+    'Rio de Janeiro',
+    'São Paulo'
+  ];
+  
+  sudeste.unshift('Amapá', 'Amazonas', 'Tocantins')
+const brasil = sul.concat(sudeste)
+brasil.shift()
+console.log(brasil);
+
+// const newSul = brasil.filter(state => {
+  
+// })
+
+// console.log(newSul);
 
 
 /*
