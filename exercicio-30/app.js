@@ -178,8 +178,6 @@ const addOneNumberAndAddSentence = newBrasil.map(({ id, estado }) => {
   return { id: id + 1, estado: `${estado} pertence ao Brasil.` }
 })
 
-// console.log(addOneNumberAndAddSentence);
-
 const statesWithEvenId = addOneNumberAndAddSentence
   .filter(({ id }) => id % 2 === 0)
 
