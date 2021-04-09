@@ -119,14 +119,16 @@ const nordeste = [
 
 const newSudeste = brasil.splice(3,);
 
-nordeste.forEach(estado => {
-  brasil.push(estado);
-})
+const newBrasil = brasil.map((estado, index) => {
+  return `id: ${index} | estado: ${estado}`
+});
+
+console.log(newBrasil);
 
 const statesGreaterThanSevenLetters = brasil
   .every(estado => estado.length >= 7);
 
-const condition = statesGreaterThanSevenLetters 
+const condition = statesGreaterThanSevenLetters
   ? 'Sim, todos os estados tem mais de 7 letras.'
   : 'Nem todos os estados tem mais de 7 letras.';
 
@@ -145,6 +147,8 @@ const condition = statesGreaterThanSevenLetters
     par. Atribua este novo array à uma constante.
 */
 
-const cearaIsIncluded = brasil.includes('Ceará') 
-  ? 'Ceará está incluído.' 
+const cearaIsIncluded = brasil.includes('Ceará')
+  ? 'Ceará está incluído.'
   : 'Ceará não foi incluído =/'
+
+newBrasil
