@@ -49,11 +49,10 @@ const getUser = url => new Promise((resolve, reject) => {
   - Se o operador não for válido, retorne a mensagem "Operação inválida."
 */
 
-const getOperation = (num1, operator, num2, operation) => 
+const getOperation = (num1, operator, num2, operation) =>
   `Resultado da operação: ${num1} ${operator} ${num2} = ${operation}.`;
 
 const calculator = operator => (num1, num2) => {
-
   const operations = {
     '+': getOperation(num1, operator, num2, num1 + num2),
     '-': getOperation(num1, operator, num2, num1 - num2),
@@ -62,12 +61,12 @@ const calculator = operator => (num1, num2) => {
     '%': getOperation(num1, operator, num2, num1 % num2)
   }
 
-  return operations[operator] || `Operação inválida.`
+  return operations[operator] || 'Operação Inválida.'
 }
 
 const operation = calculator('+');
 
-console.log(operation(7, 3));
+// console.log(operation(7, 3));
 
 /*
   03
@@ -84,19 +83,20 @@ console.log(operation(7, 3));
 */
 
 const sul = ['Rio Grande do Sul', 'Paraná', 'Santa Catarina'];
-const sudeste =
-  ['Espírito Santo',
-    'Minas Gerais',
-    'Rio de Janeiro',
-    'São Paulo'
-  ];
+const sudeste = [
+  'Espírito Santo',
+  'Minas Gerais',
+  'Rio de Janeiro',
+  'São Paulo'
+];
 
-sudeste.unshift('Amapá', 'Amazonas', 'Tocantins')
 const brasil = sul.concat(sudeste)
+brasil.unshift('Amapá', 'Amazonas', 'Tocantins')
 brasil.shift()
+const newSul = brasil.slice(2, 5);
 
-const newSul = brasil.splice(0, 2);
-// console.log(newSul);
+
+console.log(newSul);
 
 /*
   04
