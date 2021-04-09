@@ -31,9 +31,9 @@ const getUser = url => new Promise((resolve, reject) => {
   request.send()
 })
 
-getUser('https://jsonplaceholder.typicode.com/users')
-  .then(user => console.log(user))
-  .catch(error => console.log(error))
+// getUser('https://jsonplaceholder.typicode.com/users')
+//   .then(console.log)
+//   .catch(console.log)
 
 /*
   02
@@ -49,17 +49,26 @@ getUser('https://jsonplaceholder.typicode.com/users')
   - Se o operador não for válido, retorne a mensagem "Operação inválida."
 */
 
-// const calculator = signal => {
-//   let sinal = signal;
-//   const seconfFunction = () => {
-//     let expression = `4 ${sinal} 4`
-//     return 
-//   }
+const getOperation = (num1, operator, num2, operation) => 
+  `Resultado da operação: ${num1} ${operator} ${num2} = ${operation}.`;
 
-//   return seconfFunction()
-// }
 
-// calculator()
+const calculator = operator => (num1, num2) => {
+
+  const operations = {
+    '+': getOperation(num1, operator, num2, num1 + num2),
+    '-': getOperation(num1, operator, num2, num1 - num2),
+    '*': getOperation(num1, operator, num2, num1 * num2),
+    '/': getOperation(num1, operator, num2, num1 / num2),
+    '%': getOperation(num1, operator, num2, num1 % num2)
+  }
+
+  return operations[operator] || `Operação inválida.`
+}
+
+const sum = calculator('+');
+
+console.log(sum(7, 3));
 
 /*
   03
@@ -154,13 +163,13 @@ const cearaIsIncluded = brasil.includes('Ceará')
   ? 'Ceará está incluído.'
   : 'Ceará não foi incluído =/'
 
-const addOneNumberAndAddSentence = newBrasil.map(({id, estado}) => {
-  return { id: id + 1, estado: `${estado} pertence ao Brasil.`}
+const addOneNumberAndAddSentence = newBrasil.map(({ id, estado }) => {
+  return { id: id + 1, estado: `${estado} pertence ao Brasil.` }
 })
 
-console.log(addOneNumberAndAddSentence);
+// console.log(addOneNumberAndAddSentence);
 
 const statesWithEvenId = addOneNumberAndAddSentence
   .filter(({ id }) => id % 2 === 0)
 
-console.log(statesWithEvenId)
+// console.log(statesWithEvenId)
