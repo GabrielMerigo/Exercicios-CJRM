@@ -52,7 +52,6 @@ const getUser = url => new Promise((resolve, reject) => {
 const getOperation = (num1, operator, num2, operation) => 
   `Resultado da operação: ${num1} ${operator} ${num2} = ${operation}.`;
 
-
 const calculator = operator => (num1, num2) => {
 
   const operations = {
@@ -66,9 +65,9 @@ const calculator = operator => (num1, num2) => {
   return operations[operator] || `Operação inválida.`
 }
 
-const sum = calculator('+');
+const operation = calculator('+');
 
-console.log(sum(7, 3));
+console.log(operation(7, 3));
 
 /*
   03
