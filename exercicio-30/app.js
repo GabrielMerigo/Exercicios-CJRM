@@ -90,13 +90,11 @@ const sudeste = [
   'São Paulo'
 ];
 
-const brasil = sul.concat(sudeste)
+let brasil = sul.concat(sudeste)
 brasil.unshift('Amapá', 'Amazonas', 'Tocantins')
 brasil.shift()
 const newSul = brasil.slice(2, 5);
 
-
-console.log(newSul);
 
 /*
   04
@@ -128,13 +126,12 @@ const nordeste = [
   'Sergipe'
 ]
 
-// const newSudeste = brasil.splice(3,);
+const newSudeste = brasil.splice(5,);
+brasil = brasil.concat(nordeste)
 
-const newBrasil = brasil.map((estado, index) => {
-  return { id: index, estado }
-});
+const newBrasil = brasil.map((estado, index) => ({ id: index, estado }))
 
-// console.log(newBrasil);
+console.log(newBrasil);
 
 const statesGreaterThanSevenLetters = brasil
   .every(estado => estado.length >= 7);
