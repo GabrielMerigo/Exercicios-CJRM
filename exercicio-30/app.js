@@ -141,6 +141,21 @@ const condition = statesGreaterThanSevenLetters
   : 'Nem todos os estados tem mais de 7 letras.';
 
 // console.log(condition);
+// const map = (array, callback) => {
+//   let newArray = [];
+
+//   array.forEach(item => {
+//     newArray.push(callback(item))
+//   })
+
+//   return newArray;
+// }
+
+// console.log(map([1, 2, 3], item => item * 10));
+
+
+
+
 /*
   05
 
