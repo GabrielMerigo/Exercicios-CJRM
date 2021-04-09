@@ -13,12 +13,15 @@ const request = new XMLHttpRequest();
 const getUser = url => new Promise((resolve, reject) => {
 
   request.addEventListener('readystatechange', data => {
-    if (request.readyState === 4 && request.status === 200) {
+    const isRequestOK = request.readyState === 4 && request.status === 200;
+    const isRequestNotOK = request.readyState === 4;
+
+    if (isRequestOK) {
       const data = JSON.parse(request.responseText)
       resolve(data)
     }
 
-    if (request.readyState === 4) {
+    if (isRequestNotOK) {
       reject('Não foi possível obter os dados dos usuários.')
     }
 
@@ -28,9 +31,9 @@ const getUser = url => new Promise((resolve, reject) => {
   request.send()
 })
 
-// getUser('https://jsonplaceholder.typicode.com/users')
-//   .then(user => console.log(user))
-//   .catch(error => console.log(error))
+getUser('https://jsonplaceholder.typicode.com/users')
+  .then(user => console.log(user))
+  .catch(error => console.log(error))
 
 /*
   02
@@ -117,13 +120,13 @@ const nordeste = [
   'Sergipe'
 ]
 
-const newSudeste = brasil.splice(3,);
+// const newSudeste = brasil.splice(3,);
 
 const newBrasil = brasil.map((estado, index) => {
-  return `id: ${index} | estado: ${estado}`
+  return { id: index, estado }
 });
 
-console.log(newBrasil);
+// console.log(newBrasil);
 
 const statesGreaterThanSevenLetters = brasil
   .every(estado => estado.length >= 7);
@@ -151,4 +154,13 @@ const cearaIsIncluded = brasil.includes('Ceará')
   ? 'Ceará está incluído.'
   : 'Ceará não foi incluído =/'
 
-newBrasil
+const addOneNumberAndAddSentence = newBrasil.map(({id, estado}) => {
+  return { id: id + 1, estado: `${estado} pertence ao Brasil.`}
+})
+
+console.log(addOneNumberAndAddSentence);
+
+const statesWithEvenId = addOneNumberAndAddSentence
+  .filter(({ id }) => id % 2 === 0)
+
+console.log(statesWithEvenId)
