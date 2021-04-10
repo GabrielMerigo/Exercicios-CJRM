@@ -77,7 +77,12 @@ const myNameWithLetterP = syllablesMyName
 */
 
 const firstName = 'Gabriel';
-console.log();
+const splitName = firstName.split('')
+
+// const iteracao = splitName.forEach((letter, index) => {
+//   console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
+// });
+
 
 /*
   05
