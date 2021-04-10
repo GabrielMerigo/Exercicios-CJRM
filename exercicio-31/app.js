@@ -135,19 +135,10 @@ const obj = {
 
 const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
 
-const valueInArray = (array, value) => {
-  const newArray = array.reduce((acc, number) => {
-    if (value === number) {
-      acc++
-    }
+const valueInArray = (array, value) => 
+  array.reduce((acc, number) => value === number ? acc + 1 : acc, 0)
 
-    return acc
-  }, 0)
-
-  return newArray
-}
-
-// console.log(valueInArray(scores, 60))
+console.log(valueInArray(scores, 60))
 /*
   07
 
