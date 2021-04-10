@@ -69,8 +69,8 @@ const name2 = ['ga', 'bri', 'el'];
 const getNameInPLanguage = arrayName => 
   arrayName.reduce((acc, syllable) => acc + `P${syllable}`, '')
 
-console.log(getNameInPLanguage(syllablesMyName));
-console.log(getNameInPLanguage(name2));
+// console.log(getNameInPLanguage(syllablesMyName));
+// console.log(getNameInPLanguage(name2));
 /*
   04
 
@@ -89,9 +89,15 @@ console.log(getNameInPLanguage(name2));
 const firstName = 'Gabriel';
 const splitName = firstName.split('')
 
-// const iteracao = splitName.forEach((letter, index) => {
-//   console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
-// });
+const logSplittedName = name => {
+  name.forEach((letter, index) => {
+    console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
+  });
+}
+logSplittedName(splitName)
+
+
+
 
 
 /*
