@@ -12,11 +12,11 @@ const getUserGithub = async userName => {
   return response.json();
 }
 
-const logMyUserGithub = async userName => 
+const logMyUserGithub = async userName =>
   console.log(await getUserGithub(userName));
 
-
 logMyUserGithub('GabrielMerigo')
+
 
 
 /*
@@ -29,15 +29,19 @@ logMyUserGithub('GabrielMerigo')
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-const newNumbers = numbers.reduce((acc, number) => {
-  const condition = number % 3 === 0 || number % 2 === 0;
-  if (condition) {
-    acc++
-  }
-  return acc
-}, 0)
+// const newNumbers = numbers.reduce((acc, number) => {
+//   const condition = number % 3 === 0 || number % 2 === 0;
+//   if (condition) {
+//     acc++
+//   }
+//   return acc
+// }, 0)
 
-// console.log(newNumbers);
+const newNumbers = numbers
+  .filter(number => number % 2 === 0 || number % 3 === 0)
+
+
+console.log(newNumbers);
 
 /*
   03
