@@ -32,7 +32,7 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const newNumbers = numbers.reduce((acc, number) => {
   const condition = number % 3 === 0 || number % 2 === 0;
-  if(condition){
+  if (condition) {
     acc++
   }
   return acc
@@ -54,10 +54,10 @@ const newNumbers = numbers.reduce((acc, number) => {
     - Rafaela => "PRaPfaPePla".
 */
 
-const syllablesMyName = ['Ga','Bri','El'];
+const syllablesMyName = ['Ga', 'Bri', 'El'];
 const myNameWithLetterP = syllablesMyName
   .join('P')
-  .replace('Ga','PGa')
+  .replace('Ga', 'PGa')
 
 // console.log(myNameWithLetterP);
 
@@ -98,10 +98,12 @@ const splitName = firstName.split('')
 */
 
 const obj = {
-  name: 'Gabriel',
-  lastname: 'Merigo',
-  age: 17
+  name: String,
+  lastname: String,
+  age: Number
 }
+
+// console.log(Object.keys(obj));
 
 /*
   06
@@ -118,6 +120,19 @@ const obj = {
 
 const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
 
+const valueInArray = (array, value) => {
+  const newArray = array.reduce((acc, number) => {
+    if (value === number) {
+      acc++
+    }
+
+    return acc
+  }, 0)
+
+  return newArray
+}
+
+// console.log(valueInArray(scores, 60))
 /*
   07
 
@@ -141,5 +156,19 @@ const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
   Dica: lembre-se que o método filter inclui o item em questão no novo array 
   que está sendo gerado **apenas** se a função retorna um valor truthy.
 */
+
+const filter = (array, callback) => {
+  let newArray = []
+  array.forEach(item => {
+    newArray.push(callback(item))
+  });
+
+  return newArray
+}
+
+console.log(filter([1, 2, 3], item => item > 2));
+
+
+
 
 
