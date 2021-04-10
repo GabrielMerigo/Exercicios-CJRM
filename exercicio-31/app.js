@@ -163,29 +163,43 @@ const valueInArray = (array, value) =>
   que está sendo gerado **apenas** se a função retorna um valor truthy.
 */
 
-const filter = (array, callback) => {
-  let newArray = []
-  
-  const insertInArray = (number, index) => {
-    const itemVaiSerAdicionado = callback(number, index, array);
+// const filter = (array, callback) => {
+//   let newArray = []
 
-    if (itemVaiSerAdicionado) {
+//   const insertInArray = (number, index) => {
+//     const itemVaiSerAdicionado = callback(number, index, array);
+
+//     if (itemVaiSerAdicionado) {
+//       newArray.push(number)
+//     }
+//   }
+
+//   array.forEach(insertInArray)
+
+//   return newArray
+// }
+
+const filter = (array, callback) => {
+  let newArray = [];
+
+  const insertValueInArray = (number, index) => {
+    const isValueTruthy = callback(number, index, array);
+    if(isValueTruthy){
       newArray.push(number)
     }
   }
-
-  array.forEach(insertInArray)
-
+  
+  array.forEach(insertValueInArray)
   return newArray
 }
 
 
 console.log(filter([0, 1, 2, 3], item => item))
-console.log(filter([0, 3], item => item))
-console.log(filter([0, 1, 2, 3], item => item < 2))
-console.log(filter([1, 2, 3, 5], (item, index) => index + 1 === item))
-console.log(filter([1, 2, 3, 1, 2, 5], (item, index, array) =>
-  index === array.indexOf(item)))
+// console.log(filter([0, 3], item => item))
+// console.log(filter([0, 1, 2, 3], item => item < 2))
+// console.log(filter([1, 2, 3, 5], (item, index) => index + 1 === item))
+// console.log(filter([1, 2, 3, 1, 2, 5], (item, index, array) =>
+//   index === array.indexOf(item)))
 
 
 
