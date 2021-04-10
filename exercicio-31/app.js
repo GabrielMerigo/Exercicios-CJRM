@@ -15,7 +15,7 @@ const getUserGithub = async userName => {
 const logMyUserGithub = async userName =>
   console.log(await getUserGithub(userName));
 
-logMyUserGithub('GabrielMerigo')
+// logMyUserGithub('GabrielMerigo')
 
 
 
@@ -37,11 +37,14 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 //   return acc
 // }, 0)
 
-const newNumbers = numbers
-  .filter(number => number % 2 === 0 || number % 3 === 0)
+const getDivisibleBy2Or3 = numbers =>
+  numbers.filter(number => number % 2 === 0 || number % 3 === 0)
+
+//  console.log(getDivisibleBy2Or3(numbers));
 
 
-console.log(newNumbers);
+
+
 
 /*
   03
@@ -54,16 +57,20 @@ console.log(newNumbers);
   - Exemplos de nomes na "língua do 'P'":
     - Roger => "PRoPger";
     - Natália => "PNaPtáPlia";
-    - Rafaela => "PRaPfaPePla".
+    - Rafaela => "PRaPfaPePla". 
 */
 
-const syllablesMyName = ['Ga', 'Bri', 'El'];
-const myNameWithLetterP = syllablesMyName
-  .join('P')
-  .replace('Ga', 'PGa')
+const syllablesMyName = ['Ra', 'fa', 'ela'];
+const name2 = ['ga', 'bri', 'el'];
+// const myNameWithLetterP = syllablesMyName
+//   .join('P')
+//   .replace('Ga', 'PGa')
 
-// console.log(myNameWithLetterP);
+const getNameInPLanguage = arrayName => 
+  arrayName.reduce((acc, syllable) => acc + `P${syllable}`, '')
 
+console.log(getNameInPLanguage(syllablesMyName));
+console.log(getNameInPLanguage(name2));
 /*
   04
 
