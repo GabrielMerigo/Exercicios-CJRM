@@ -54,7 +54,12 @@ const newNumbers = numbers.reduce((acc, number) => {
     - Rafaela => "PRaPfaPePla".
 */
 
-const syllablesMyName
+const syllablesMyName = ['Ga','Bri','El'];
+const myNameWithLetterP = syllablesMyName
+  .join('P')
+  .replace('Ga','PGa')
+
+// console.log(myNameWithLetterP);
 
 /*
   04
@@ -70,6 +75,9 @@ const syllablesMyName
 
   Dica: pesquise pelo método split.
 */
+
+const firstName = 'Gabriel';
+console.log();
 
 /*
   05
