@@ -93,7 +93,7 @@ const logSplittedName = name => name.forEach((letter, index) => {
     console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
 });
 
-logSplittedName(splitName)
+// logSplittedName(splitName)
 
 
 
@@ -138,7 +138,7 @@ const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
 const valueInArray = (array, value) => 
   array.reduce((acc, number) => value === number ? acc + 1 : acc, 0)
 
-console.log(valueInArray(scores, 60))
+// console.log(valueInArray(scores, 60))
 /*
   07
 
@@ -164,15 +164,16 @@ console.log(valueInArray(scores, 60))
 */
 
 const filter = (array, callback) => {
-  let newArray = []
-  array.forEach(item => {
-    newArray.push(callback(item))
-  });
+  let newArray = [];
+  array.forEach(number => number ? newArray.push(callback(number)) : newArray)
+
 
   return newArray
 }
 
-console.log(filter([1, 2, 3], item => item > 2));
+console.log(filter([0 ,1, 2, 3], item => item))
+console.log(filter([0, 3], item => item))
+console.log(filter([0, 3], item => item < 2))
 
 
 
