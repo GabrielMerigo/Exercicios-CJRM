@@ -97,6 +97,12 @@ const splitName = firstName.split('')
   Dica: pesquise pelo método Object.keys().
 */
 
+const obj = {
+  name: 'Gabriel',
+  lastname: 'Merigo',
+  age: 17
+}
+
 /*
   06
 
