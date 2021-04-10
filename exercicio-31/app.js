@@ -54,6 +54,8 @@ const newNumbers = numbers.reduce((acc, number) => {
     - Rafaela => "PRaPfaPePla".
 */
 
+const syllablesMyName
+
 /*
   04
 
