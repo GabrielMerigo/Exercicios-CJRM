@@ -89,11 +89,10 @@ const getNameInPLanguage = arrayName =>
 const firstName = 'Gabriel';
 const splitName = firstName.split('')
 
-const logSplittedName = name => {
-  name.forEach((letter, index) => {
+const logSplittedName = name => name.forEach((letter, index) => {
     console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
-  });
-}
+});
+
 logSplittedName(splitName)
 
 
