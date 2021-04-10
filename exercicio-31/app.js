@@ -28,7 +28,17 @@ const logMyUserGithub = async () => {
   - Exiba esse novo array no console.
 */
 
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const newNumbers = numbers.reduce((acc, number) => {
+  const condition = number % 3 === 0 || number % 2 === 0;
+  if(condition){
+    acc++
+  }
+  return acc
+}, 0)
+
+// console.log(newNumbers);
 
 /*
   03
