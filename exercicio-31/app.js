@@ -66,7 +66,7 @@ const name2 = ['ga', 'bri', 'el'];
 //   .join('P')
 //   .replace('Ga', 'PGa')
 
-const getNameInPLanguage = arrayName => 
+const getNameInPLanguage = arrayName =>
   arrayName.reduce((acc, syllable) => acc + `P${syllable}`, '')
 
 // console.log(getNameInPLanguage(syllablesMyName));
@@ -90,7 +90,7 @@ const firstName = 'Gabriel';
 const splitName = firstName.split('')
 
 const logSplittedName = name => name.forEach((letter, index) => {
-    console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
+  console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
 });
 
 // logSplittedName(splitName)
@@ -135,7 +135,7 @@ const obj = {
 
 const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
 
-const valueInArray = (array, value) => 
+const valueInArray = (array, value) =>
   array.reduce((acc, number) => value === number ? acc + 1 : acc, 0)
 
 // console.log(valueInArray(scores, 60))
@@ -164,16 +164,30 @@ const valueInArray = (array, value) =>
 */
 
 const filter = (array, callback) => {
-  let newArray = [];
-  array.forEach(number => number ? newArray.push(callback(number)) : newArray)
+  let newArray = []
+  
+  const insertInArray = (number, index) => {
+    const itemVaiSerAdicionado = callback(number, index, array);
 
+    if (itemVaiSerAdicionado) {
+      newArray.push(number)
+    }
+  }
+
+  array.forEach(insertInArray)
 
   return newArray
 }
 
-console.log(filter([0 ,1, 2, 3], item => item))
+
+console.log(filter([0, 1, 2, 3], item => item))
 console.log(filter([0, 3], item => item))
-console.log(filter([0, 3], item => item < 2))
+console.log(filter([0, 1, 2, 3], item => item < 2))
+console.log(filter([1, 2, 3, 5], (item, index) => index + 1 === item))
+console.log(filter([1, 2, 3, 1, 2, 5], (item, index, array) =>
+  index === array.indexOf(item)))
+
+
 
 
 
