@@ -15,8 +15,10 @@
     - Clique no código da API key para copiá-la;
   - O submit do form deve ser feito para o endpoint abaixo. Atente-se para os 2
     [PLACEHOLDERS] que devem ser substituídos:
-    - https://api.giphy.com/v1/gifs/search?api_key=[SUA_CHAVE_DA_API_AQUI]&limit=1&q=[VALOR_INSERIDO_NO_INPUT]
+    - https://api.giphy.com/v1/gifs/search?api_key=OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q=[VALOR_INSERIDO_NO_INPUT]
     - Se quiser testar outras possibilidades, os endpoints da API estão 
       listados na documentação: https://developers.giphy.com/docs/api/endpoint#search
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
+
+const input = document.querySelector('#input');

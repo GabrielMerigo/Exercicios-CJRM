@@ -93,6 +93,8 @@ const logSplittedName = name => name.forEach((letter, index) => {
   console.log(`"${letter}" é a ${index + 1}ª letra do meu nome`);
 });
 
+
+
 // logSplittedName(splitName)
 
 
