@@ -31,7 +31,7 @@ const getUrlGif = gifName =>
   `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}=${gifName}`
 
 
-const generateGifImage = async response => {
+const generateGifImage = async (response) => {
   const data = await response.json()
   const url = await data.data[0].images.original.url;
   
