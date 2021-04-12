@@ -26,13 +26,23 @@ const form = document.querySelector('form');
 const divRes = document.querySelector('div');
 
 const getGif = async gif => {
-  const response = await 
-  ( await fetch(`https://api.giphy.com/v1/gifs/search?api_key=OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q=${gif}`)).json()
-  const url = await response.data[0].images.original.url;
-  const img = document.createElement('img');
-  img.src = url;
-
   try {
+    const APIKey = `OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q`;
+    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKey}=${gif}`)
+  
+    if(!response.ok){
+      throw new Error('Não deu')
+    }
+
+    const data = await response.json()
+    const url = await data.data[0].images.original.url;
+    const img = document.createElement('img');
+    img.src = url;
+
+    if(!response.ok){
+      throw new Error('Não foi possível obter os dados...')
+    }
+
     divRes.prepend(img);
   } catch (err) {
     console.log(err.message);
