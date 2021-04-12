@@ -31,18 +31,13 @@ const getGif = async gif => {
     const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKey}=${gif}`)
   
     if(!response.ok){
-      throw new Error('Não deu')
+      throw new Error('Não foi possível obter os dados...')
     }
 
     const data = await response.json()
     const url = await data.data[0].images.original.url;
     const img = document.createElement('img');
     img.src = url;
-
-    if(!response.ok){
-      throw new Error('Não foi possível obter os dados...')
-    }
-
     divRes.prepend(img);
   } catch (err) {
     console.log(err.message);
