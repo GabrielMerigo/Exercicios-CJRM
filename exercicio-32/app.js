@@ -22,25 +22,24 @@
 */
 
 const input = document.querySelector('#search');
-const btnSubmit = document.querySelector('#btnSearch');
 const form = document.querySelector('#form');
 const divRes = document.querySelector('.out');
 
-const getGif = async () => {
-  const response = await fetch('https://api.giphy.com/v1/gifs/search?api_key=OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q=dog')
-  const data = await response.json();
-  const url = data.data[0].images.original;
-  console.log(url);
-// https://media4.giphy.com/media/3o7527pa7qs9kCG78A/giphy.gif
+const getGif = async gif => {
+  const response = await ( await fetch(`https://api.giphy.com/v1/gifs/search?api_key=OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q=${gif}`)).json()
+  const url = await response.data[0].images.original.url;
+  const img = document.createElement('img');
+  img.src = url;
+
   try {
-    divRes.innerHTML = `<img src="">`;
+    divRes.prepend(img);
   } catch (err) {
     console.log(err.message);
   }
 }
 
 form.addEventListener('submit', event => {
-  event.preventDefault()
-  getGif()
-
+  event.preventDefault();
+  const inputValue = input.value;
+  getGif(inputValue);
 })
