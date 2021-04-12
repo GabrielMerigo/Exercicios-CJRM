@@ -21,4 +21,26 @@
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
 
-const input = document.querySelector('#input');
+const input = document.querySelector('#search');
+const btnSubmit = document.querySelector('#btnSearch');
+const form = document.querySelector('#form');
+const divRes = document.querySelector('.out');
+
+const getGif = async () => {
+  const response = await fetch('https://api.giphy.com/v1/gifs/search?api_key=OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q=dog')
+  const data = await response.json();
+  const url = data.data[0].images.original;
+  console.log(url);
+// https://media4.giphy.com/media/3o7527pa7qs9kCG78A/giphy.gif
+  try {
+    divRes.innerHTML = `<img src="">`;
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+form.addEventListener('submit', event => {
+  event.preventDefault()
+  getGif()
+
+})
