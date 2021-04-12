@@ -43,7 +43,11 @@ const generateGifImage = async (response) => {
   divRes.prepend(img);
 }
 
-const getGif = async inputValue => {
+const insertGifIntoDOM = async event => {
+  event.preventDefault();
+  
+  const inputValue = input.value;
+  
   try {
     const getGifApiURL = getUrlGif(inputValue);
     const response = await fetch(getGifApiURL)
@@ -57,14 +61,7 @@ const getGif = async inputValue => {
   } catch (err) {
     console.log(err.message);
   }
-}
 
-const insertGifIntoDOM = event => {
-  event.preventDefault();
-  
-  const inputValue = input.value;
-  getGif(inputValue);
-  
   form.reset()
 }
 
