@@ -26,7 +26,8 @@ const form = document.querySelector('#form');
 const divRes = document.querySelector('.out');
 
 const getGif = async gif => {
-  const response = await ( await fetch(`https://api.giphy.com/v1/gifs/search?api_key=OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q=${gif}`)).json()
+  const response = await 
+  ( await fetch(`https://api.giphy.com/v1/gifs/search?api_key=OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q=${gif}`)).json()
   const url = await response.data[0].images.original.url;
   const img = document.createElement('img');
   img.src = url;
@@ -38,8 +39,13 @@ const getGif = async gif => {
   }
 }
 
-form.addEventListener('submit', event => {
+const insertGitIntoDOM = event => {
   event.preventDefault();
+  
   const inputValue = input.value;
   getGif(inputValue);
-})
+  
+  event.target.reset();
+}
+
+form.addEventListener('submit', insertGitIntoDOM)
