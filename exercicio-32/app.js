@@ -31,25 +31,29 @@ const getUrlGif = gifName =>
   `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}=${gifName}`
 
 
-const getGif = async gif => {
-  const getGifApiURL = getUrlGif(gif);
+const generateGifImage = async response => {
+  const data = await response.json()
+  const url = await data.data[0].images.original.url;
+  
+  const img = document.createElement('img');
+  const title = data.data[0].title;
+  img.src = url;
+  img.alt = title;
 
+  divRes.prepend(img);
+}
+
+const getGif = async inputValue => {
   try {
+    const getGifApiURL = getUrlGif(inputValue);
     const response = await fetch(getGifApiURL)
 
     if(!response.ok){
       throw new Error('Não foi possível obter os dados...')
     }
 
-    const data = await response.json()
-    const url = await data.data[0].images.original.url;
-    
-    const img = document.createElement('img');
-    const title = data.data[0].title;
-    img.src = url;
-    img.alt = title;
+    generateGifImage(response)
 
-    divRes.prepend(img);
   } catch (err) {
     console.log(err.message);
   }
@@ -61,7 +65,7 @@ const insertGifIntoDOM = event => {
   const inputValue = input.value;
   getGif(inputValue);
   
-  event.target.reset();
+  form.reset()
 }
 
 form.addEventListener('submit', insertGifIntoDOM)
