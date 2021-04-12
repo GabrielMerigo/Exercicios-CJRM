@@ -21,9 +21,9 @@
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
 
-const input = document.querySelector('#search');
-const form = document.querySelector('#form');
-const divRes = document.querySelector('.out');
+const input = document.querySelector('input');
+const form = document.querySelector('form');
+const divRes = document.querySelector('div');
 
 const getGif = async gif => {
   const response = await 
