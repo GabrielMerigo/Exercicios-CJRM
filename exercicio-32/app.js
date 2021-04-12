@@ -25,26 +25,37 @@ const input = document.querySelector('input');
 const form = document.querySelector('form');
 const divRes = document.querySelector('div');
 
+const APIKey = `OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q`;
+
+const getUrlGif = gifName => 
+  `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}=${gifName}`
+
+
 const getGif = async gif => {
+  const getGifApiURL = getUrlGif(gif);
+
   try {
-    const APIKey = `OtFrsWfB49Kzn6E0TbMwaZInUUHko9Q0&limit=1&q`;
-    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKey}=${gif}`)
-  
+    const response = await fetch(getGifApiURL)
+
     if(!response.ok){
       throw new Error('Não foi possível obter os dados...')
     }
 
     const data = await response.json()
     const url = await data.data[0].images.original.url;
+    
     const img = document.createElement('img');
+    const title = data.data[0].title;
     img.src = url;
+    img.alt = title;
+
     divRes.prepend(img);
   } catch (err) {
     console.log(err.message);
   }
 }
 
-const insertGitIntoDOM = event => {
+const insertGifIntoDOM = event => {
   event.preventDefault();
   
   const inputValue = input.value;
@@ -53,4 +64,4 @@ const insertGitIntoDOM = event => {
   event.target.reset();
 }
 
-form.addEventListener('submit', insertGitIntoDOM)
+form.addEventListener('submit', insertGifIntoDOM)
