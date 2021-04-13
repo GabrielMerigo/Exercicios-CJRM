@@ -17,6 +17,10 @@
   - Implemente a função da forma mais concisa que você conseguir.
 */
 
+const myFunc = ([item1, item2, item3]) => [item2, item3, item1]
+
+// console.log(myFunc([1, 2, 3]));
+
 /*
   03
 
@@ -25,10 +29,13 @@
 */
 
 const topics = [
-  { id: 1, name: 'Artes & cultura'},
-  { id: 2, name: 'Negócios & finanças'},
-  { id: 3, name: 'Carreiras'}
+  { id: 1, name: 'Artes & cultura' },
+  { id: 2, name: 'Negócios & finanças' },
+  { id: 3, name: 'Carreiras' }
 ]
+
+const [, , name] = topics
+// console.log(name.name);
 
 /*
   04
@@ -47,7 +54,7 @@ const colors = ['#FF00FF', ['#FF0D0D', '#0AFA00', '#011EFA'], '#7BF0FF']
   - Observe que ela recebe 2 argumentos, um objeto e uma string;
   - Dentro da declaração da função:
     - Faça um destructuring no objeto recebido no 1º argumento;
-    - No destructuring, nomeie de forma dinâmica a const que você está 
+    - No destructuring, nomeie de forma dinâmica a const que você está
       declarando, usando o 2º argumento que a invocação da função recebeu.
       Você já conhece a sintaxe que nomeia de forma dinâmica;
     - Atribua "desconhecido" como valor default da const do destructuring;
@@ -60,10 +67,10 @@ const colors = ['#FF00FF', ['#FF0D0D', '#0AFA00', '#011EFA'], '#7BF0FF']
 /*
   06
 
-  - O idioma da interface gráfica da aplicação que estamos construindo 
+  - O idioma da interface gráfica da aplicação que estamos construindo
     (Weather App) é pt-BR;
-  - Ao invocarmos a getCityWeather, observe que a propriedade "WeatherText" do 
-    objeto obtido armazena a descrição do clima em inglês: "cloudy", "rain", 
+  - Ao invocarmos a getCityWeather, observe que a propriedade "WeatherText" do
+    objeto obtido armazena a descrição do clima em inglês: "cloudy", "rain",
     etc;
   - Traduza os possíveis valores dessa propriedade;
   - Não é necessário implementar condicionais, objetos, ou arrays para fazer
@@ -75,6 +82,6 @@ const colors = ['#FF00FF', ['#FF0D0D', '#0AFA00', '#011EFA'], '#7BF0FF']
 
   - Refatore o weather.js;
   - Uma dica do que pode ser melhorado:
-    - A repetição dos requests pode ser eliminada por uma função genérica e 
+    - A repetição dos requests pode ser eliminada por uma função genérica e
       reutilizável, responsável apenas por fazer requests.
 */
