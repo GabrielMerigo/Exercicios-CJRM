@@ -17,7 +17,7 @@
   - Implemente a função da forma mais concisa que você conseguir.
 */
 
-const myFunc = ([item1, item2, item3]) => [item2, item3, item1]
+const myFunc = ([item1, , item3]) => [item3, item1]
 
 // console.log(myFunc([1, 2, 3]));
 
@@ -34,8 +34,8 @@ const topics = [
   { id: 3, name: 'Carreiras' }
 ]
 
-const [, , name] = topics
-// console.log(name.name);
+// const [, , { name }] = topics
+// console.log(name);
 
 /*
   04
@@ -47,7 +47,7 @@ const [, , name] = topics
 
 const colors = ['#FF00FF', ['#FF0D0D', '#0AFA00', '#011EFA'], '#7BF0FF']
 
-const [ red, green, blue] = colors[1];
+const [ red, green, blue ] = colors[1];
 
 // console.log(red, green, blue);
 
@@ -64,15 +64,15 @@ const [ red, green, blue] = colors[1];
     - Atribua "desconhecido" como valor default da const do destructuring;
     - Faça a função retornar "Olá, meu nome é [NOME]!".
 */
-// const greet = ({ name }, nameProperty) => {
-//   return {
-    
-//   }
-// }
 
-// console.log(greet({ name: 'Roger' }, 'name'))
-// console.log(greet({}, 'personName'))
+const greet = (obj, dynamicName) => {
+  const { [dynamicName]: name = 'Desconhecido' } = obj;
+  return `Olá, meu nome é ${name}`;
+}
 
+
+console.log(greet({ name: 'Roger' }, 'name'))
+console.log(greet({}, 'personName'))
 
 
 /*
