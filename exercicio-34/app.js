@@ -12,6 +12,8 @@
     versão deve fazer o mesmo que a função anterior faz, mas de forma diferente.
 */
 
+
+
 /*
   02
   
