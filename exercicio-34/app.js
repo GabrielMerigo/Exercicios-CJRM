@@ -12,7 +12,10 @@
     versão deve fazer o mesmo que a função anterior faz, mas de forma diferente.
 */
 
+const reverse = string => String(string).split('').reverse().join('')
+const reverse2 = string = 
 
+console.log(reverse(1234));
 
 /*
   02
