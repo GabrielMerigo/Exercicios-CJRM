@@ -33,7 +33,7 @@ const reverse3 = string => string
   .split('')
   .reduce((acc, letter) => letter + acc , '')
 
-console.log(reverse3('1233'));
+// console.log(reverse3('1233'));
 
 /*
   02
@@ -44,7 +44,7 @@ console.log(reverse3('1233'));
 const numbers = [5, 20, 7, 32, 47, 15, 83, 91, 27, 33]
 const number = numbers.some(number => number === 15)
 
-// console.log(number);
+console.log(number);
 
 
 
