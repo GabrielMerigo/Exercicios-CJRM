@@ -23,7 +23,7 @@ const reverse2 = string => {
   return msg
 };
 
-console.log(reverse2('teste'));
+// console.log(reverse2('teste'));
 
 /*
   02
@@ -40,7 +40,6 @@ numbers.forEach(number => {
   }
 })
 
-console.log(foundNumber)
 
 /*
   03
