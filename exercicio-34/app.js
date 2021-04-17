@@ -12,10 +12,18 @@
     versão deve fazer o mesmo que a função anterior faz, mas de forma diferente.
 */
 
-const reverse = string => String(string).split('').reverse().join('')
-const reverse2 = string = 
+const reverse = string => String(string).split('').reverse().join('');
+let msg = ''
+const reverse2 = string => {
+  for(let i = string.length - 1; i >= 0; i--){
+    let arrayWords = string.split('')
+    msg += arrayWords[i];
+  };
 
-console.log(reverse(1234));
+  return msg
+};
+
+console.log(reverse2('teste'));
 
 /*
   02
