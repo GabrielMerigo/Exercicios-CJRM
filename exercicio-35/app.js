@@ -143,9 +143,9 @@ const objTeste = [
 const album = JSON.stringify(searchAlbum)
 const albuns = JSON.stringify(albums)
 
-if (albuns.includes(album)) {
-  console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
-}
+// if (albuns.includes(album)) {
+//   console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
+// }
 
 
 
@@ -176,6 +176,19 @@ const obj = {
 
   Dica: pesquise por Object.entries.
 */
+
+const createIMG = obj => {
+  const attributes = Object.entries(obj)
+  let phrase = '';
+
+  attributes.forEach((_, index) => {
+    phrase += `<img ${attributes[index].join('')}=""/> `
+  })
+
+  return phrase
+}
+
+// console.log(createIMG({a:'', b: ''}))
 
 /*
   07
