@@ -45,27 +45,56 @@ input.addEventListener('input', event => {
     retornar 60 e a segunda invocação, 10.
 */
 
-function add100 (num) {
+const combineOperations = (num, arrayFunc) => {
+  let primeiroValor = null;
+  let segundoValor = null;
+  let terceiroValor = null;
+  let quartoValor = null;
+
+  arrayFunc.forEach((func, index) => {
+    if(index === 0){
+      primeiroValor = func(num)
+    } 
+
+    if(index === 1){
+      segundoValor = func(primeiroValor)
+    }
+
+    if(index === 2){
+      terceiroValor = func(segundoValor)
+    }
+
+    if(index === 3){
+      quartoValor = func(terceiroValor)
+    }
+  })
+
+  return terceiroValor
+}
+
+function add100(num) {
   return num + 100
 }
 
-function divByFive (num) {
+function divByFive(num) {
   return num / 5
 }
 
-function multiplyByThree (num) {
+function multiplyByThree(num) {
   return num * 3
 }
 
-function multiplyFive (num) {
+function multiplyFive(num) {
   return num * 5
 }
 
-function addTen (num) {
+function addTen(num) {
   return num + 10
 }
 
-// console.log(combineOperations(0, [add100, divByFive, multiplyByThree]))
+
+
+// console.log(combineOperations(0, [add100, addTen, multiplyFive]))
 // console.log(combineOperations(0, [divByFive, multiplyFive, addTen]))
 
 /*
@@ -132,7 +161,7 @@ const obj = {
   06
 
   - Implemente uma função que cria e retorna um elemento HTML;
-  - Ela deve receber o nome do elemento HTML a ser criado e um objeto com os 
+  - Ela deve receber o nome do elemento HTML a ser criado e um objeto com os
     atributos que o elemento deve conter;
   - A quantidade de atributos que o elemento irá conter pode variar.
 
@@ -142,7 +171,7 @@ const obj = {
 /*
   07
 
-  - Na weather app, faça com que quando o usuário recarregar a página ou sair 
-    da aplicação e voltar, as informações da última cidade pesquisada sejam 
+  - Na weather app, faça com que quando o usuário recarregar a página ou sair
+    da aplicação e voltar, as informações da última cidade pesquisada sejam
     exibidas na interface.
 */
