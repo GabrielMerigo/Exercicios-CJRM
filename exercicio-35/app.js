@@ -93,7 +93,6 @@ function addTen(num) {
 }
 
 
-
 // console.log(combineOperations(0, [add100, addTen, multiplyFive]))
 // console.log(combineOperations(0, [divByFive, multiplyFive, addTen]))
 
@@ -136,9 +135,19 @@ const searchAlbum = {
   genre: 'Rock'
 }
 
-if (albums.includes(searchAlbum)) {
+const objTeste = [
+  {a: 1, b: 2},
+  {c: 3, d: 4}
+]
+
+const album = JSON.stringify(searchAlbum)
+const albuns = JSON.stringify(albums)
+
+if (albuns.includes(album)) {
   console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
 }
+
+
 
 /*
   05
