@@ -4,6 +4,12 @@
   - Implemente uma função que recebe o nome da key de um item da localStorage 
     e retorna o valor da key parseado para objeto javascript.
 */
+const myFunc = key => JSON.parse(localStorage.getItem(key))
+
+// console.log(myFunc('myArray'))
+
+
+
 
 /*
   02
