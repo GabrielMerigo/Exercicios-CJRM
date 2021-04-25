@@ -27,7 +27,7 @@ const myFunc = key => JSON.parse(localStorage.getItem(key))
 const input = document.querySelector('[data-js="input"]')
 
 input.addEventListener('input', event => {
-  console.log(event.target.value)
+  console.log(event.target.valueAsNumber)
 })
 
 /*
