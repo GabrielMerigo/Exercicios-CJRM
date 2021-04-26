@@ -8,9 +8,6 @@ const myFunc = key => JSON.parse(localStorage.getItem(key))
 
 // console.log(myFunc('myArray'))
 
-
-
-
 /*
   02
 
@@ -52,19 +49,19 @@ const combineOperations = (num, arrayFunc) => {
   let quartoValor = null;
 
   arrayFunc.forEach((func, index) => {
-    if(index === 0){
+    if (index === 0) {
       primeiroValor = func(num)
-    } 
+    }
 
-    if(index === 1){
+    if (index === 1) {
       segundoValor = func(primeiroValor)
     }
 
-    if(index === 2){
+    if (index === 2) {
       terceiroValor = func(segundoValor)
     }
 
-    if(index === 3){
+    if (index === 3) {
       quartoValor = func(terceiroValor)
     }
   })
@@ -72,29 +69,18 @@ const combineOperations = (num, arrayFunc) => {
   return terceiroValor
 }
 
-function add100(num) {
-  return num + 100
-}
+const add100 = num => num + 100
+const divByFive = num => num / 5
+const multiplyByThree = num => num * 3
+const multiplyFive = num => num * 5
+const addTen = num => num + 10
 
-function divByFive(num) {
-  return num / 5
-}
-
-function multiplyByThree(num) {
-  return num * 3
-}
-
-function multiplyFive(num) {
-  return num * 5
-}
-
-function addTen(num) {
-  return num + 10
-}
+const combineOperations2 = (initValue, arrOfFuncs) =>
+  arrOfFuncs.reduce((acc, func) => func(acc), initValue)
 
 
-// console.log(combineOperations(0, [add100, addTen, multiplyFive]))
-// console.log(combineOperations(0, [divByFive, multiplyFive, addTen]))
+console.log(combineOperations2(0, [add100, addTen, multiplyFive]))
+console.log(combineOperations2(0, [divByFive, multiplyFive, addTen]))
 
 /*
   04
@@ -135,17 +121,12 @@ const searchAlbum = {
   genre: 'Rock'
 }
 
-const objTeste = [
-  {a: 1, b: 2},
-  {c: 3, d: 4}
-]
+const searchAlbumExistsInArray =
+  albums.some(album => album.id === searchAlbum.id)
 
-const album = JSON.stringify(searchAlbum)
-const albuns = JSON.stringify(albums)
-
-// if (albuns.includes(album)) {
-//   console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
-// }
+if (searchAlbumExistsInArray) {
+  console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
+}
 
 
 
@@ -156,6 +137,7 @@ const albuns = JSON.stringify(albums)
 */
 
 const obj = {
+  prop0: () => { },
   prop1: 'a',
   prop2: 'b',
   prop3: null,
@@ -165,6 +147,21 @@ const obj = {
   prop7: 7,
   prop8: { a: 'x', b: 'y' },
 }
+
+const stringObj = {
+  ...obj,
+  prop0: () => { },
+  prop6: [obj.prop6[0],
+    ...obj.prop6
+  ],
+  prop8: {...obj.prop8}
+}
+
+obj.prop6[0] = 'valor Modificado!!!'
+obj.prop0.newProp = 'vai toma no cu!'
+
+console.log(obj, stringObj);
+
 
 /*
   06
