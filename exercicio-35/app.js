@@ -21,11 +21,11 @@ const myFunc = key => JSON.parse(localStorage.getItem(key))
   Dica: pesquise por valueAsNumber.
 */
 
-const input = document.querySelector('[data-js="input"]')
+// const input = document.querySelector('[data-js="input"]')
 
-input.addEventListener('input', event => {
-  console.log(event.target.valueAsNumber)
-})
+// input.addEventListener('input', event => {
+//   console.log(event.target.valueAsNumber)
+// })
 
 /*
   03
@@ -79,8 +79,8 @@ const combineOperations2 = (initValue, arrOfFuncs) =>
   arrOfFuncs.reduce((acc, func) => func(acc), initValue)
 
 
-console.log(combineOperations2(0, [add100, addTen, multiplyFive]))
-console.log(combineOperations2(0, [divByFive, multiplyFive, addTen]))
+// console.log(combineOperations2(0, [add100, addTen, multiplyFive]))
+// console.log(combineOperations2(0, [divByFive, multiplyFive, addTen]))
 
 /*
   04
@@ -124,9 +124,9 @@ const searchAlbum = {
 const searchAlbumExistsInArray =
   albums.some(album => album.id === searchAlbum.id)
 
-if (searchAlbumExistsInArray) {
-  console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
-}
+// if (searchAlbumExistsInArray) {
+//   // console.log(`${JSON.stringify(searchAlbum)} existe no array albums.`)
+// }
 
 
 
@@ -160,7 +160,7 @@ const stringObj = {
 obj.prop6[0] = 'valor Modificado!!!'
 obj.prop0.newProp = 'vai toma no cu!'
 
-console.log(obj, stringObj);
+// console.log(obj, stringObj);
 
 
 /*
@@ -174,18 +174,24 @@ console.log(obj, stringObj);
   Dica: pesquise por Object.entries.
 */
 
-const createIMG = obj => {
-  const attributes = Object.entries(obj)
-  let phrase = '';
-
-  attributes.forEach((_, index) => {
-    phrase += `<img ${attributes[index].join('')}=""/> `
+const createElement = (elementName, attributes) => {
+  const element = document.createElement(elementName)
+  const attributesAsArray = Object.entries(attributes)
+  attributesAsArray.forEach(arrayAttribute => {
+    element.setAttribute(arrayAttribute[0], arrayAttribute[1])
   })
-
-  return phrase
+  console.log(element);
 }
 
-// console.log(createIMG({a:'', b: ''}))
+const input = createElement('input', {
+  type: 'radio',
+  id: 'input1',
+  name: 'main',
+  value: 'principal',
+  for: 'input1',
+  'data-js': 'input1'
+})
+
 
 /*
   07
