@@ -45,7 +45,10 @@ const obj = {
   b: 2
 }
 
-// console.log(obj)
+const newObj = randomNumber > 50 ? {...obj, c: 3} : {...obj, d: 4}
+
+// console.log(randomNumber)
+// console.log(newObj);
 
 /*
   04
@@ -54,22 +57,13 @@ const obj = {
     criado permaneça intacto.
 */
 
-const h = w => {
-  w.d = 3
-}
-
-const q = f => {
-  h(f)
-}
-
-const i = b => {
-  q(b)
-}
+const createPropertyInObject = Object => Object.d = 3
+const addPropertyInObject = object => createPropertyInObject(object)
 
 const v = { k: 't' }
 
-i(v)
-// console.log(v)
+addPropertyInObject(v)
+console.log(v)
 
 /*
   05
