@@ -63,7 +63,7 @@ const addPropertyInObject = object => createPropertyInObject(object)
 const v = { k: 't' }
 
 addPropertyInObject(v)
-console.log(v)
+// console.log(v)
 
 /*
   05
@@ -95,6 +95,14 @@ const timestamps = [
     value: 17
   }
 ]
+
+const NovoObj = timestamps.reduce((acc, obj) => {
+  const { date, value } = obj
+  acc = {[date]: value};
+  return acc
+}, {})
+
+console.log(NovoObj);
 
 /*
   06
