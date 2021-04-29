@@ -177,10 +177,7 @@ obj.prop0.newProp = 'vai toma no cu!'
 const createElement = (elementName, attributes) => {
   const element = document.createElement(elementName)
   const attributesAsArray = Object.entries(attributes)
-  attributesAsArray.forEach(arrayAttribute => {
-    element.setAttribute(arrayAttribute[0], arrayAttribute[1])
-  })
-  console.log(element);
+  attributesAsArray.forEach(([key, value]) => element.setAttribute(key, value))
 }
 
 const input = createElement('input', {
