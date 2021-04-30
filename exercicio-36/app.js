@@ -129,15 +129,17 @@ const oddNumbers = [51, 97, 65, 23]
 
 const forEach = (arr, func) => {
   for(let i = 0; i < arr.length; i++){
-    func(arr[i])
+    accumulator = func(arr[i])
   }
 }
 
+let acc = 0;
 const newForEach = forEach(oddNumbers, item => {
-  accumulator += item
+  acc += item
 })
 
-console.log(newForEach);
+// console.log(acc);
+
 
 /*
   07
@@ -167,3 +169,16 @@ console.log(newForEach);
     3 No passo 3.4, se o slide exibido atualmente não corresponder ao index do
       1º slide, o slide anterior deve ser exibido.
 */
+
+
+const btnPreviousSlide = document.querySelector('[data-js="carousel__button--prev"]')
+const btnNextSlide = document.querySelector('[data-js="carousel__button--next"]')
+
+btnNextSlide.addEventListener('click', () => {
+  const slides = Array.from(document.querySelectorAll('.carousel__item'))
+  slides.forEach((slide, index) => {
+    slide.classList.remove('carousel__item--visible')
+    slide.classList.add('carousel__item--hidden')
+  })
+
+})
