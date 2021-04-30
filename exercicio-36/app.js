@@ -12,7 +12,7 @@ const numbers = [50, 100, 50]
 
 const sum = ([x, y, z]) => x + y + z
 
-// console.log(sum(numbers))
+console.log(sum(numbers))
 
 /*
   02
@@ -27,6 +27,7 @@ const myName = 'gabriel';
 const nameComLetraMaiscula = [...myName]
 nameComLetraMaiscula.splice(0, 1, 'G')
 nameComLetraMaiscula.join('')
+
 
 
 /*
