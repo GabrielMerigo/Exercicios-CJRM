@@ -102,7 +102,7 @@ const NovoObj = timestamps.reduce((acc, obj) => {
   return acc
 }, {})
 
-console.log(NovoObj);
+// console.log(NovoObj);
 
 /*
   06
@@ -126,6 +126,18 @@ console.log(NovoObj);
 
 let accumulator = 0
 const oddNumbers = [51, 97, 65, 23]
+
+const forEach = (arr, func) => {
+  for(let i = 0; i < arr.length; i++){
+    func(arr[i])
+  }
+}
+
+const newForEach = forEach(oddNumbers, item => {
+  accumulator += item
+})
+
+console.log(newForEach);
 
 /*
   07
