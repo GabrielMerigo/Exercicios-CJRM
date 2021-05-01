@@ -190,7 +190,9 @@ const slides = document.querySelectorAll('.carousel__item')
 let currentSlideIndex = 0;
 
 btnNextSlide.addEventListener('click', () => {
-  currentSlideIndex === 2 ? currentSlideIndex = 0 : currentSlideIndex++
+  currentSlideIndex === slides.length - 1 
+  ? currentSlideIndex = 0 
+  : currentSlideIndex++
 
   slides.forEach((slide, index) => {
     slide.classList.remove('carousel__item--visible')
