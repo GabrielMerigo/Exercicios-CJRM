@@ -194,24 +194,19 @@ btnNextSlide.addEventListener('click', () => {
   ? currentSlideIndex = 0 
   : currentSlideIndex++
 
-  slides.forEach((slide, index) => {
+  slides.forEach(slide => {
     slide.classList.remove('carousel__item--visible')
-
-    if(index === currentSlideIndex){
-      slide.classList.add('carousel__item--visible')
-    }
   })
+
+  slides[currentSlideIndex].classList.add('carousel__item--visible');
 })
 
-let currentSlideIndexPrev = 3;
 btnPreviousSlide.addEventListener('click', () => {
-  currentSlideIndexPrev === 0 ? currentSlideIndexPrev = 2 : --currentSlideIndexPrev
+  currentSlideIndex === 0 ? currentSlideIndex = 2 : --currentSlideIndex
   
-  slides.forEach((slide, index) => {
+  slides.forEach(slide => {
     slide.classList.remove('carousel__item--visible')
-
-    if(currentSlideIndexPrev === index){
-      slide.classList.add('carousel__item--visible')
-    }
   })
+
+  slides[currentSlideIndex].classList.add('carousel__item--visible')
 })
