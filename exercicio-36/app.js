@@ -12,7 +12,7 @@ const numbers = [50, 100, 50]
 
 const sum = ([x, y, z]) => x + y + z
 
-console.log(sum(numbers))
+// console.log(sum(numbers))
 
 /*
   02
@@ -46,7 +46,7 @@ const obj = {
   b: 2
 }
 
-const newObj = randomNumber > 50 ? {...obj, c: 3} : {...obj, d: 4}
+const newObj = randomNumber > 50 ? { ...obj, c: 3 } : { ...obj, d: 4 }
 
 // console.log(randomNumber)
 // console.log(newObj);
@@ -58,7 +58,8 @@ const newObj = randomNumber > 50 ? {...obj, c: 3} : {...obj, d: 4}
     criado permaneça intacto.
 */
 
-const createPropertyInObject = Object => Object.d = 3
+const createPropertyInObject = obj => ({ ...obj, d: 3 })
+
 const addPropertyInObject = object => createPropertyInObject(object)
 
 const v = { k: 't' }
@@ -97,13 +98,13 @@ const timestamps = [
   }
 ]
 
-const NovoObj = timestamps.reduce((acc, obj) => {
-  const { date, value } = obj
-  acc = {[date]: value};
+const newObj2 = timestamps.reduce((acc, { date, value }) => {
+  acc[date] = value
   return acc
 }, {})
 
-// console.log(NovoObj);
+
+// console.log(newObj2);
 
 /*
   06
@@ -128,18 +129,28 @@ const NovoObj = timestamps.reduce((acc, obj) => {
 let accumulator = 0
 const oddNumbers = [51, 97, 65, 23]
 
-const forEach = (arr, func) => {
-  for(let i = 0; i < arr.length; i++){
-    accumulator = func(arr[i])
+const forEach = (array, func) => {
+  for (let index = 0; index < array.length; index++) {
+    const item = array[index];
+    func(item, index, array)
   }
 }
 
-let acc = 0;
-const newForEach = forEach(oddNumbers, item => {
-  acc += item
-})
+const logMessage = (item, index, array) => {
+  const message =
+    `"${array[index]}" é o ${index + 1}º item do array [${array.join(', ')}]`
 
-// console.log(acc);
+  console.log(message);
+}
+
+const sumArrayItem = item => {
+  accumulator += item
+}
+
+forEach(oddNumbers, logMessage)
+forEach(oddNumbers, sumArrayItem)
+// console.log(accumulator);
+
 
 
 /*
