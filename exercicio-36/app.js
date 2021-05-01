@@ -140,7 +140,7 @@ const logMessage = (item, index, array) => {
   const message =
     `"${array[index]}" é o ${index + 1}º item do array [${array.join(', ')}]`
 
-  console.log(message);
+  // console.log(message);
 }
 
 const sumArrayItem = item => {
@@ -185,12 +185,31 @@ forEach(oddNumbers, sumArrayItem)
 
 const btnPreviousSlide = document.querySelector('[data-js="carousel__button--prev"]')
 const btnNextSlide = document.querySelector('[data-js="carousel__button--next"]')
+const slides = document.querySelectorAll('.carousel__item')
+
+let currentSlideIndex = 0;
 
 btnNextSlide.addEventListener('click', () => {
-  const slides = Array.from(document.querySelectorAll('.carousel__item'))
+  currentSlideIndex === 2 ? currentSlideIndex = 0 : currentSlideIndex++
+
   slides.forEach((slide, index) => {
     slide.classList.remove('carousel__item--visible')
-    slide.classList.add('carousel__item--hidden')
-  })
 
+    if(index === currentSlideIndex){
+      slide.classList.add('carousel__item--visible')
+    }
+  })
+})
+
+let currentSlideIndexPrev = 3;
+btnPreviousSlide.addEventListener('click', () => {
+  currentSlideIndexPrev === 0 ? currentSlideIndexPrev = 2 : --currentSlideIndexPrev
+  
+  slides.forEach((slide, index) => {
+    slide.classList.remove('carousel__item--visible')
+
+    if(currentSlideIndexPrev === index){
+      slide.classList.add('carousel__item--visible')
+    }
+  })
 })
