@@ -194,9 +194,18 @@ const reduce = (array, func, initialValue) => {
   let accumulator = initialValue
   let variable = initialValue;
 
+  if(typeof initialValue === 'object'){
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      variable += initialValue[func(accumulator, element)]
+    }
+    
+    return variable
+  }
+
   for (let index = 0; index < array.length; index++) {
     const element = array[index];
-    variable += func(accumulator, element)
+    variable += func(accumulator, element, index, array)
   }
 
   return variable
@@ -205,6 +214,8 @@ const reduce = (array, func, initialValue) => {
 // console.log(reduce([1, 2, 3], (acc, item) => acc + item, 0));
 // console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0));
 console.log(reduce([1, 2], (acc, item) => 
-// { acc['number-' + item] = item 
-//   return acc }
-// , {}))
+{ acc['number-' + item] = item 
+  return acc }
+, {}))
+// console.log(reduce([1, 2], (acc, item, index) => acc + index, 0))
+// console.log(reduce([1, 2], (acc, item, index, array) => acc + array[index], 0))
