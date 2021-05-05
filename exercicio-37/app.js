@@ -52,28 +52,28 @@ const counter = new Counter(10)
 */
 
 
-const values = [
-  0,
-  {},
-  '',
-  [],
-  NaN,
-  () => {}
-]
+// const values = [
+//   0,
+//   {},
+//   '',
+//   [],
+//   NaN,
+//   () => {}
+// ]
 
-let variavel = null; 
-class truthyValues {
-  constructor (valueTruthy) {
-    valueTruthy.filter(value => {
-      if(value){
-        this.valueTruthy += value
-      }
-    })
+// let variavel = null; 
+// class truthyValues {
+//   constructor (valueTruthy) {
+//     valueTruthy.filter(value => {
+//       if(value){
+//         this.valueTruthy += value
+//       }
+//     })
     
-  }
-}
+//   }
+// }
 
-const valores = new truthyValues(values)
+// const valores = new truthyValues(values)
 // console.log(valores);
 
 /*
@@ -87,7 +87,7 @@ const valores = new truthyValues(values)
 */
 
 class Clock {
-  constructor ({ template }) {
+  constructor (template) {
     this.template = template
   }
 
@@ -127,12 +127,15 @@ class Clock {
   }
 }
 
+const relogio = new Clock('h:m:s')
+// relogio.start()
+// relogio.stop()
+
+
 class ExtendedClock extends Clock {
-  constructor ({ options }) {
-    super(options)
-    
-    let { precision = 1000 } = options
-    this.precision = precision
+  constructor (template, options) {
+    super(template)
+    this.precision = options
   }
 
   start () {
@@ -141,9 +144,10 @@ class ExtendedClock extends Clock {
   }
 }
 
-const clock = ExtendedClock({ template: 'h:m:s', precision: 1000 })
 
-clock.start()
+const clock = new ExtendedClock('h:m:s', 1000 )
+// clock.start()
+
 
 /*
   05
@@ -153,7 +157,11 @@ clock.start()
     caracteres que o textarea contém.
 */
 
+const textarea = document.querySelector('textarea');
+const paragraph = document.querySelector('p')
 
+textarea.addEventListener('keyup', () => 
+  paragraph.textContent = textarea.value.length)
 
 /*
   06
@@ -181,3 +189,22 @@ clock.start()
     vídeo de correção dos exercícios um link para a aula de introdução ao 
     reduce e um link para a documentação do método no MDN.
 */
+
+const reduce = (array, func, initialValue) => {
+  let accumulator = initialValue
+  let variable = initialValue;
+
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    variable += func(accumulator, element)
+  }
+
+  return variable
+}
+
+// console.log(reduce([1, 2, 3], (acc, item) => acc + item, 0));
+// console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0));
+console.log(reduce([1, 2], (acc, item) => 
+{ acc['number-' + item] = item 
+  return acc }
+,{}))
