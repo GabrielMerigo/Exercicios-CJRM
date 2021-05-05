@@ -28,20 +28,20 @@ let rabbit = new Rabbit('White Rabbit')
 
 class Counter {
   constructor (value) {
-    this.value = value
+    this.count = value
   }
 
-  getValue () {
-    console.log(`meu valor é ${this.value}`);
+  get value () {
+    console.log(`meu valor é ${this.count}`);
   }
 
-  increment () { this.value++ }
+  increment () { this.count++ }
 }
 
 const counter = new Counter(10)
 
-// counter.getValue()
-// counter.getValue()
+counter.value
+counter.value
 
 /*
   03
@@ -197,9 +197,9 @@ const reduce = (array, func, initialValue) => {
   if(typeof initialValue === 'object'){
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
-      variable += initialValue[func(accumulator, element)]
+      initialValue[func(accumulator, element)]
     }
-    
+
     return variable
   }
 
