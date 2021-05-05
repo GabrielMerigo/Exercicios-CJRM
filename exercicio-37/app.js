@@ -36,9 +36,15 @@ class Counter {
   }
 
   increment () { this.count++ }
+
+  set newValue (aNumber) {
+    this.count = aNumber
+  }
 }
 
 const counter = new Counter(10)
+
+counter.newValue = 7
 
 counter.value
 counter.value
