@@ -205,6 +205,6 @@ const reduce = (array, func, initialValue) => {
 // console.log(reduce([1, 2, 3], (acc, item) => acc + item, 0));
 // console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0));
 console.log(reduce([1, 2], (acc, item) => 
-{ acc['number-' + item] = item 
-  return acc }
-,{}))
+// { acc['number-' + item] = item 
+//   return acc }
+// , {}))
