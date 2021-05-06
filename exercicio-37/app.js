@@ -115,7 +115,7 @@ class Clock {
 }
 
 const relogio = new Clock('h:m:s')
-relogio.start()
+// relogio.start()
 // relogio.stop()
 
 
@@ -147,8 +147,12 @@ const clock = new ExtendedClock('h:m:s', 1000)
 const textarea = document.querySelector('textarea');
 const paragraph = document.querySelector('p')
 
-textarea.addEventListener('keyup', () =>
-  paragraph.textContent = textarea.value.length)
+const showCurrentLengthTextarea = event => {
+  const currentLength = event.target.value.length;
+  paragraph.textContent = `${currentLength}/200`;
+}
+
+textarea.addEventListener('input', showCurrentLengthTextarea)
 
 /*
   06
