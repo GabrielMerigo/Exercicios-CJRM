@@ -16,7 +16,7 @@ class Rabbit extends Animal {
 }
 
 let rabbit = new Rabbit('White Rabbit')
-console.log(rabbit);
+// console.log(rabbit);
 
 /*
   02
@@ -40,7 +40,7 @@ class Counter {
 }
 
 const counter = new Counter(10)
-console.log(counter.newValue = 1);
+// console.log(counter.newValue = 1);
 
 /*
   03
@@ -61,7 +61,7 @@ const values = [
 ]
 
 const truthyValue = values.filter(Boolean)
-console.log(truthyValue);
+// console.log(truthyValue);
 
 /*
 04
@@ -204,10 +204,10 @@ const reduce = (array, func, initialValue) => {
 
 // console.log(reduce([1, 2, 3], (acc, item) => acc + item, 0));
 // console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0));
-console.log(reduce([1, 2], (acc, item) => {
-  acc['number-' + item] = item
-  return acc
-}
-  , {}))
+// console.log(reduce([1, 2], (acc, item) => {
+//   acc['number-' + item] = item
+//   return acc
+// }
+//   , {}))
 // console.log(reduce([1, 2], (acc, item, index) => acc + index, 0))
 // console.log(reduce([1, 2], (acc, item, index, array) => acc + array[index], 0))
