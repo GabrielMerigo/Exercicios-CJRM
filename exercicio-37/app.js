@@ -6,19 +6,18 @@
 */
 
 class Animal {
-  constructor (name) {
+  constructor(name) {
     this.name = name
   }
 }
 
 class Rabbit extends Animal {
-  constructor (name) {
-    super(name)
-    this.created = new Date()
-  }
+  created = new Date()
 }
 
 let rabbit = new Rabbit('White Rabbit')
+console.log(rabbit);
+
 /*
   02
 
@@ -27,27 +26,21 @@ let rabbit = new Rabbit('White Rabbit')
 */
 
 class Counter {
-  constructor (value) {
-    this.count = value
+  #count = 0
+
+  get value() {
+    console.log(`meu valor é ${this.#count}`);
   }
 
-  get value () {
-    console.log(`meu valor é ${this.count}`);
-  }
+  increment() { this.#count++ }
 
-  increment () { this.count++ }
-
-  set newValue (aNumber) {
-    this.count = aNumber
+  set newValue(aNumber) {
+    this.#count = aNumber
   }
 }
 
 const counter = new Counter(10)
-
-counter.newValue = 7
-
-counter.value
-counter.value
+console.log(counter.newValue = 1);
 
 /*
   03
@@ -58,29 +51,17 @@ counter.value
 */
 
 
-// const values = [
-//   0,
-//   {},
-//   '',
-//   [],
-//   NaN,
-//   () => {}
-// ]
+const values = [
+  0,
+  {},
+  '',
+  [],
+  NaN,
+  () => {}
+]
 
-// let variavel = null; 
-// class truthyValues {
-//   constructor (valueTruthy) {
-//     valueTruthy.filter(value => {
-//       if(value){
-//         this.valueTruthy += value
-//       }
-//     })
-    
-//   }
-// }
-
-// const valores = new truthyValues(values)
-// console.log(valores);
+const truthyValue = values.filter(Boolean)
+console.log(truthyValue);
 
 /*
 04
@@ -93,11 +74,11 @@ counter.value
 */
 
 class Clock {
-  constructor (template) {
+  constructor(template) {
     this.template = template
   }
 
-  render () {
+  render() {
     const date = new Date()
     let hours = date.getHours()
     let minutes = date.getMonth()
@@ -123,12 +104,12 @@ class Clock {
     console.log(formattedTime)
   }
 
-  start () {
+  start() {
     this.render()
     this.timer = setInterval(() => this.render(), 1000)
   }
 
-  stop () {
+  stop() {
     clearInterval(this.timer)
   }
 }
@@ -139,19 +120,19 @@ const relogio = new Clock('h:m:s')
 
 
 class ExtendedClock extends Clock {
-  constructor (template, options) {
+  constructor(template, options) {
     super(template)
     this.precision = options
   }
 
-  start () {
+  start() {
     this.render()
     this.timer = setInterval(() => this.render(), this.precision)
   }
 }
 
 
-const clock = new ExtendedClock('h:m:s', 1000 )
+const clock = new ExtendedClock('h:m:s', 2000)
 // clock.start()
 
 
@@ -166,7 +147,7 @@ const clock = new ExtendedClock('h:m:s', 1000 )
 const textarea = document.querySelector('textarea');
 const paragraph = document.querySelector('p')
 
-textarea.addEventListener('keyup', () => 
+textarea.addEventListener('keyup', () =>
   paragraph.textContent = textarea.value.length)
 
 /*
@@ -200,7 +181,7 @@ const reduce = (array, func, initialValue) => {
   let accumulator = initialValue
   let variable = initialValue;
 
-  if(typeof initialValue === 'object'){
+  if (typeof initialValue === 'object') {
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
       initialValue[func(accumulator, element)]
@@ -219,9 +200,10 @@ const reduce = (array, func, initialValue) => {
 
 // console.log(reduce([1, 2, 3], (acc, item) => acc + item, 0));
 // console.log(reduce([2, 3, 4], (acc, item) => acc + item, 0));
-console.log(reduce([1, 2], (acc, item) => 
-{ acc['number-' + item] = item 
-  return acc }
-, {}))
+console.log(reduce([1, 2], (acc, item) => {
+  acc['number-' + item] = item
+  return acc
+}
+  , {}))
 // console.log(reduce([1, 2], (acc, item, index) => acc + index, 0))
 // console.log(reduce([1, 2], (acc, item, index, array) => acc + array[index], 0))
