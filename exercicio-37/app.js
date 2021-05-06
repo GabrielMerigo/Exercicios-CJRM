@@ -73,7 +73,27 @@ console.log(truthyValue);
     funcione.
 */
 
-const formatedTime = time => time < 10 ? `0${time}` : time;
+const formatedTime = units => units.map(unit => unit < 10 ? `0${unit}` : unit)
+
+const getTime = () => {
+  const date = new Date()
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+  const seconds = date.getSeconds()
+
+  return [hours, minutes, seconds]
+}
+
+const getFormattedTime = (template) => {
+  const times = getTime()
+  const [formattedHours, formattedMinutes, formattedSeconds] = 
+    formatedTime(times)
+
+  return template
+    .replace('h', formattedHours)
+    .replace('m', formattedMinutes)
+    .replace('s', formattedSeconds)
+}
 
 class Clock {
   constructor(template) {
@@ -81,18 +101,7 @@ class Clock {
   }
 
   render() {
-    const date = new Date()
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-
-    formatedTime(hours), formatedTime(minutes), formatedTime(seconds)
-
-    const formattedTime = this.template
-      .replace('h', hours)
-      .replace('m', minutes)
-      .replace('s', seconds)
-
+    const formattedTime = getFormattedTime(this.template)
     console.log(formattedTime)
   }
 
