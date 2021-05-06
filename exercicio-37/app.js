@@ -86,13 +86,12 @@ const getTime = () => {
 
 const getFormattedTime = (template) => {
   const times = getTime()
-  const [formattedHours, formattedMinutes, formattedSeconds] = 
-    formatedTime(times)
+  const formattedTime = formatedTime(times)
 
   return template
-    .replace('h', formattedHours)
-    .replace('m', formattedMinutes)
-    .replace('s', formattedSeconds)
+    .split(':')
+    .map((_, index) => formattedTime[index])
+    .join(':')
 }
 
 class Clock {
@@ -116,7 +115,7 @@ class Clock {
 }
 
 const relogio = new Clock('h:m:s')
-// relogio.start()
+relogio.start()
 // relogio.stop()
 
 
