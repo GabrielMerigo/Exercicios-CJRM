@@ -57,7 +57,7 @@ const values = [
   '',
   [],
   NaN,
-  () => {}
+  () => { }
 ]
 
 const truthyValue = values.filter(Boolean)
@@ -73,6 +73,8 @@ console.log(truthyValue);
     funcione.
 */
 
+const formatedTime = time => time < 10 ? `0${time}` : time;
+
 class Clock {
   constructor(template) {
     this.template = template
@@ -80,21 +82,11 @@ class Clock {
 
   render() {
     const date = new Date()
-    let hours = date.getHours()
-    let minutes = date.getMonth()
-    let seconds = date.getSeconds()
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    const seconds = date.getSeconds()
 
-    if (hours < 10) {
-      hours = `0${hours}`
-    }
-
-    if (minutes < 10) {
-      minutes = `0${minutes}`
-    }
-
-    if (seconds < 10) {
-      seconds = `0${seconds}`
-    }
+    formatedTime(hours), formatedTime(minutes), formatedTime(seconds)
 
     const formattedTime = this.template
       .replace('h', hours)
@@ -132,7 +124,7 @@ class ExtendedClock extends Clock {
 }
 
 
-const clock = new ExtendedClock('h:m:s', 2000)
+const clock = new ExtendedClock('h:m:s', 1000)
 // clock.start()
 
 
