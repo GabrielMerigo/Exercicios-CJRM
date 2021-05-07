@@ -182,16 +182,19 @@ textarea.addEventListener('input', showCurrentLengthTextarea)
 */
 
 const reduce = (array, func, initialValue) => {
-  let accumulator = initialValue;
+  let acc = initialValue;
 
-  const accumalteCallbackReturn = (item, index, array) => {
-    accumulator = func(accumulator, item, index, array)
-  }
+  array.forEach((item, index, array) => {
+    acc = func(acc, item, index, array)
+  })
 
-  array.forEach(accumalteCallbackReturn)
-
-  return accumulator
+  return acc
 }
+
+const arrayNum = [1, 12, 2]
+
+
+console.log(teste);
 
 const createdItemBasedProperty = (acc, item) => {
   acc['number-' + item] = item
@@ -199,11 +202,11 @@ const createdItemBasedProperty = (acc, item) => {
 }
 
 const sumItems = (acc, item) => acc + item;
-const sumItemWithIndex = (acc, item, index) => acc + index
-const sumItemWithIndexOfArray = (acc, item, index, array) => acc + array[index]
+const sumItemWithIndex = (acc, _, index) => acc + index
+const sumItemWithIndexOfArray = (acc, _, index, array) => acc + array[index]
 
-console.log(reduce([1, 2, 3], sumItems, 0));
-console.log(reduce([2, 3, 4], sumItems, 0));
-console.log(reduce([1, 2], createdItemBasedProperty, {}))
-console.log(reduce([1, 2], sumItemWithIndex, 0))
-console.log(reduce([1, 2], sumItemWithIndexOfArray, 0))
+// console.log(reduce([1, 2, 3], sumItems, 0));
+// console.log(reduce([2, 3, 4], sumItems, 0));
+// console.log(reduce([1, 2], createdItemBasedProperty, {}))
+// console.log(reduce([1, 2], sumItemWithIndex, 0))
+// console.log(reduce([1, 2], sumItemWithIndexOfArray, 0))
