@@ -64,7 +64,7 @@ function getSummary (movie) {
   - Descomente o código e crie a função.
 */
 
-/*
+
 console.log(
   arrayToObj([
     ['prop1', 'value1'], 
@@ -72,7 +72,7 @@ console.log(
     ['prop3', 'value3']
   ])
 )
-*/
+
 
 /*
   04
