@@ -25,11 +25,7 @@ function Car (color) {
 const sandero = new Car('Azul')
 const Honda = new Car('Branco')
 
-console.log(Honda.getColor());
-
-
-
-
+// console.log(Honda.getColor());
 
 /*
   02
@@ -49,11 +45,12 @@ const movie = {
   starringRole: 'Tom Hanks'
 }
 
-function getSummary () {
-  return `${this.title} foi dirigido por ${this.director} e tem ${this.starringRole} no papel principal.`
+function getSummary (movie) {
+  const {title, director, starringRole} = movie
+  return `${title} foi dirigido por ${director} e tem ${starringRole} no papel principal.`
 }
 
-console.log(getSummary())
+// console.log(getSummary(movie))
 
 /*
   03
