@@ -64,6 +64,12 @@ function getSummary (movie) {
   - Descomente o código e crie a função.
 */
 
+// const arrayToObj = array => {
+//   return array.reduce((acc, [prop, value]) => {
+//     acc[prop] = acc[prop] || prop
+//   }, {})
+// }
+
 
 console.log(
   arrayToObj([
