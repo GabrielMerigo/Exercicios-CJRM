@@ -134,7 +134,7 @@ const clock = ({ template }) => {
   })
 }
 
-console.log(clock({ template: 'h:m:s' }).start());
+// console.log(clock({ template: 'h:m:s' }).start());
 
 const extendedClock = options => {
   const { render } = clock({ template: 'h:m:s' })
@@ -148,7 +148,6 @@ const extendedClock = options => {
     }
   }
 }
-
 
 /*
   05
@@ -188,8 +187,17 @@ const extendedClock = options => {
           CSV que você criou;
         - download, com o valor 'table.csv'.
 */
-
-
+const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
+btnExportCSV.addEventListener('click', () => {
+  const trs = Array.from(document.querySelectorAll('tr'))
+  let ths = [];
+  trs.map(tr => {
+    console.log(tr.children);
+    if(tr.tagName === 'TH'){
+      ths.push(tr)
+    }
+  })
+})
 
 /*
   06
