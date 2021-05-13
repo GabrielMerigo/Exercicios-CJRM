@@ -187,20 +187,20 @@ const extendedClock = options => {
           CSV que você criou;
         - download, com o valor 'table.csv'.
 */
-const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
-btnExportCSV.addEventListener('click', () => {
-  const trs = Array.from(document.querySelectorAll('tr'))
-  let CSV = '';
-  trs.forEach(tr => {
-    let arrayElements = Array.from(tr.cells)
-    arrayElements.map((element, index, array) => {
-      CSV += index === array.length - 1 ? `${element.textContent}\n`
-        : `${element.textContent},`
-    })
-  })
-  btnExportCSV.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`)
-  btnExportCSV.download = 'table.csv'
-})
+// const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
+// btnExportCSV.addEventListener('click', () => {
+//   const trs = Array.from(document.querySelectorAll('tr'))
+//   let CSV = '';
+//   trs.forEach(tr => {
+//     let arrayElements = Array.from(tr.cells)
+//     arrayElements.map((element, index, array) => {
+//       CSV += index === array.length - 1 ? `${element.textContent}\n`
+//         : `${element.textContent},`
+//     })
+//   })
+//   btnExportCSV.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`)
+//   btnExportCSV.download = 'table.csv'
+// })
 
 /*
   06
@@ -254,3 +254,4 @@ btnExportCSV.addEventListener('click', () => {
       - Para obter a key e fazer requests, você terá que fazer login e escolher
         o plano free. Seus dados de cartão de crédito não serão solicitados.
 */
+
