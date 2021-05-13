@@ -198,10 +198,8 @@ btnExportCSV.addEventListener('click', () => {
         : `${element.textContent},`
     })
   })
-
   btnExportCSV.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`)
-
-  console.log(CSV);
+  btnExportCSV.download = 'table.csv'
 })
 
 /*
