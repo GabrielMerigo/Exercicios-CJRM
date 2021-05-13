@@ -142,7 +142,7 @@ const extendedClock = options => {
   let timer;
   return {
     precision,
-    start () {
+    start() {
       render()
       timer = setInterval(() => render(), precision)
     }
@@ -190,13 +190,18 @@ const extendedClock = options => {
 const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
 btnExportCSV.addEventListener('click', () => {
   const trs = Array.from(document.querySelectorAll('tr'))
-  let ths = [];
-  trs.map(tr => {
-    console.log(tr.children);
-    if(tr.tagName === 'TH'){
-      ths.push(tr)
-    }
+  let CSV = '';
+  trs.forEach(tr => {
+    let arrayElements = Array.from(tr.cells)
+    arrayElements.map((element, index, array) => {
+      CSV += index === array.length - 1 ? `${element.textContent}\n`
+        : `${element.textContent},`
+    })
   })
+
+  btnExportCSV.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`)
+
+  console.log(CSV);
 })
 
 /*
