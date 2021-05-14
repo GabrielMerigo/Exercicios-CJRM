@@ -256,12 +256,11 @@ const extendedClock = options => {
 */
 
 
-
-
 const selectOne = document.querySelector('[data-js="currency-one"]');
 const selectTwo = document.querySelector('[data-js="currency-two"]');
 const convertedValue = document.querySelector('[data-js="converted-value"]');
-const inputValue = document.querySelector('[data-js="currency-one-times"]');
+
+let value = selectOne.value
 
 function setOptionsInSelects() {
   const typesOfCurrencies = ['BRL', 'EUR', 'USD'];
@@ -271,7 +270,7 @@ function setOptionsInSelects() {
     option.text = typeCoin
     selectTwo.appendChild(option)
   })
-  
+
   typesOfCurrencies.map((_, index, array) => {
     let newArray = array.reverse()
     const option = document.createElement('option');
@@ -280,8 +279,31 @@ function setOptionsInSelects() {
   })
 }
 
-selectOne.addEventListener('change', async () => {
-  let value = 0;
-  
-  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${selectOne.value}`);
-})
+setOptionsInSelects()
+
+const getCoin = value =>
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
+
+const convertedValueCoin = async () => {
+  const inputValue = document.querySelector('[data-js="currency-one-times"]');
+
+  let obj = null;
+  selectOne.addEventListener('input', async () => {
+    let value = selectOne.value
+    const { conversion_rates } = await (await getCoin(value)).json();
+    obj = conversion_rates
+  })
+
+  selectTwo.addEventListener('input', e => {
+    const target = e.target.value
+    const valorMoeda = obj[`${target}`]
+
+    if(valorMoeda){
+      convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
+    }
+  })
+
+}
+
+convertedValueCoin()
+
