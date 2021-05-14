@@ -293,14 +293,22 @@ const convertedValueCoin = async () => {
     let value = selectOne.value
     const { conversion_rates } = await (await getCoin(value)).json();
     obj = conversion_rates
+
+    const tipoMoeda = localStorage.getItem('tipoMoeda')
+    if(tipoMoeda){
+      console.log('cu');
+      const valorMoeda = obj[`${tipoMoeda}`]
+      convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
+      precision.textContent = `1 ${tipoMoeda} = ${valorMoeda} ${selectOne.value}`
+    }
   })
 
   selectTwo.addEventListener('input', e => {
     const target = e.target.value
     const valorMoeda = obj[`${target}`]
+    localStorage.setItem('tipoMoeda', target)
 
     if(valorMoeda){
-
       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
       precision.textContent = `1 ${target} = ${valorMoeda} ${selectOne.value}`
     }
