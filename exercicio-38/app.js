@@ -286,6 +286,7 @@ const getCoin = value =>
 
 const convertedValueCoin = async () => {
   const inputValue = document.querySelector('[data-js="currency-one-times"]');
+  const precision = document.querySelector('[data-js="conversion-precision"]')
 
   let obj = null;
   selectOne.addEventListener('input', async () => {
@@ -299,7 +300,9 @@ const convertedValueCoin = async () => {
     const valorMoeda = obj[`${target}`]
 
     if(valorMoeda){
+
       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
+      precision.textContent = `1 ${target} = ${valorMoeda} ${selectOne.value}`
     }
   })
 
