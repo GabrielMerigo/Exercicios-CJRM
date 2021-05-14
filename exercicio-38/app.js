@@ -10,23 +10,17 @@
   - Teste o método getColor do prototype dos carros.
 */
 
-const obj = {
+const carProto = {
   getColor() {
     return this.color
   }
 }
 
-Car.prototype.getColor = obj.getColor
 
-function Car(color) {
-  this.color = color
-}
+const sandero = Object.create(carProto)
+sandero.color = 'azul'
 
-
-const sandero = new Car('Azul')
-const Honda = new Car('Branco')
-
-console.log(Honda.getColor());
+console.log(sandero.getColor());
 
 
 // class Obj {
@@ -44,8 +38,8 @@ console.log(Honda.getColor());
 
 
 
-const car = new Car('Amarelo')
-console.log(car.getColor());
+// const car = new Car('Amarelo')
+// console.log(car.getColor());
 
 /*
   02
