@@ -28,17 +28,23 @@
 // console.log(Honda.getColor());
 
 
-const obj = {
+class Obj {
   getColor () {
     return this.color
   }
 }
 
-class car {
-  constructor (car) {
-    this.car = car
-  }
-}
+// class Car extends Obj {
+//   constructor (color) {
+//     super(color)
+//     this.color = color
+//   }
+// }
+
+
+
+const car = new Car('Amarelo')
+console.log(car.getColor());
 
 /*
   02
