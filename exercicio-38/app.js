@@ -255,3 +255,22 @@ const extendedClock = options => {
         o plano free. Seus dados de cartão de crédito não serão solicitados.
 */
 
+function setOptionsInSelects () {
+  const selectOne = document.querySelector('[data-js="currency-one"]');
+  const selectTwo = document.querySelector('[data-js="currency-two"]');
+  const typesOfCurrencies = ['BRL', 'USD', 'EUR']
+  
+  typesOfCurrencies.map(typeCoin => {
+    const option = document.createElement('option');
+    option.text = typeCoin
+    selectTwo.appendChild(option)
+  })
+
+  typesOfCurrencies.map((_, index, array) => {
+    let newArray = array.reverse()
+    const option = document.createElement('option');
+    option.text = newArray[index]
+    selectOne.appendChild(option)
+  })
+
+}
