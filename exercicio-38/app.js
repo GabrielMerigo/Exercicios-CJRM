@@ -9,30 +9,31 @@
     diferentes para a propriedade color de cada carro;
   - Teste o método getColor do prototype dos carros.
 */
-// const obj = {
-//   getColor() {
-//     return this.color
-//   }
-// }
 
-// Car.prototype.getColor = obj.getColor
-
-// function Car(color) {
-//   this.color = color
-// }
-
-
-// const sandero = new Car('Azul')
-// const Honda = new Car('Branco')
-
-// console.log(Honda.getColor());
-
-
-class Obj {
-  getColor () {
+const obj = {
+  getColor() {
     return this.color
   }
 }
+
+Car.prototype.getColor = obj.getColor
+
+function Car(color) {
+  this.color = color
+}
+
+
+const sandero = new Car('Azul')
+const Honda = new Car('Branco')
+
+console.log(Honda.getColor());
+
+
+// class Obj {
+//   getColor () {
+//     return this.color
+//   }
+// }
 
 // class Car extends Obj {
 //   constructor (color) {
