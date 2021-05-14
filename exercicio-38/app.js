@@ -255,22 +255,33 @@ const extendedClock = options => {
         o plano free. Seus dados de cartão de crédito não serão solicitados.
 */
 
-function setOptionsInSelects () {
-  const selectOne = document.querySelector('[data-js="currency-one"]');
-  const selectTwo = document.querySelector('[data-js="currency-two"]');
-  const typesOfCurrencies = ['BRL', 'USD', 'EUR']
-  
+
+
+
+const selectOne = document.querySelector('[data-js="currency-one"]');
+const selectTwo = document.querySelector('[data-js="currency-two"]');
+const convertedValue = document.querySelector('[data-js="converted-value"]');
+const inputValue = document.querySelector('[data-js="currency-one-times"]');
+
+function setOptionsInSelects() {
+  const typesOfCurrencies = ['BRL', 'EUR', 'USD'];
+
   typesOfCurrencies.map(typeCoin => {
     const option = document.createElement('option');
     option.text = typeCoin
     selectTwo.appendChild(option)
   })
-
+  
   typesOfCurrencies.map((_, index, array) => {
     let newArray = array.reverse()
     const option = document.createElement('option');
     option.text = newArray[index]
     selectOne.appendChild(option)
   })
-
 }
+
+selectOne.addEventListener('change', async () => {
+  let value = 0;
+  
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${selectOne.value}`);
+})
