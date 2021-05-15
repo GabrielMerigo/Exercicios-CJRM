@@ -64,7 +64,7 @@ function getSummary() {
   return `${title} foi dirigido por ${director} e tem ${starringRole} no papel principal.`
 }
 
-console.log(getSummary.call(movie));
+// console.log(getSummary.call(movie));
 /*
   03
 
@@ -77,20 +77,20 @@ console.log(getSummary.call(movie));
   - Descomente o código e crie a função.
 */
 
-const arrayToObj = array => array.reduce((acc, [key, prop]) => {
-  acc[key] = prop
+const createObj = (acc, [key, value]) => {
+  acc[key] = value
   return acc
-}, {})
+}
 
+const arrayToObj = array => array.reduce(createObj, {})
 
-
-console.log(
-  arrayToObj([
-    ['prop1', 'value1'],
-    ['prop2', 'value2'],
-    ['prop3', 'value3']
-  ])
-)
+// console.log(
+//   arrayToObj([
+//     ['prop1', 'value1'],
+//     ['prop2', 'value2'],
+//     ['prop3', 'value3']
+//   ])
+// )
 
 
 /*
@@ -125,42 +125,70 @@ const getFormattedTime = template => {
     .join(':')
 }
 
-const clock = ({ template }) => {
-  let timer = null;
+const makeClock = ({ template }) => ({
+  template,
+  render() {
+    const formattedTime = getFormattedTime(this.template)
+    console.log(formattedTime)
+  }, start() {
+    const oneSecond = 1000;
 
-  return ({
-    template,
-    timer,
-    render() {
-      const formattedTime = getFormattedTime(template)
-      console.log(formattedTime);
-    },
-    start() {
-      const oneSecond = 1000;
-
+    this.render()
+    this.timer = setInterval(() => {
       this.render()
-      timer = setInterval(this.render(), oneSecond)
-    },
-    stop() {
-      clearInterval(timer)
-    }
-  })
-}
-
-// console.log(clock({ template: 'h:m:s' }).start());
-
-const extendedClock = options => {
-  const { render } = clock({ template: 'h:m:s' })
-  const { precision = 1000 } = options
-  let timer;
-  return {
-    precision,
-    start() {
-      render()
-      timer = setInterval(() => render(), precision)
-    }
+    }, oneSecond)
+  }, stop () {
+    clearInterval(this.timer)
   }
-}
+})
+
+const makeExtendClock = ({ template, precision = 1000 }) => ({
+  precision,
+  ...makeClock({template}),
+  start(){
+    this.render(),
+    this.timer = setInterval(() => this.render(), this.precision)
+  }
+})
+
+// const clock = ({ template }) => {
+//   let timer = null;
+
+//   return ({
+//     template,
+//     timer,
+//     render() {
+//       const formattedTime = getFormattedTime(template)
+//       console.log(formattedTime);
+//     },
+//     start() {
+//       const oneSecond = 1000;
+
+//       this.render()
+//       timer = setInterval(this.render(), oneSecond)
+//     },
+//     stop() {
+//       clearInterval(timer)
+//     }
+//   })
+// }
+
+
+// const extendedClock = options => {
+//   const { render } = clock({ template: 'h:m:s' })
+//   const { precision = 1000 } = options
+//   let timer;
+//   return {
+//     precision,
+//     start() {
+//       render()
+//       timer = setInterval(() => render(), precision)
+//     }
+//   }
+// }
+// console.log(extendedClock({ template: 'h:m:s' }).start());
+
+
 
 /*
   05
