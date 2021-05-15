@@ -60,7 +60,7 @@ const movie = {
 }
 
 function getSummary() {
-  const {title, director, starringRole} = this
+  const { title, director, starringRole } = this
   return `${title} foi dirigido por ${director} e tem ${starringRole} no papel principal.`
 }
 
@@ -77,20 +77,20 @@ console.log(getSummary.call(movie));
   - Descomente o código e crie a função.
 */
 
-// const arrayToObj = array => {
-//   return array.reduce((acc, [prop, value]) => {
-//     acc[prop] = acc[prop] || prop
-//   }, {})
-// }
+const arrayToObj = array => array.reduce((acc, [key, prop]) => {
+  acc[key] = prop
+  return acc
+}, {})
 
 
-// console.log(
-//   arrayToObj([
-//     ['prop1', 'value1'], 
-//     ['prop2', 'value2'],
-//     ['prop3', 'value3']
-//   ])
-// )
+
+console.log(
+  arrayToObj([
+    ['prop1', 'value1'],
+    ['prop2', 'value2'],
+    ['prop3', 'value3']
+  ])
+)
 
 
 /*
@@ -308,7 +308,7 @@ const convertedValueCoin = async () => {
     obj = conversion_rates
 
     const tipoMoeda = localStorage.getItem('tipoMoeda')
-    if(tipoMoeda){
+    if (tipoMoeda) {
       console.log('cu');
       const valorMoeda = obj[`${tipoMoeda}`]
       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
@@ -321,7 +321,7 @@ const convertedValueCoin = async () => {
     const valorMoeda = obj[`${target}`]
     localStorage.setItem('tipoMoeda', target)
 
-    if(valorMoeda){
+    if (valorMoeda) {
       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
       precision.textContent = `1 ${target} = ${valorMoeda} ${selectOne.value}`
     }
