@@ -20,7 +20,7 @@ const carProto = {
 const sandero = Object.create(carProto)
 sandero.color = 'azul'
 
-console.log(sandero.getColor());
+// console.log(sandero.getColor());
 
 
 // class Obj {
@@ -59,13 +59,12 @@ const movie = {
   starringRole: 'Tom Hanks'
 }
 
-function getSummary(movie) {
-  const { title, director, starringRole } = movie
+function getSummary() {
+  const {title, director, starringRole} = this
   return `${title} foi dirigido por ${director} e tem ${starringRole} no papel principal.`
 }
 
-// console.log(getSummary(movie))
-
+console.log(getSummary.call(movie));
 /*
   03
 
