@@ -130,27 +130,27 @@ const getFormattedTime = template => {
 }
 
 const makeClock = ({ template }) => ({
-  template, 
-  render () {
+  template,
+  render() {
     const formattedTime = getFormattedTime(this.template)
     console.log(formattedTime);
   },
-  stop () {
+  stop() {
     clearInterval(this.timer)
   }
 })
 
 const makeExtendedClock = ({ template, precision }) => ({
   precision,
-  ...makeClock({template}),
-  start () {
+  ...makeClock({ template }),
+  start() {
     this.render()
     this.timer = setInterval(() => this.render(), this.precision)
   }
 })
 
 
-const clock = makeExtendedClock({template: 'h:m:s', precision: 1000})
+const clock = makeExtendedClock({ template: 'h:m:s', precision: 1000 })
 // clock.start()
 
 
@@ -160,7 +160,7 @@ const clock = makeExtendedClock({template: 'h:m:s', precision: 1000})
 // class ExtendedClock extends Clock {
 //   constructor (options) {
 //     super(options)
-    
+
 //     const { precision = 1000 } = options
 //     this.precision = precision
 //   }
@@ -212,20 +212,37 @@ const clock = makeExtendedClock({template: 'h:m:s', precision: 1000})
           CSV que você criou;
         - download, com o valor 'table.csv'.
 */
-// const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
-// btnExportCSV.addEventListener('click', () => {
-//   const trs = Array.from(document.querySelectorAll('tr'))
-//   let CSV = '';
-//   trs.forEach(tr => {
-//     let arrayElements = Array.from(tr.cells)
-//     arrayElements.map((element, index, array) => {
-//       CSV += index === array.length - 1 ? `${element.textContent}\n`
-//         : `${element.textContent},`
-//     })
-//   })
-//   btnExportCSV.setAttribute('href', `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`)
-//   btnExportCSV.download = 'table.csv'
-// })
+const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
+
+const setCSVDownload = CSV => {
+  const CSVURI = `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`
+
+  btnExportCSV.setAttribute('href', CSVURI)
+  btnExportCSV.download = 'table.csv'
+}
+
+const generateCSVFile = () => {
+  const tableRows = Array.from(document.querySelectorAll('tr'))
+  let CSV = '';
+  const iterableForArray = tr => {
+    let arrayElements = Array.from(tr.cells)
+
+    const iterateThroughItemsTheseArrays = (item, index, array) => {
+      const lastItemArray = index === array.length - 1;
+      const itemArray = item.textContent;
+      const verifyIfLastItem = lastItemArray ? `${itemArray}\n` : `${itemArray},`
+      CSV += verifyIfLastItem
+    }
+
+    arrayElements.map(iterateThroughItemsTheseArrays)
+  }
+
+  setCSVDownload(CSV)
+
+  tableRows.forEach(iterableForArray)
+}
+
+btnExportCSV.addEventListener('click', generateCSVFile)
 
 /*
   06
@@ -281,65 +298,65 @@ const clock = makeExtendedClock({template: 'h:m:s', precision: 1000})
 */
 
 
-const selectOne = document.querySelector('[data-js="currency-one"]');
-const selectTwo = document.querySelector('[data-js="currency-two"]');
-const convertedValue = document.querySelector('[data-js="converted-value"]');
+// const selectOne = document.querySelector('[data-js="currency-one"]');
+// const selectTwo = document.querySelector('[data-js="currency-two"]');
+// const convertedValue = document.querySelector('[data-js="converted-value"]');
 
-let value = selectOne.value
+// let value = selectOne.value
 
-function setOptionsInSelects() {
-  const typesOfCurrencies = ['BRL', 'EUR', 'USD'];
+// function setOptionsInSelects() {
+//   const typesOfCurrencies = ['BRL', 'EUR', 'USD'];
 
-  typesOfCurrencies.map(typeCoin => {
-    const option = document.createElement('option');
-    option.text = typeCoin
-    selectTwo.appendChild(option)
-  })
+//   typesOfCurrencies.map(typeCoin => {
+//     const option = document.createElement('option');
+//     option.text = typeCoin
+//     selectTwo.appendChild(option)
+//   })
 
-  typesOfCurrencies.map((_, index, array) => {
-    let newArray = array.reverse()
-    const option = document.createElement('option');
-    option.text = newArray[index]
-    selectOne.appendChild(option)
-  })
-}
+//   typesOfCurrencies.map((_, index, array) => {
+//     let newArray = array.reverse()
+//     const option = document.createElement('option');
+//     option.text = newArray[index]
+//     selectOne.appendChild(option)
+//   })
+// }
 
-setOptionsInSelects()
+// setOptionsInSelects()
 
-const getCoin = value =>
-  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
+// const getCoin = value =>
+//   fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
 
-const convertedValueCoin = async () => {
-  const inputValue = document.querySelector('[data-js="currency-one-times"]');
-  const precision = document.querySelector('[data-js="conversion-precision"]')
+// const convertedValueCoin = async () => {
+//   const inputValue = document.querySelector('[data-js="currency-one-times"]');
+//   const precision = document.querySelector('[data-js="conversion-precision"]')
 
-  let obj = null;
-  selectOne.addEventListener('input', async () => {
-    let value = selectOne.value
-    const { conversion_rates } = await (await getCoin(value)).json();
-    obj = conversion_rates
+//   let obj = null;
+//   selectOne.addEventListener('input', async () => {
+//     let value = selectOne.value
+//     const { conversion_rates } = await (await getCoin(value)).json();
+//     obj = conversion_rates
 
-    const tipoMoeda = localStorage.getItem('tipoMoeda')
-    if (tipoMoeda) {
-      console.log('cu');
-      const valorMoeda = obj[`${tipoMoeda}`]
-      convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
-      precision.textContent = `1 ${tipoMoeda} = ${valorMoeda} ${selectOne.value}`
-    }
-  })
+//     const tipoMoeda = localStorage.getItem('tipoMoeda')
+//     if (tipoMoeda) {
+//       console.log('cu');
+//       const valorMoeda = obj[`${tipoMoeda}`]
+//       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
+//       precision.textContent = `1 ${tipoMoeda} = ${valorMoeda} ${selectOne.value}`
+//     }
+//   })
 
-  selectTwo.addEventListener('input', e => {
-    const target = e.target.value
-    const valorMoeda = obj[`${target}`]
-    localStorage.setItem('tipoMoeda', target)
+//   selectTwo.addEventListener('input', e => {
+//     const target = e.target.value
+//     const valorMoeda = obj[`${target}`]
+//     localStorage.setItem('tipoMoeda', target)
 
-    if (valorMoeda) {
-      convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
-      precision.textContent = `1 ${target} = ${valorMoeda} ${selectOne.value}`
-    }
-  })
+//     if (valorMoeda) {
+//       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
+//       precision.textContent = `1 ${target} = ${valorMoeda} ${selectOne.value}`
+//     }
+//   })
 
-}
+// }
 
-convertedValueCoin()
+// convertedValueCoin()
 
