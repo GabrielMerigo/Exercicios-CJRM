@@ -8,7 +8,7 @@
   <title>Exercício 38</title>
 </head>
 <body>
-  <div class="container">
+  <!-- <div class="container">
     <table data-js="table" class="table table-dark table-striped">
       <thead>
         <tr>
@@ -57,26 +57,36 @@
     </table>
 
     <a href="#" data-js="export-table-btn" role="button" class="btn btn-info">Exportar para CSV</a>
-  </div>
+  </div> -->
 
-  <!-- <div class="container">
+  <div class="container">
     <div class="row justify-content-center">
       <img class="col-sm-6 col-md-5 col-lg-4 col-lg-3 col-xl-3 col-xxl-3" src="./src/img/logo.svg" alt="Logo ">
     </div>
 
     <div class="row justify-content-center mb-4 mt-4">
       <div class="col-sm-3 col-lg-2">
-        <select data-js="currency-one" class="form-select"></select>
+        <label><b>Converter:</b></label>
+        <select data-js="currency-one" class="form-select">
+          <option>BRL</option>
+          <option>USD</option>
+          <option>EUR</option>
+        </select>
       </div>
 
       <div class="col-sm-3 col-lg-2">
-        <select data-js="currency-two" class="form-select"></select>
+        <label><b>Para:</b></label>
+        <select data-js="currency-two" class="form-select">
+          <option>USD</option>
+          <option>EUR</option>
+          <option>BRL</option>
+        </select>
       </div>
     </div>
 
     <div class="row justify-content-center align-items-center mb-4 mt-4">
       <div class="col-sm-3 col-md-2">
-        <input data-js="currency-one-times" type="number" class="form-control form-control-lg" value="10">
+        <input data-js="currency-one-times" type="number" class="form-control form-control-lg" value="1">
       </div>
       
       <div class="col-sm-3 col-md-2">
@@ -85,7 +95,7 @@
 
       <p data-js="conversion-precision" class="conversion-precision text-center m-4"></p>
     </div>
-  </div> -->
+  </div>
 
   <script src="./app.js"></script>
 </body>

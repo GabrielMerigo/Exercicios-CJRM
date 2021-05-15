@@ -212,37 +212,40 @@ const clock = makeExtendedClock({ template: 'h:m:s', precision: 1000 })
           CSV que você criou;
         - download, com o valor 'table.csv'.
 */
-const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
+// const btnExportCSV = document.querySelector('[data-js="export-table-btn"]')
 
-const setCSVDownload = CSV => {
-  const CSVURI = `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`
+// const setCSVDownload = CSV => {
+//   const CSVURI = `data:text/csvcharset=utf-8,${encodeURIComponent(CSV)}`
 
-  btnExportCSV.setAttribute('href', CSVURI)
-  btnExportCSV.download = 'table.csv'
-}
+//   btnExportCSV.setAttribute(
+//     'href',
+//     CSVURI
+//   )
+//   btnExportCSV.download = 'table.csv'
+// }
 
-const generateCSVFile = () => {
-  const tableRows = Array.from(document.querySelectorAll('tr'))
-  let CSV = '';
-  const iterableForArray = tr => {
-    let arrayElements = Array.from(tr.cells)
+// const generateCSVFile = () => {
+//   const tableRows = Array.from(document.querySelectorAll('tr'))
+//   let CSV = '';
+//   const iterableForArray = tr => {
+//     let arrayElements = Array.from(tr.cells)
 
-    const iterateThroughItemsTheseArrays = (item, index, array) => {
-      const lastItemArray = index === array.length - 1;
-      const itemArray = item.textContent;
-      const verifyIfLastItem = lastItemArray ? `${itemArray}\n` : `${itemArray},`
-      CSV += verifyIfLastItem
-    }
+//     const iterateThroughItemsTheseArrays = (item, index, array) => {
+//       const lastItemArray = index === array.length - 1;
+//       const itemArray = item.textContent;
+//       const verifyIfLastItem = lastItemArray ? `${itemArray}\n` : `${itemArray},`
+//       CSV += verifyIfLastItem
+//     }
 
-    arrayElements.map(iterateThroughItemsTheseArrays)
-  }
+//     arrayElements.map(iterateThroughItemsTheseArrays)
+//   }
 
-  setCSVDownload(CSV)
+//   setCSVDownload(CSV)
 
-  tableRows.forEach(iterableForArray)
-}
+//   tableRows.forEach(iterableForArray)
+// }
 
-btnExportCSV.addEventListener('click', generateCSVFile)
+// btnExportCSV.addEventListener('click', generateCSVFile)
 
 /*
   06
@@ -297,66 +300,17 @@ btnExportCSV.addEventListener('click', generateCSVFile)
         o plano free. Seus dados de cartão de crédito não serão solicitados.
 */
 
+const selectOne = document.querySelector('[data-js="currency-one"]');
+const selectTwo = document.querySelector('[data-js="currency-two"]');
+const convertedValue = document.querySelector('[data-js="converted-value"]');
 
-// const selectOne = document.querySelector('[data-js="currency-one"]');
-// const selectTwo = document.querySelector('[data-js="currency-two"]');
-// const convertedValue = document.querySelector('[data-js="converted-value"]');
+let typeCoins = ['BRL', 'USD', 'EUR'];
 
-// let value = selectOne.value
+const getCoin = value =>
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
 
-// function setOptionsInSelects() {
-//   const typesOfCurrencies = ['BRL', 'EUR', 'USD'];
-
-//   typesOfCurrencies.map(typeCoin => {
-//     const option = document.createElement('option');
-//     option.text = typeCoin
-//     selectTwo.appendChild(option)
-//   })
-
-//   typesOfCurrencies.map((_, index, array) => {
-//     let newArray = array.reverse()
-//     const option = document.createElement('option');
-//     option.text = newArray[index]
-//     selectOne.appendChild(option)
-//   })
-// }
-
-// setOptionsInSelects()
-
-// const getCoin = value =>
-//   fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
-
-// const convertedValueCoin = async () => {
-//   const inputValue = document.querySelector('[data-js="currency-one-times"]');
-//   const precision = document.querySelector('[data-js="conversion-precision"]')
-
-//   let obj = null;
-//   selectOne.addEventListener('input', async () => {
-//     let value = selectOne.value
-//     const { conversion_rates } = await (await getCoin(value)).json();
-//     obj = conversion_rates
-
-//     const tipoMoeda = localStorage.getItem('tipoMoeda')
-//     if (tipoMoeda) {
-//       console.log('cu');
-//       const valorMoeda = obj[`${tipoMoeda}`]
-//       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
-//       precision.textContent = `1 ${tipoMoeda} = ${valorMoeda} ${selectOne.value}`
-//     }
-//   })
-
-//   selectTwo.addEventListener('input', e => {
-//     const target = e.target.value
-//     const valorMoeda = obj[`${target}`]
-//     localStorage.setItem('tipoMoeda', target)
-
-//     if (valorMoeda) {
-//       convertedValue.textContent = (inputValue.value * valorMoeda).toFixed(2)
-//       precision.textContent = `1 ${target} = ${valorMoeda} ${selectOne.value}`
-//     }
-//   })
-
-// }
-
-// convertedValueCoin()
+selectOne.addEventListener('change', async e => {
+  const typeCoin = await (await getCoin(e.target.value)).json()
+  console.log(typeCoin);
+})
 
