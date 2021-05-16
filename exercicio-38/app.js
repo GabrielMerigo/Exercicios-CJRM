@@ -310,22 +310,33 @@ let typeCoins = ['BRL', 'USD', 'EUR'];
 
 
 const fetchCoin = value =>
-  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/ss`)
+
+const getErrorMessage = errorType => ({
+  'unsupported-code' : 'O tipo de moeda é inválido.',
+  'malformed-request' : 'A estrutura do request está inválida.',
+  'invalid-key' : 'A sua API KEY não é válida.',
+  'inactive-account' : 'Seu e-mail não foi confirmado.',
+  'quota-reached' : 'Você atingiu o limite de solicitações pelo seu plano.'
+})[errorType]
 
 const getCoin = async (typeCoin, howMuch, inputValue) => {
   try {
     const getData = await fetchCoin(typeCoin);
-    const { conversion_rates } = await getData.json();
+    const data = await getData.json();
+
+    if(data.result === 'error'){
+      throw new Error(getErrorMessage(data.result))
+    }
+
+    const { conversion_rates } = data;
     const valorDaMoedaConvertida = conversion_rates[howMuch]
 
-    if(!getData.ok){
-      throw new Error('Falha na requisição')
-    }
 
     convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2)
     precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
   } catch (err) {
-    console.log(err.message);
+    alert(err.message);
   }
 }
 
