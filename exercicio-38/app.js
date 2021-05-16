@@ -300,34 +300,44 @@ const clock = makeExtendedClock({ template: 'h:m:s', precision: 1000 })
         o plano free. Seus dados de cartão de crédito não serão solicitados.
 */
 
-const selectOne = document.querySelector('[data-js="currency-one"]');
-const selectTwo = document.querySelector('[data-js="currency-two"]');
+const selectOneEl = document.querySelector('[data-js="currency-one"]');
+const selectTwoEl = document.querySelector('[data-js="currency-two"]');
 const convertedValue = document.querySelector('[data-js="converted-value"]');
 const precision = document.querySelector('[data-js="conversion-precision"]')
 const input = document.querySelector('[data-js="currency-one-times"]')
 
 let typeCoins = ['BRL', 'USD', 'EUR'];
 
+
 const fetchCoin = value =>
   fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
 
 const getCoin = async (typeCoin, howMuch, inputValue) => {
-  const { conversion_rates } = await (await fetchCoin(typeCoin)).json();
-  const valorDaMoedaConvertida = conversion_rates[howMuch]
+  try {
+    const getData = await fetchCoin(typeCoin);
+    const { conversion_rates } = await getData.json();
+    const valorDaMoedaConvertida = conversion_rates[howMuch]
 
-  convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2) 
-  precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
+    if(!getData.ok){
+      throw new Error('Falha na requisição')
+    }
+
+    convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2)
+    precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
+  } catch (err) {
+    console.log(err.message);
+  }
 }
 
-selectOne.addEventListener('change', async e => {
-  getCoin(e.target.value, selectTwo.value, input.value);
+selectOneEl.addEventListener('change', async e => {
+  getCoin(e.target.value, selectTwoEl.value, input.value);
 })
 
-selectTwo.addEventListener('click', e => {
-  getCoin(selectOne.value, e.target.value, input.value)
+selectTwoEl.addEventListener('click', e => {
+  getCoin(selectOneEl.value, e.target.value, input.value)
 })
 
 input.addEventListener('input', () => {
-  getCoin(selectOne.value, selectTwo.value, input.value)
+  getCoin(selectOneEl.value, selectTwoEl.value, input.value)
 })
 
