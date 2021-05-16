@@ -305,8 +305,7 @@ const selectTwoEl = document.querySelector('[data-js="currency-two"]');
 const convertedValue = document.querySelector('[data-js="converted-value"]');
 const precision = document.querySelector('[data-js="conversion-precision"]')
 const input = document.querySelector('[data-js="currency-one-times"]')
-const currenciesContainer =
-  document.querySelector('[data-js="currencies-container"]')
+const currenciesContainer = document.querySelector('[data-js="currencies-container"]')
 
 
 let typeCoins = ['BRL', 'USD', 'EUR'];
@@ -377,6 +376,10 @@ const init = async () => {
   // precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
 }
 
+input.addEventListener('input', () => {
+  getCoin(selectOneEl.value, selectTwoEl.value, input.value)
+})
+
 init()
 
 // selectOneEl.addEventListener('change', async e => {
@@ -387,7 +390,4 @@ init()
 //   getCoin(selectOneEl.value, e.target.value, input.value)
 // })
 
-// input.addEventListener('input', () => {
-//   getCoin(selectOneEl.value, selectTwoEl.value, input.value)
-// })
 
