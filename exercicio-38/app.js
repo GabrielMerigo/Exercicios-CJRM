@@ -310,22 +310,26 @@ let typeCoins = ['BRL', 'USD', 'EUR'];
 
 
 const fetchCoin = value =>
-  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/ss`)
 
 const getErrorMessage = errorType => ({
-  'unsupported-code' : 'O tipo de moeda é inválido.',
-  'malformed-request' : 'A estrutura do request está inválida.',
-  'invalid-key' : 'A sua API KEY não é válida.',
-  'inactive-account' : 'Seu e-mail não foi confirmado.',
-  'quota-reached' : 'Você atingiu o limite de solicitações pelo seu plano.'
-})[errorType]
+  'unsupported-code': 'O tipo de moeda é inválido.',
+  'malformed-request': 'A estrutura do request está inválida.',
+  'invalid-key': 'A sua API KEY não é válida.',
+  'inactive-account': 'Seu e-mail não foi confirmado.',
+  'quota-reached': 'Você atingiu o limite de solicitações pelo seu plano.'
+})[errorType] || 'Não foi possível obter os dados'
 
 const getCoin = async (typeCoin, howMuch, inputValue) => {
   try {
-    const getData = await fetchCoin(typeCoin);
-    const data = await getData.json();
+    const response = await fetchCoin(typeCoin);
+    const data = await response.json();
 
-    if(data.result === 'error'){
+    if (!response.ok) {
+      throw new Error('Sua conexão falhou. Não foi possível obter essas informações.')
+    }
+
+    if (data.result === 'error') {
       throw new Error(getErrorMessage(data['error-type']))
     }
 
@@ -336,7 +340,23 @@ const getCoin = async (typeCoin, howMuch, inputValue) => {
     convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2)
     precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
   } catch (err) {
-    alert(err.message);
+
+    const div = document.createElement('div')
+    const button = document.createElement('button')
+
+    div.textContent = err.message
+    div.classList.add('alert alert-warning alert-dismissible fade show')
+
+    div.appendChild(button)
+
+    console.log(div);
+    /*
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Mensagem de Erro
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+    </div>
+    */
+
   }
 }
 
