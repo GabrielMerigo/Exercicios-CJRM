@@ -361,9 +361,17 @@ const getCoin = async (typeCoin, howMuch, inputValue) => {
 }
 
 const init = async () => {
-  const dado = await getCoin();
-  console.log(dado);
+  const { conversion_rates } = await getCoin(selectOneEl.value);
 
+  const getOptions = selectedCurrency => 
+    Object.keys(conversion_rates)
+    .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
+    .join('')
+  
+  
+  
+  selectOneEl.innerHTML = getOptions('USD')
+  selectTwoEl.innerHTML = getOptions('BRL')
 
   // convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2)
   // precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
