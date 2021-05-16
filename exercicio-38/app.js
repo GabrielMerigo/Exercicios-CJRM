@@ -305,12 +305,15 @@ const selectTwoEl = document.querySelector('[data-js="currency-two"]');
 const convertedValue = document.querySelector('[data-js="converted-value"]');
 const precision = document.querySelector('[data-js="conversion-precision"]')
 const input = document.querySelector('[data-js="currency-one-times"]')
+const currenciesContainer =
+  document.querySelector('[data-js="currencies-container"]')
+
 
 let typeCoins = ['BRL', 'USD', 'EUR'];
 
 
 const fetchCoin = value =>
-  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/ss`)
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/USD`)
 
 const getErrorMessage = errorType => ({
   'unsupported-code': 'O tipo de moeda é inválido.',
@@ -333,42 +336,50 @@ const getCoin = async (typeCoin, howMuch, inputValue) => {
       throw new Error(getErrorMessage(data['error-type']))
     }
 
-    const { conversion_rates } = data;
-    const valorDaMoedaConvertida = conversion_rates[howMuch]
-
-
-    convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2)
-    precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
+    return data
   } catch (err) {
 
     const div = document.createElement('div')
     const button = document.createElement('button')
 
     div.textContent = err.message
-    div.classList.add('alert alert-warning alert-dismissible fade show')
+    div.classList.add('alert', 'alert-warning', 'alert-dismissible', 'fade', 'show')
+    div.setAttribute('role', 'alert')
+
+    button.classList.add('btn-close')
+    button.setAttribute('type', 'button')
+    button.setAttribute('aria-label', 'Close')
+
+    button.addEventListener('click', () => {
+      div.remove()
+    })
 
     div.appendChild(button)
 
-    console.log(div);
-    /*
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      Mensagem de Erro
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-    </div>
-    */
-
+    currenciesContainer.insertAdjacentElement('afterend', div)
   }
 }
 
-selectOneEl.addEventListener('change', async e => {
-  getCoin(e.target.value, selectTwoEl.value, input.value);
-})
+const init = async () => {
+  const dado = await getCoin();
+  console.log(dado);
 
-selectTwoEl.addEventListener('click', e => {
-  getCoin(selectOneEl.value, e.target.value, input.value)
-})
 
-input.addEventListener('input', () => {
-  getCoin(selectOneEl.value, selectTwoEl.value, input.value)
-})
+  // convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2)
+  // precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
+}
+
+init()
+
+// selectOneEl.addEventListener('change', async e => {
+//   getCoin(e.target.value, selectTwoEl.value, input.value);
+// })
+
+// selectTwoEl.addEventListener('click', e => {
+//   getCoin(selectOneEl.value, e.target.value, input.value)
+// })
+
+// input.addEventListener('input', () => {
+//   getCoin(selectOneEl.value, selectTwoEl.value, input.value)
+// })
 
