@@ -310,7 +310,7 @@ let typeCoins = ['BRL', 'USD', 'EUR'];
 
 
 const fetchCoin = value =>
-  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/ss`)
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
 
 const getErrorMessage = errorType => ({
   'unsupported-code' : 'O tipo de moeda é inválido.',
@@ -326,7 +326,7 @@ const getCoin = async (typeCoin, howMuch, inputValue) => {
     const data = await getData.json();
 
     if(data.result === 'error'){
-      throw new Error(getErrorMessage(data.result))
+      throw new Error(getErrorMessage(data['error-type']))
     }
 
     const { conversion_rates } = data;
