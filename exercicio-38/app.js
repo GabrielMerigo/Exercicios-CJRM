@@ -303,14 +303,31 @@ const clock = makeExtendedClock({ template: 'h:m:s', precision: 1000 })
 const selectOne = document.querySelector('[data-js="currency-one"]');
 const selectTwo = document.querySelector('[data-js="currency-two"]');
 const convertedValue = document.querySelector('[data-js="converted-value"]');
+const precision = document.querySelector('[data-js="conversion-precision"]')
+const input = document.querySelector('[data-js="currency-one-times"]')
 
 let typeCoins = ['BRL', 'USD', 'EUR'];
 
-const getCoin = value =>
+const fetchCoin = value =>
   fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
 
+const getCoin = async (typeCoin, howMuch, inputValue) => {
+  const { conversion_rates } = await (await fetchCoin(typeCoin)).json();
+  const valorDaMoedaConvertida = conversion_rates[howMuch]
+
+  convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2) 
+  precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
+}
+
 selectOne.addEventListener('change', async e => {
-  const typeCoin = await (await getCoin(e.target.value)).json()
-  console.log(typeCoin);
+  getCoin(e.target.value, selectTwo.value, input.value);
+})
+
+selectTwo.addEventListener('click', e => {
+  getCoin(selectOne.value, e.target.value, input.value)
+})
+
+input.addEventListener('input', () => {
+  getCoin(selectOne.value, selectTwo.value, input.value)
 })
 
