@@ -307,6 +307,8 @@ const precision = document.querySelector('[data-js="conversion-precision"]')
 const input = document.querySelector('[data-js="currency-one-times"]')
 const currenciesContainer = document.querySelector('[data-js="currencies-container"]')
 
+let internalExchangeRate = {};
+
 
 let typeCoins = ['BRL', 'USD', 'EUR'];
 
@@ -322,7 +324,7 @@ const getErrorMessage = errorType => ({
   'quota-reached': 'Você atingiu o limite de solicitações pelo seu plano.'
 })[errorType] || 'Não foi possível obter os dados'
 
-const getCoin = async (typeCoin, howMuch, inputValue) => {
+const getCoin = async (typeCoin) => {
   try {
     const response = await fetchCoin(typeCoin);
     const data = await response.json();
@@ -361,6 +363,7 @@ const getCoin = async (typeCoin, howMuch, inputValue) => {
 
 const init = async () => {
   const { conversion_rates } = await getCoin(selectOneEl.value);
+  internalExchangeRate = { ...conversion_rates }
 
   const getOptions = selectedCurrency => 
     Object.keys(conversion_rates)
@@ -376,8 +379,8 @@ const init = async () => {
   // precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
 }
 
-input.addEventListener('input', () => {
-  getCoin(selectOneEl.value, selectTwoEl.value, input.value)
+input.addEventListener('input', e => {
+  convertedValue.textContent = (e.target.value * internalExchangeRate[selectTwoEl.value]).toFixed(2)
 })
 
 init()
@@ -386,8 +389,9 @@ init()
 //   getCoin(e.target.value, selectTwoEl.value, input.value);
 // })
 
-// selectTwoEl.addEventListener('click', e => {
-//   getCoin(selectOneEl.value, e.target.value, input.value)
-// })
+selectTwoEl.addEventListener('input', e => {
+  const currencyTwoValue = (input.value * internalExchangeRate[e.target.value])
+  convertedValue.textContent = currencyTwoValue.toFixed(2)
+})
 
 
