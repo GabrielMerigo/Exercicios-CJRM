@@ -314,7 +314,7 @@ let typeCoins = ['BRL', 'USD', 'EUR'];
 
 
 const fetchCoin = value =>
-  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/USD`)
+  fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
 
 const getErrorMessage = errorType => ({
   'unsupported-code': 'O tipo de moeda é inválido.',
@@ -324,7 +324,7 @@ const getErrorMessage = errorType => ({
   'quota-reached': 'Você atingiu o limite de solicitações pelo seu plano.'
 })[errorType] || 'Não foi possível obter os dados'
 
-const getCoin = async (typeCoin) => {
+const getCoin = async typeCoin => {
   try {
     const response = await fetchCoin(typeCoin);
     const data = await response.json();
@@ -362,7 +362,8 @@ const getCoin = async (typeCoin) => {
 }
 
 const init = async () => {
-  const { conversion_rates } = await getCoin(selectOneEl.value);
+  const { conversion_rates } = await getCoin('USD');
+
   internalExchangeRate = { ...conversion_rates }
 
   const getOptions = selectedCurrency => 
@@ -385,13 +386,14 @@ input.addEventListener('input', e => {
 
 init()
 
-// selectOneEl.addEventListener('change', async e => {
-//   getCoin(e.target.value, selectTwoEl.value, input.value);
-// })
+selectOneEl.addEventListener('input', async e => {
+  console.log(await getCoin(e.target.value));
+})
 
 selectTwoEl.addEventListener('input', e => {
   const currencyTwoValue = (input.value * internalExchangeRate[e.target.value])
   convertedValue.textContent = currencyTwoValue.toFixed(2)
+  precision.textContent = `1 USD = ${internalExchangeRate[e.target.value].toFixed(2)} ${e.target.value}`
 })
 
 
