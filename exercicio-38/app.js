@@ -364,31 +364,31 @@ const getCoin = async typeCoin => {
   }
 }
 
+const showInitialInfo = conversion_rates => {
+  const getOptions = selectedCurrency =>
+      Object.keys(conversion_rates)
+        .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
+        .join('')
+
+    selectOneEl.innerHTML = getOptions('USD')
+    selectTwoEl.innerHTML = getOptions('BRL')
+}
+
 const init = async () => {
   const { conversion_rates } = await getCoin('USD');
 
   internalExchangeRate = { ...conversion_rates }
 
-  const getOptions = selectedCurrency =>
-    Object.keys(conversion_rates)
-      .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
-      .join('')
-
-
-
-  selectOneEl.innerHTML = getOptions('USD')
-  selectTwoEl.innerHTML = getOptions('BRL')
-
-  // convertedValue.textContent = (valorDaMoedaConvertida * inputValue).toFixed(2)
-  // precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
+  if (internalExchangeRate.USD) {
+    showInitialInfo(conversion_rates)
+  }
 }
 
 init()
 
-
 selectOneEl.addEventListener('input', async e => {
   const exchangeRateData = await getCoin(e.target.value);
-  
+
   internalExchangeRate = { ...exchangeRateData }
   convertedValue.textContent = input.value * internalExchangeRate.conversion_rates[selectTwoEl.value].toFixed(2)
   precision.textContent = `1 ${selectOneEl.value} = ${internalExchangeRate.conversion_rates[e.target.value].toFixed(2)} ${e.target.value}`
@@ -401,7 +401,7 @@ selectTwoEl.addEventListener('input', e => {
 })
 
 input.addEventListener('input', e => {
-  convertedValue.textContent = 
+  convertedValue.textContent =
     (e.target.value * internalExchangeRate.conversion_rates[selectTwoEl.value]).toFixed(2)
 })
 
