@@ -366,13 +366,13 @@ const init = async () => {
 
   internalExchangeRate = { ...conversion_rates }
 
-  const getOptions = selectedCurrency => 
+  const getOptions = selectedCurrency =>
     Object.keys(conversion_rates)
-    .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
-    .join('')
-  
-  
-  
+      .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
+      .join('')
+
+
+
   selectOneEl.innerHTML = getOptions('USD')
   selectTwoEl.innerHTML = getOptions('BRL')
 
@@ -380,20 +380,25 @@ const init = async () => {
   // precision.textContent = `1 ${typeCoin} = ${valorDaMoedaConvertida.toFixed(2)} ${howMuch}`
 }
 
-input.addEventListener('input', e => {
-  convertedValue.textContent = (e.target.value * internalExchangeRate[selectTwoEl.value]).toFixed(2)
-})
-
 init()
 
+
 selectOneEl.addEventListener('input', async e => {
-  console.log(await getCoin(e.target.value));
+  const exchangeRateData = await getCoin(e.target.value);
+  
+  internalExchangeRate = { ...exchangeRateData }
+  convertedValue.textContent = input.value * internalExchangeRate.conversion_rates[selectTwoEl.value].toFixed(2)
+  precision.textContent = `1 ${selectOneEl.value} = ${internalExchangeRate.conversion_rates[e.target.value].toFixed(2)} ${e.target.value}`
 })
 
 selectTwoEl.addEventListener('input', e => {
-  const currencyTwoValue = (input.value * internalExchangeRate[e.target.value])
+  const currencyTwoValue = (input.value * internalExchangeRate.conversion_rates[e.target.value])
   convertedValue.textContent = currencyTwoValue.toFixed(2)
-  precision.textContent = `1 USD = ${internalExchangeRate[e.target.value].toFixed(2)} ${e.target.value}`
+  precision.textContent = `1 ${selectOneEl.value} = ${internalExchangeRate.conversion_rates[e.target.value].toFixed(2)} ${e.target.value}`
 })
 
+input.addEventListener('input', e => {
+  convertedValue.textContent = 
+    (e.target.value * internalExchangeRate.conversion_rates[selectTwoEl.value]).toFixed(2)
+})
 
