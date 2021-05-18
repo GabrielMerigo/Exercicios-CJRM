@@ -307,11 +307,24 @@ const precision = document.querySelector('[data-js="conversion-precision"]')
 const input = document.querySelector('[data-js="currency-one-times"]')
 const currenciesContainer = document.querySelector('[data-js="currencies-container"]')
 
-let internalExchangeRate = {};
+const state = (() => {
+  let exchangeRate = {}
+  return {
+    getExchangeRate: () => exchangeRate,
+    setExchangeRate: newExchangeRate => {
+      if(!newExchangeRate){
+        console.log('O objeto precisa ter uma propriedade convertion_rates.');
+        return
+      }
 
+      exchangeRate = newExchangeRate
+      return exchangeRate
+    }
+  }
+}
+)()
 
 let typeCoins = ['BRL', 'USD', 'EUR'];
-
 
 const fetchCoin = value =>
   fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
@@ -366,21 +379,20 @@ const getCoin = async typeCoin => {
 
 const showInitialInfo = conversion_rates => {
   const getOptions = selectedCurrency =>
-      Object.keys(conversion_rates)
-        .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
-        .join('')
+    Object.keys(conversion_rates)
+      .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
+      .join('')
 
-    selectOneEl.innerHTML = getOptions('USD')
-    selectTwoEl.innerHTML = getOptions('BRL')
+  selectOneEl.innerHTML = getOptions('USD')
+  selectTwoEl.innerHTML = getOptions('BRL')
 }
 
 const init = async () => {
   const { conversion_rates } = await getCoin('USD');
+  const exchangeRate = state.setExchangeRate(conversion_rates)
 
-  internalExchangeRate = { ...conversion_rates }
-
-  if (internalExchangeRate.USD) {
-    showInitialInfo(conversion_rates)
+  if (exchangeRate.USD) {
+    showInitialInfo(exchangeRate)
   }
 }
 
