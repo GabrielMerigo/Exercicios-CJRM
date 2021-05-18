@@ -380,12 +380,15 @@ const getCoin = async typeCoin => {
   }
 }
 
-const showInitialInfo = conversion_rates => {
+const getInitialOptions = (conversion_rates) => {
   const getOptions = selectedCurrency =>
     Object.keys(conversion_rates)
       .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
       .join('')
+  return getOptions
+}
 
+const showInitialInfo = (conversion_rates, getOptions) => {
   selectOneEl.innerHTML = getOptions('USD')
   selectTwoEl.innerHTML = getOptions('BRL')
   convertedValue.textContent = conversion_rates.BRL.toFixed(2)
@@ -397,11 +400,13 @@ const init = async () => {
   const exchangeRate = state.setExchangeRate(getExchangeRate)
 
   if (exchangeRate && exchangeRate.conversion_rates.USD) {
-    showInitialInfo(exchangeRate.conversion_rates)
+    showInitialInfo(exchangeRate.conversion_rates,
+      getInitialOptions(exchangeRate.conversion_rates)
+    )
   }
 }
 
-init()
+
 
 const getMultipliedExchangeRate = conversion_rates => {
   const currencyTwo = conversion_rates[selectTwoEl.value];
@@ -439,3 +444,4 @@ selectOneEl.addEventListener('input', handleCurrencyOneElInput)
 selectTwoEl.addEventListener('input', handleCurrencyTwoElInput)
 input.addEventListener('input', mudancaNoInput)
 
+init()
