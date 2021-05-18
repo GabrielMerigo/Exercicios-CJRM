@@ -333,8 +333,8 @@ const state = (() => {
   return {
     getExchangeRate: () => exchangeRate,
     setExchangeRate: newExchangeRate => {
-      if(!newExchangeRate){
-        console.log('O objeto precisa ter uma propriedade convertion_rates.');
+      if(!newExchangeRate.conversion_rates){
+        showAlert({ message: 'O objeto precisa ter uma propriedade convertion_rates.' });
         return
       }
 
@@ -344,8 +344,6 @@ const state = (() => {
   }
 }
 )()
-
-let typeCoins = ['BRL', 'USD', 'EUR'];
 
 const fetchCoin = value =>
   fetch(`https://v6.exchangerate-api.com/v6/d6bb5c15a71d91efbeed0f95/latest/${value}`)
@@ -388,32 +386,36 @@ const showInitialInfo = conversion_rates => {
 }
 
 const init = async () => {
-  const { conversion_rates } = await getCoin('USD');
-  const exchangeRate = state.setExchangeRate(conversion_rates)
+  const exchangeRate = state.setExchangeRate(await getCoin('USD'))
 
-  if (exchangeRate.USD) {
-    showInitialInfo(exchangeRate)
+  if (exchangeRate && exchangeRate.conversion_rates.USD) {
+    showInitialInfo(exchangeRate.conversion_rates)
   }
 }
 
 init()
 
-const showUptadedRate = () => {
-  convertedValue.textContent = (input.value * internalExchangeRate.conversion_rates[selectTwoEl.value]).toFixed(2)
-  precision.textContent = `1 ${selectOneEl.value} = ${internalExchangeRate.conversion_rates[selectTwoEl.value].toFixed(2)} ${selectTwoEl.value}`
+const showUptadedRate = ({ conversion_rates }) => {
+  convertedValue.textContent = (input.value * conversion_rates[selectTwoEl.value]).toFixed(2)
+  precision.textContent = `1 ${selectOneEl.value} = ${conversion_rates[selectTwoEl.value].toFixed(2)} ${selectTwoEl.value}`
 }
 
 selectOneEl.addEventListener('input', async e => {
-  const exchangeRateData = await getCoin(e.target.value);
-  internalExchangeRate = { ...exchangeRateData }
-
-  showUptadedRate()
+  const getTypeExchangeRate = await getCoin(e.target.value)
+  const exchangeRate = state.setExchangeRate(getTypeExchangeRate)
+  
+  showUptadedRate(exchangeRate)
 })
 
-selectTwoEl.addEventListener('input', showUptadedRate)
+selectTwoEl.addEventListener('input', async e => {
+  const exchangeRate = state.getExchangeRate()
+  showUptadedRate(exchangeRate)
+})
 
 input.addEventListener('input', e => {
+  const { conversion_rates } = state.getExchangeRate()
+
   convertedValue.textContent =
-    (e.target.value * internalExchangeRate.conversion_rates[selectTwoEl.value]).toFixed(2)
+    (e.target.value * conversion_rates[selectTwoEl.value]).toFixed(2)
 })
 
