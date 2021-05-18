@@ -386,19 +386,19 @@ const init = async () => {
 
 init()
 
+const showUptadedRate = () => {
+  convertedValue.textContent = (input.value * internalExchangeRate.conversion_rates[selectTwoEl.value]).toFixed(2)
+  precision.textContent = `1 ${selectOneEl.value} = ${internalExchangeRate.conversion_rates[selectTwoEl.value].toFixed(2)} ${selectTwoEl.value}`
+}
+
 selectOneEl.addEventListener('input', async e => {
   const exchangeRateData = await getCoin(e.target.value);
-
   internalExchangeRate = { ...exchangeRateData }
-  convertedValue.textContent = input.value * internalExchangeRate.conversion_rates[selectTwoEl.value].toFixed(2)
-  precision.textContent = `1 ${selectOneEl.value} = ${internalExchangeRate.conversion_rates[e.target.value].toFixed(2)} ${e.target.value}`
+
+  showUptadedRate()
 })
 
-selectTwoEl.addEventListener('input', e => {
-  const currencyTwoValue = (input.value * internalExchangeRate.conversion_rates[e.target.value])
-  convertedValue.textContent = currencyTwoValue.toFixed(2)
-  precision.textContent = `1 ${selectOneEl.value} = ${internalExchangeRate.conversion_rates[e.target.value].toFixed(2)} ${e.target.value}`
-})
+selectTwoEl.addEventListener('input', showUptadedRate)
 
 input.addEventListener('input', e => {
   convertedValue.textContent =
