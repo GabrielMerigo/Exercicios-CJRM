@@ -374,19 +374,26 @@ const getCoin = async typeCoin => {
     showAlert(err)
   }
 }
+const getOptions = (selectedCurrency, conversion_rates) =>{
+  const setSelectedAttributed = 
+    moeda => moeda === selectedCurrency ? 'selected' : '';
+    
+  Object.keys(conversion_rates)
+    .map(moeda => `<option ${setSelectedAttributed(moeda)}>${moeda}</option>`)
+    .join('')
+}
 
 const showInitialInfo = conversion_rates => {
-  const getOptions = selectedCurrency =>
-    Object.keys(conversion_rates)
-      .map(moeda => `<option ${moeda === selectedCurrency ? 'selected' : ''}>${moeda}</option>`)
-      .join('')
 
-  selectOneEl.innerHTML = getOptions('USD')
-  selectTwoEl.innerHTML = getOptions('BRL')
+  selectOneEl.innerHTML = getOptions('USD', conversion_rates)
+  selectTwoEl.innerHTML = getOptions('BRL', conversion_rates)
+  convertedValue.textContent = conversion_rates.BRL.toFixed(2)
+  precision.textContent = `1 USD = ${conversion_rates.BRL} BRL`
 }
 
 const init = async () => {
-  const exchangeRate = state.setExchangeRate(await getCoin('USD'))
+  const getExchangeRate = await getCoin('USD');
+  const exchangeRate = state.setExchangeRate(getExchangeRate)
 
   if (exchangeRate && exchangeRate.conversion_rates.USD) {
     showInitialInfo(exchangeRate.conversion_rates)
@@ -395,15 +402,25 @@ const init = async () => {
 
 init()
 
+const getMultipliedExchangeRate = conversion_rates => {
+  const currencyTwo = conversion_rates[selectTwoEl.value];
+  return (input.value * currencyTwo).toFixed(2)
+} 
+
+const getNotRoundedExchangeRate = conversion_rates => {
+  const currencyTwo = conversion_rates[selectTwoEl.value];
+  return `1 ${selectOneEl.value} = ${currencyTwo.toFixed(2)} ${selectTwoEl.value}`
+}
+
 const showUptadedRate = ({ conversion_rates }) => {
-  convertedValue.textContent = (input.value * conversion_rates[selectTwoEl.value]).toFixed(2)
-  precision.textContent = `1 ${selectOneEl.value} = ${conversion_rates[selectTwoEl.value].toFixed(2)} ${selectTwoEl.value}`
+  convertedValue.textContent = getMultipliedExchangeRate(conversion_rates)
+  precision.textContent = getNotRoundedExchangeRate(conversion_rates)
 }
 
 selectOneEl.addEventListener('input', async e => {
   const getTypeExchangeRate = await getCoin(e.target.value)
   const exchangeRate = state.setExchangeRate(getTypeExchangeRate)
-  
+
   showUptadedRate(exchangeRate)
 })
 
@@ -414,8 +431,5 @@ selectTwoEl.addEventListener('input', async e => {
 
 input.addEventListener('input', e => {
   const { conversion_rates } = state.getExchangeRate()
-
-  convertedValue.textContent =
-    (e.target.value * conversion_rates[selectTwoEl.value]).toFixed(2)
+  convertedValue.textContent =  getMultipliedExchangeRate(conversion_rates)
 })
-
