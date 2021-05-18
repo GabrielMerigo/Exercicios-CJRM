@@ -307,6 +307,27 @@ const precision = document.querySelector('[data-js="conversion-precision"]')
 const input = document.querySelector('[data-js="currency-one-times"]')
 const currenciesContainer = document.querySelector('[data-js="currencies-container"]')
 
+const showAlert = err => {
+  const div = document.createElement('div')
+  const button = document.createElement('button')
+
+  div.textContent = err.message
+  div.classList.add('alert', 'alert-warning', 'alert-dismissible', 'fade', 'show')
+  div.setAttribute('role', 'alert')
+
+  button.classList.add('btn-close')
+  button.setAttribute('type', 'button')
+  button.setAttribute('aria-label', 'Close')
+
+  button.addEventListener('click', () => {
+    div.remove()
+  })
+
+  div.appendChild(button)
+
+  currenciesContainer.insertAdjacentElement('afterend', div)
+}
+
 const state = (() => {
   let exchangeRate = {}
   return {
@@ -336,27 +357,6 @@ const getErrorMessage = errorType => ({
   'inactive-account': 'Seu e-mail não foi confirmado.',
   'quota-reached': 'Você atingiu o limite de solicitações pelo seu plano.'
 })[errorType] || 'Não foi possível obter os dados'
-
-const showAlert = err => {
-  const div = document.createElement('div')
-  const button = document.createElement('button')
-
-  div.textContent = err.message
-  div.classList.add('alert', 'alert-warning', 'alert-dismissible', 'fade', 'show')
-  div.setAttribute('role', 'alert')
-
-  button.classList.add('btn-close')
-  button.setAttribute('type', 'button')
-  button.setAttribute('aria-label', 'Close')
-
-  button.addEventListener('click', () => {
-    div.remove()
-  })
-
-  div.appendChild(button)
-
-  currenciesContainer.insertAdjacentElement('afterend', div)
-}
 
 const getCoin = async typeCoin => {
   try {
