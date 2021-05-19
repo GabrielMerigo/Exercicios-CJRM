@@ -344,8 +344,7 @@ const state = (() => {
       return exchangeRate
     }
   }
-}
-)()
+})()
 
 const APIKey = 'd6bb5c15a71d91efbeed0f95';
 
@@ -406,8 +405,6 @@ const init = async () => {
   }
 }
 
-
-
 const getMultipliedExchangeRate = conversion_rates => {
   const currencyTwo = conversion_rates[selectTwoEl.value];
   return (input.value * currencyTwo).toFixed(2)
@@ -445,3 +442,5 @@ selectTwoEl.addEventListener('input', handleCurrencyTwoElInput)
 input.addEventListener('input', mudancaNoInput)
 
 init()
+
+
