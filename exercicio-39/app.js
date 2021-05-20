@@ -35,22 +35,22 @@ const sum = ([...numbers]) => numbers.reduce((acc, item) => acc + item, 0)
   - Para que o item do accordion seja "ativado" ao clicar, faça um toogle 
     utilizando a classe "active".
 */
-const accordionHeader = Array.from(document.querySelectorAll('.accordion-header'))
-const accordionBody = Array.from(document.querySelectorAll('.accordion-body'))
+// const accordionHeader = Array.from(document.querySelectorAll('.accordion-header'))
+// const accordionBody = Array.from(document.querySelectorAll('.accordion-body'))
 
-const toggle = (seta, accordionBody) => {
-  const toggleContent = () => {
-    accordionBody.classList.contains('active')
-      ? accordionBody.classList.remove('active')
-      : accordionBody.classList.add('active')
-  }
+// const toggle = (seta, accordionBody) => {
+//   const toggleContent = () => {
+//     accordionBody.classList.contains('active')
+//       ? accordionBody.classList.remove('active')
+//       : accordionBody.classList.add('active')
+//   }
 
-  seta.addEventListener('click', toggleContent)
-}
+//   seta.addEventListener('click', toggleContent)
+// }
 
-toggle(accordionHeader[0], accordionBody[0])
-toggle(accordionHeader[1], accordionBody[1])
-toggle(accordionHeader[2], accordionBody[2])
+// toggle(accordionHeader[0], accordionBody[0])
+// toggle(accordionHeader[1], accordionBody[1])
+// toggle(accordionHeader[2], accordionBody[2])
 
 /*
   03
@@ -103,20 +103,20 @@ const jetta = carMaker({ name: 'Jetta', color: 'prata' })
     modificando o caractere que ela recebe como segundo argumento.
 */
 
-const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, abertas poucas vezes e é focado em quem ainda não é fluente em JS. Ou seja, quem não consegue construir aplicações web com JavaScript puro.'
+// const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, abertas poucas vezes e é focado em quem ainda não é fluente em JS. Ou seja, quem não consegue construir aplicações web com JavaScript puro.'
 
-const getIndexesOfCharacter = (string, word) => {
-  const arrayCaracters = string.split('')
-  let arrayWords = []
+// const getIndexesOfCharacter = (string, word) => {
+//   const arrayCaracters = string.split('')
+//   let arrayWords = []
 
-  arrayCaracters.filter((item, index) => {
-    if (item === word) {
-      arrayWords.push(index)
-    }
-  })
+//   arrayCaracters.filter((item, index) => {
+//     if (item === word) {
+//       arrayWords.push(index)
+//     }
+//   })
 
-  return arrayWords
-}
+//   return arrayWords
+// }
 
 // console.log(getIndexesOfCharacter(aString, ''))
 
@@ -152,7 +152,7 @@ const getIndexesOfCharacter = (string, word) => {
     - Abaixo do if, faça:
       - currentMessage receber o item do array messages que está no index que 
         messageIndex armazena;
-      - currentCharacters receber a string que deve ser exibida na execução 
+      - currentCharacters recebe a string que deve ser exibida na execução 
         atual da função (você pode invocar o slice() na currentMessage para 
         fazer isso);
       - characterIndex receber o valor que ela já tem + 1;
@@ -169,16 +169,28 @@ const messages = [
   'construo aplicações webcom JS puro'
 ]
 
+let messageIndex = 0;
 // Responsável pelo index atual do array messages
-let messageIndex = 0
-// Responsável pelo index atual do caractere do item do array messages
 let characterIndex = 0;
-// Responsável por armezenar o item atual do array.
+// Responsável pelo index atual do caractere do item do array messages
 let currentMessage = '';
-
+// Responsável por armezenar o item atual do array.
 let currentCharacters = '';
+// Responsável por armezanar as letras do item do array que serão inseridas na telas
 
 
+// const type = () => {
+//   if(messageIndex === messages.length){
+//     messageIndex = 0;
+//   }
+
+//   currentMessage = messages[messageIndex]
+
+//   currentCharacters = currentMessage.slice(currentCharacters - 1)
+//   console.log(currentCharacters);
+// }
+
+// setInterval(type, 200);
 /*
   06
 
@@ -200,26 +212,34 @@ const wrongDataFormat = [
   'azul-P'
 ]
 
+const isObj = wrongDataFormat.reduce((acc, item) => {
+  acc['preto'] = { item }
+  acc['branco'] = { item }
+  acc['vermelho'] = { item }
+  acc['azul'] = { item }
+  return acc
+}, {})
+
+console.log(isObj);
 
 
-/*
-  {
-    preto: {
-      PP: 1,
-      M: 1,
-      G: 1,
-      GG: 2
-    },
-    branco: {
-      PP: 1,
-      G: 1
-    },
-    vermelho: {
-      M: 1
-    },
-    azul: {
-      XG: 3,
-      P: 1
-    }
-  }
-*/
+  // {
+  //   preto: {
+  //     PP: 1,
+  //     M: 1,
+  //     G: 1,
+  //     GG: 2
+  //   },
+  //   branco: {
+  //     PP: 1,
+  //     G: 1
+  //   },
+  //   vermelho: {
+  //     M: 1
+  //   },
+  //   azul: {
+  //     XG: 3,
+  //     P: 1
+  //   }
+  // }
+
