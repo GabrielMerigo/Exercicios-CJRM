@@ -166,31 +166,33 @@ const jetta = carMaker({ name: 'Jetta', color: 'prata' })
 
 const messages = [
   'sou fluente em JS',
-  'construo aplicações webcom JS puro'
+  'construo aplicações web com JS puro',
+  'Sou bom Em js'
 ]
 
-let messageIndex = 0;
-// Responsável pelo index atual do array messages
-let characterIndex = 0;
-// Responsável pelo index atual do caractere do item do array messages
-let currentMessage = '';
-// Responsável por armezenar o item atual do array.
-let currentCharacters = '';
-// Responsável por armezanar as letras do item do array que serão inseridas na telas
+let fixedText = document.querySelector('.fixed-text');
+let indexCaractere = 0;
+let indexMessage = 0
+let caractereDaPalavra = messages[indexMessage].split('')
 
+const type = () => {
+  const verificaUltimoCaractere = caractereDaPalavra.length === indexCaractere
+  if(verificaUltimoCaractere){
+    caractereDaPalavra = messages[++indexMessage].split('')
+    indexCaractere = 0
+    fixedText.innerHTML = ''
+  }
 
-// const type = () => {
-//   if(messageIndex === messages.length){
-//     messageIndex = 0;
-//   }
+  const verificaUltimoItemArray = indexMessage === messages.length - 1
+  if(verificaUltimoItemArray){
+    indexMessage = - 1
+  }
+  
+  fixedText.innerHTML += caractereDaPalavra[indexCaractere]
+  ++indexCaractere
+}
 
-//   currentMessage = messages[messageIndex]
-
-//   currentCharacters = currentMessage.slice(currentCharacters - 1)
-//   console.log(currentCharacters);
-// }
-
-// setInterval(type, 200);
+// setInterval(type, 200)
 /*
   06
 
@@ -217,7 +219,6 @@ let azulXG = [];
 
 console.log(wrongDataFormat.reduce((acc, item) => {
   azulXG.push(`${item.includes('azul-XG')}`)
-  console.log(azulXG);
 
   acc['preto'] = { item }
   acc['branco'] = { item }
