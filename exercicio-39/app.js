@@ -212,15 +212,24 @@ const wrongDataFormat = [
   'azul-P'
 ]
 
-const isObj = wrongDataFormat.reduce((acc, item) => {
+let counter = 0;
+let azulXG = [];
+
+console.log(wrongDataFormat.reduce((acc, item) => {
+  azulXG.push(`${item.includes('azul-XG')}`)
+  console.log(azulXG);
+
   acc['preto'] = { item }
   acc['branco'] = { item }
   acc['vermelho'] = { item }
-  acc['azul'] = { item }
+  acc['azul'] = { 
+    XG: azulXG,
+   }
   return acc
-}, {})
+}, {}));
 
-console.log(isObj);
+
+
 
 
   // {
