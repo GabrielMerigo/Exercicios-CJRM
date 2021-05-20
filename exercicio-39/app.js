@@ -107,10 +107,10 @@ const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, 
 
 const getIndexesOfCharacter = (string, word) => {
   const arrayCaracters = string.split('')
-  let arrayWords = [] 
+  let arrayWords = []
 
   arrayCaracters.filter((item, index) => {
-    if(item === word){
+    if (item === word) {
       arrayWords.push(index)
     }
   })
@@ -163,6 +163,20 @@ const getIndexesOfCharacter = (string, word) => {
       ela já tem + 1 e faça characterIndex receber 0.
 */
 
+
+const messages = [
+  'sou fluente em JS',
+  'construo aplicações webcom JS puro'
+]
+
+// Responsável pelo index atual do array messages
+let messageIndex = 0
+// Responsável pelo index atual do caractere do item do array messages
+let characterIndex = 0;
+// Responsável por armezenar o item atual do array.
+let currentMessage = '';
+
+let currentCharacters = '';
 
 
 /*
