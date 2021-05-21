@@ -18,9 +18,10 @@
 
 const numbers = [500, 50];
 
-const sum = ([...numbers]) => numbers.reduce((acc, item) => acc + item, 0)
+const sum = (...numbers) => numbers.reduce((acc, item) => acc + item, 0)
 
-// console.log(sum(numbers))
+const { a, b, ...x } = { a: 1, b: 2, c: 3, d: 4 }
+console.log(x);
 
 /*
   02
@@ -177,17 +178,17 @@ let caractereDaPalavra = messages[indexMessage].split('')
 
 const type = () => {
   const verificaUltimoCaractere = caractereDaPalavra.length === indexCaractere
-  if(verificaUltimoCaractere){
+  if (verificaUltimoCaractere) {
     caractereDaPalavra = messages[++indexMessage].split('')
     indexCaractere = 0
     fixedText.innerHTML = ''
   }
 
   const verificaUltimoItemArray = indexMessage === messages.length - 1
-  if(verificaUltimoItemArray){
+  if (verificaUltimoItemArray) {
     indexMessage = - 1
   }
-  
+
   fixedText.innerHTML += caractereDaPalavra[indexCaractere]
   ++indexCaractere
 }
@@ -216,16 +217,17 @@ const wrongDataFormat = [
 
 let counter = 0;
 
-console.log(wrongDataFormat.reduce((acc, item) => {
+const newObj = (wrongDataFormat.reduce((acc, item) => {
   acc['preto'] = { item }
   acc['branco'] = { item }
   acc['vermelho'] = { item }
-  acc['azul'] = { 
-    XG: `${item === 'azul-XG' ? 'azul-XG' : 'nada'}`,
-   }
+  acc['azul'] = {
+    XG: `${item === 'azul-XG' ? item : 'nada'}`,
+  }
   return acc
 }, {}));
 
+console.log(newObj);
 
 
 
