@@ -215,16 +215,13 @@ const wrongDataFormat = [
 ]
 
 let counter = 0;
-let azulXG = [];
 
 console.log(wrongDataFormat.reduce((acc, item) => {
-  azulXG.push(`${item.includes('azul-XG')}`)
-
   acc['preto'] = { item }
   acc['branco'] = { item }
   acc['vermelho'] = { item }
   acc['azul'] = { 
-    XG: azulXG,
+    XG: `${item === 'azul-XG' ? 'azul-XG' : 'nada'}`,
    }
   return acc
 }, {}));
