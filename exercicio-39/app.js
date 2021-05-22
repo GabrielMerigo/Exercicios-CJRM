@@ -49,7 +49,7 @@ const { a, b, ...x } = { a: 1, b: 2, c: 3, d: 4 }
 //     .from(document.querySelectorAll('[data-js="accordion-header"]'))
 //     .filter(accordion => accordion !== accordionItemToOpened)
 //     .find(accordionHeader => accordionHeader.classList.contains('active'))
-  
+
 //   if(accordionHeaders){
 //     const accordionBodyTobeClosed = document.querySelector(`[data-accordion-body="${accordionHeaders.dataset.accordionHeader}"]`)
 //     const accordionItemTobeClosed = document.querySelector(`[data-accordion-header="${accordionItemToOpened.dataset.accordionHeader}"]`)
@@ -84,7 +84,7 @@ const volkswagenProto = {
 }
 
 const toyotaProto = {
-  logCarInfo () {
+  logCarInfo() {
     console.log(`Toyota ${this.name}, cor ${this.color}.`);
   }
 }
@@ -136,9 +136,9 @@ const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, 
 // }
 
 // Versão alternativa
-const getIndexesOfCharacter = (string, caractere) => 
+const getIndexesOfCharacter = (string, caractere) =>
   [...string].reduce((acc, item, index) => {
-    if(caractere.toLowerCase() === item.toLowerCase()){
+    if (caractere.toLowerCase() === item.toLowerCase()) {
       acc.push(index)
     }
     return acc
@@ -201,7 +201,7 @@ let indexMessage = 0
 let caractereDaPalavra = [...messages[indexMessage]]
 
 const type = () => {
-  const deveMostrarProximaMensagem = 
+  const deveMostrarProximaMensagem =
     caractereDaPalavra.length === indexCaractere
 
   if (deveMostrarProximaMensagem) {
@@ -211,7 +211,7 @@ const type = () => {
   }
 
   const verificaUltimoItemArray = indexMessage === messages.length - 1
-  
+
   if (verificaUltimoItemArray) {
     indexMessage = 0
   }
@@ -220,7 +220,7 @@ const type = () => {
   ++indexCaractere
 }
 
-setInterval(type, 200)
+// setInterval(type, 200)
 /*
   06
 
@@ -242,20 +242,18 @@ const wrongDataFormat = [
   'azul-P'
 ]
 
-let counter = 0;
 
-const newObj = (wrongDataFormat.reduce((acc, item) => {
-  acc['preto'] = { item }
-  acc['branco'] = { item }
-  acc['vermelho'] = { item }
-  acc['azul'] = {
-    XG: `${item === 'azul-XG' ? item : 'nada'}`,
-  }
+
+const correct = wrongDataFormat.reduce((acc, colorAndSize) => {
+  const [color, size] = colorAndSize.split('-')
+  acc[color] = acc[color] || {}
+  acc[color][size] = acc[color][size] || 0
+  acc[color][size]++
+
   return acc
-}, {}));
+}, {})
 
-console.log(newObj);
-
+console.log(correct);
 
 
 
