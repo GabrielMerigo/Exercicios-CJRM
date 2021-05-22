@@ -198,19 +198,22 @@ const messages = [
 const fixedText = document.querySelector('[data-js="typing"]');
 let indexCaractere = 0;
 let indexMessage = 0
-let caractereDaPalavra = messages[indexMessage].split('')
+let caractereDaPalavra = [...messages[indexMessage]]
 
 const type = () => {
-  const verificaUltimoCaractere = caractereDaPalavra.length === indexCaractere
-  if (verificaUltimoCaractere) {
-    caractereDaPalavra = messages[++indexMessage].split('')
+  const deveMostrarProximaMensagem = 
+    caractereDaPalavra.length === indexCaractere
+
+  if (deveMostrarProximaMensagem) {
+    caractereDaPalavra = [...messages[++indexMessage]]
     indexCaractere = 0
     fixedText.innerHTML = '';
   }
 
   const verificaUltimoItemArray = indexMessage === messages.length - 1
+  
   if (verificaUltimoItemArray) {
-    indexMessage = - 1
+    indexMessage = 0
   }
 
   fixedText.innerHTML += caractereDaPalavra[indexCaractere]
