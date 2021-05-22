@@ -21,7 +21,7 @@ const numbers = [500, 50];
 const sum = (...numbers) => numbers.reduce((acc, item) => acc + item, 0)
 
 const { a, b, ...x } = { a: 1, b: 2, c: 3, d: 4 }
-console.log(x);
+// console.log(x);
 
 /*
   02
@@ -36,22 +36,30 @@ console.log(x);
   - Para que o item do accordion seja "ativado" ao clicar, faça um toogle 
     utilizando a classe "active".
 */
-// const accordionHeader = Array.from(document.querySelectorAll('.accordion-header'))
-// const accordionBody = Array.from(document.querySelectorAll('.accordion-body'))
+// const accordion = document.querySelector('[data-js="accordion"]');
 
-// const toggle = (seta, accordionBody) => {
-//   const toggleContent = () => {
-//     accordionBody.classList.contains('active')
-//       ? accordionBody.classList.remove('active')
-//       : accordionBody.classList.add('active')
+// accordion.addEventListener('click', e => {
+//   const accordionId = e.target.dataset.accordionHeader
+//   const accordionItemToOpened = 
+//     document.querySelector(`[data-accordion-header="${accordionId}"]`)
+//   const accordionBody = 
+//     document.querySelector(`[data-accordion-body="${accordionId}"]`)
+
+//   const accordionHeaders = Array
+//     .from(document.querySelectorAll('[data-js="accordion-header"]'))
+//     .filter(accordion => accordion !== accordionItemToOpened)
+//     .find(accordionHeader => accordionHeader.classList.contains('active'))
+  
+//   if(accordionHeaders){
+//     const accordionBodyTobeClosed = document.querySelector(`[data-accordion-body="${accordionHeaders.dataset.accordionHeader}"]`)
+//     const accordionItemTobeClosed = document.querySelector(`[data-accordion-header="${accordionItemToOpened.dataset.accordionHeader}"]`)
+//     accordionBodyTobeClosed.classList.remove('active')
+//     accordionItemTobeClosed.classList.remove('active')
 //   }
 
-//   seta.addEventListener('click', toggleContent)
-// }
-
-// toggle(accordionHeader[0], accordionBody[0])
-// toggle(accordionHeader[1], accordionBody[1])
-// toggle(accordionHeader[2], accordionBody[2])
+//   accordionItemToOpened.classList.toggle('active')
+//   accordionBody.classList.toggle('active')
+// })
 
 /*
   03
