@@ -83,20 +83,28 @@ const volkswagenProto = {
   }
 }
 
-const carMaker = ({ name, color }) => {
-  const newObj = Object.create(volkswagenProto)
-
-  newObj.name = name;
-  newObj.color = color;
-
-  return newObj
+const toyotaProto = {
+  logCarInfo () {
+    console.log(`Toyota ${this.name}, cor ${this.color}.`);
+  }
 }
 
+// const carMaker = ({ name, color }, carProto) => {
+//   const newObj = Object.create(carProto)
 
-const amarok = carMaker({ name: 'Amarok', color: 'preta' })
-const jetta = carMaker({ name: 'Jetta', color: 'prata' })
+//   newObj.name = name;
+//   newObj.color = color;
 
-// console.log(volkswagenProto.logCarInfo() === volkswagenProto.logCarInfo())
+//   return newObj
+// }
+
+
+
+// const amarok = carMaker({ name: 'Amarok', color: 'preta' }, volkswagenProto)
+// const jetta = carMaker({ name: 'Jetta', color: 'prata' }, volkswagenProto)
+// const corolla = carMaker({ name: 'corolla', color: 'dourado' }, toyotaProto);
+
+// corolla.logCarInfo()
 
 /*
   04
@@ -112,7 +120,7 @@ const jetta = carMaker({ name: 'Jetta', color: 'prata' })
     modificando o caractere que ela recebe como segundo argumento.
 */
 
-// const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, abertas poucas vezes e é focado em quem ainda não é fluente em JS. Ou seja, quem não consegue construir aplicações web com JavaScript puro.'
+const aString = 'O Curso de JavaScript Roger Melo funciona com turmas fechadas, abertas poucas vezes e é focado em quem ainda não é fluente em JS. Ou seja, quem não consegue construir aplicações web com JavaScript puro.'
 
 // const getIndexesOfCharacter = (string, word) => {
 //   const arrayCaracters = string.split('')
@@ -127,7 +135,15 @@ const jetta = carMaker({ name: 'Jetta', color: 'prata' })
 //   return arrayWords
 // }
 
-// console.log(getIndexesOfCharacter(aString, ''))
+// Versão alternativa
+const getIndexesOfCharacter = (string, caractere) => 
+  [...string].reduce((acc, item, index) => {
+    if(caractere.toLowerCase() === item.toLowerCase()){
+      acc.push(index)
+    }
+    return acc
+  }, [])
+// console.log(getIndexesOfCharacter(aString, 'o'))
 
 /*
   05
@@ -176,10 +192,10 @@ const jetta = carMaker({ name: 'Jetta', color: 'prata' })
 const messages = [
   'sou fluente em JS',
   'construo aplicações web com JS puro',
-  'Sou bom Em js'
+  'sou bom em JS'
 ]
 
-let fixedText = document.querySelector('.fixed-text');
+const fixedText = document.querySelector('[data-js="typing"]');
 let indexCaractere = 0;
 let indexMessage = 0
 let caractereDaPalavra = messages[indexMessage].split('')
@@ -189,7 +205,7 @@ const type = () => {
   if (verificaUltimoCaractere) {
     caractereDaPalavra = messages[++indexMessage].split('')
     indexCaractere = 0
-    fixedText.innerHTML = ''
+    fixedText.innerHTML = '';
   }
 
   const verificaUltimoItemArray = indexMessage === messages.length - 1
@@ -201,7 +217,7 @@ const type = () => {
   ++indexCaractere
 }
 
-// setInterval(type, 200)
+setInterval(type, 200)
 /*
   06
 
