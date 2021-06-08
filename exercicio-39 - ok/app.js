@@ -277,3 +277,13 @@ console.log(correct);
   //   }
   // }
 
+function carro() {
+  console.log(this)
+}
+
+const detalhes = {
+  modelo: 'civic',
+  preco: 1000
+}
+
+const novoCarro = carro.bind(detalhes)
