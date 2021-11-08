@@ -65,7 +65,7 @@ class ComidaCardapio {
 
 //PersonagemRPG
 class PersonagemRPG {
-  constructor(){
+  constructor() {
     this.nome = '';
     this.tipo = '';
     this.tamanho = '';
@@ -75,25 +75,25 @@ class PersonagemRPG {
     this.resistente = '';
   }
 
-  Andar(){
+  Andar() {
     console.log('Andou...');
   }
 
-  Atacar(){
+  Atacar() {
     console.log('Atacou...');
   }
 
-  Defender(){
+  Defender() {
     console.log('Defendeu...');
   }
 
-  Correr(){
+  Correr() {
     console.log('Correu...');
   }
 }
 
 class Carro {
-  constructor(){
+  constructor() {
     this.modelo = 'Honda';
     this.ano = 2020;
     this.precoAluguelPorDia = 200;
@@ -101,16 +101,16 @@ class Carro {
     this.automaticoOuManual = 'Manual';
   }
 
-  Andar(){}
-  Buzinar(){}
-  Frear(){}
-  MudarMarcha(){}
-  Acelerar(){}
-  Virar(){}
+  Andar() { }
+  Buzinar() { }
+  Frear() { }
+  MudarMarcha() { }
+  Acelerar() { }
+  Virar() { }
 }
 
-class UserSocialMedia{
-  constructor(){
+class UserSocialMedia {
+  constructor() {
     this.nome = '';
     this.dataNasc = '';
     this.status = '';
@@ -127,16 +127,16 @@ class UserSocialMedia{
     this.amigos = [{}, {}]
   }
 
-  DarLike(){}
-  Compartilhar(){}
-  Adicionar(){}
-  Remover(){}
-  Bloquear(){}
-  MandarMensagens(){}
+  DarLike() { }
+  Compartilhar() { }
+  Adicionar() { }
+  Remover() { }
+  Bloquear() { }
+  MandarMensagens() { }
 }
 
-class Video{
-  constructor(){
+class Video {
+  constructor() {
     this.tipoConteudo = ''
     this.tempoVideo = ''
     this.qntdLikes = 0
@@ -149,19 +149,19 @@ class Video{
     this.dataPublicacao = ''
   }
 
-  Pausar(){}
-  Compartilhar(){}
-  Avancar(){}
-  Maximizar(){}
-  Minimizar(){}
-  Legendar(){}
-  AumentarAudio(){}
-  DiminuirAudio(){}
-  Configurar(){}
+  Pausar() { }
+  Compartilhar() { }
+  Avancar() { }
+  Maximizar() { }
+  Minimizar() { }
+  Legendar() { }
+  AumentarAudio() { }
+  DiminuirAudio() { }
+  Configurar() { }
 }
 
-class Aluno{
-  constructor(){
+class Aluno {
+  constructor() {
     this.nomeAluno = ''
     this.serie = ''
     this.idade = ''
@@ -173,15 +173,15 @@ class Aluno{
     this.atividadesConcluidas = [{}, {}, { concluida: {} }]
   }
 
-  acessarAula(){}
-  acessarLivro(){}
-  Comentar(){}
-  ConcluirAtividade(){}
-  AnexarArquivo(){}
+  acessarAula() { }
+  acessarLivro() { }
+  Comentar() { }
+  ConcluirAtividade() { }
+  AnexarArquivo() { }
 }
 
-class Encomenda{
-  constructor(){
+class Encomenda {
+  constructor() {
     this.local = ''
     this.precoFrete = 000
     this.produto = ''
@@ -191,8 +191,8 @@ class Encomenda{
   }
 }
 
-class Banda{
-  constructor(){
+class Banda {
+  constructor() {
     this.nome = ''
     this.integrantes = []
     this.tipoMusicaBanda = ''
@@ -203,8 +203,8 @@ class Banda{
   }
 }
 
-class PedidoDelivery{
-  constructor(){
+class PedidoDelivery {
+  constructor() {
     this.tipoComida = ''
     this.tipoBebida = ''
     this.precoDaComida = 0
@@ -216,13 +216,13 @@ class PedidoDelivery{
     this.nomeMotoboy = ''
   }
 
-  Escolher(){}
-  Pedir(){}
-  Pagar(){}
+  Escolher() { }
+  Pedir() { }
+  Pagar() { }
 }
 
-class AgendamentoDentista{
-  constructor(){
+class AgendamentoDentista {
+  constructor() {
     this.nomePaciente = '';
     this.cpf = 0;
     this.faixaEtariaPaciente = 0;
@@ -233,16 +233,16 @@ class AgendamentoDentista{
     this.preco = 0;
   }
 
-  Agendar(){}
-  Cancelar(){}
-  MudarData(){}
-  MudarHorario(){}
-  MudarOperacao(){}
-  MudarDoutor(){}
+  Agendar() { }
+  Cancelar() { }
+  MudarData() { }
+  MudarHorario() { }
+  MudarOperacao() { }
+  MudarDoutor() { }
 }
 
-class ConexaoBC{
-  constructor(){
+class ConexaoBC {
+  constructor() {
     this.senha = '';
     this.root = '';
     this.nomeBancoDados = '';
@@ -251,6 +251,147 @@ class ConexaoBC{
     this.timezone = '';
   }
 
-  Connectar(){}
-  Desconectar(){}
+  Connectar() { }
+  Desconectar() { }
+}
+
+class MensagemWhatsApp {
+  constructor() {
+    this.data = ''
+    this.horario = 0
+    this.texto = ''
+    this.autor = ''
+  }
+
+  Apagar() { }
+  Compartilhar() { }
+  Mencionar() { }
+  Reportar() { }
+  Favoritar() { }
+}
+
+class InvertarioPersonagemJogoRPG {
+  constructor() {
+    this.armaduras = [{}, {}];
+    this.armas = [{}, {}];
+    this.qntdItems = [{}];
+    this.vida = 0;
+    this.poderDeAtaque = 0;
+    this.poderDeExploxao = 0;
+    this.defesa = 0
+    this.roupas = [{}, {}]
+  }
+
+  Equipar() { }
+  SoltarItem() { }
+  MelhorarArma() { }
+  MelhorarArmadura() { }
+  MelhorarAtaque() { }
+  MelhorarDefesa() { }
+  Vestir() { }
+}
+
+class GpRedeSocial {
+  constructor() {
+    this.fotoPerfilGrupo = ''
+    this.descricaoGp = ''
+    this.qntdPessoas = 0;
+    this.mensagens = 0;
+    this.pessoas = [{}, {}, {}]
+    this.dataCriacaoGp = ''
+    this.media = [{
+      arquivos: [{}, {}, {}],
+      fotos: [{}, {}],
+      videos: [{}, {}]
+    }]
+  }
+
+  AdicionarPessoas() { }
+  RemoverPessoas() { }
+  PromoverALider() { }
+  EnviarMensagem() { }
+  ExcluirMensagem() { }
+}
+
+class PlayerVideo {
+  constructor() {
+    this.pathVideo = ''
+  }
+
+  Pausar() { }
+  Legendar() { }
+  Reproduzir() { }
+  Compartilhar() { }
+  Baixar() { }
+  Maximizar() { }
+  Minimizar() { }
+  Acelerar() { }
+  Voltar() { }
+  AdicionarNota() { }
+}
+
+class StorieInstagram{
+  constructor(){
+    this.perfil = '';
+    this.tempoPublicado = '';
+    this.tempoVideo = '';
+  }
+
+  Passar(){}
+  Voltar(){}
+  Inspecionar(){}
+  Compartilhar(){}
+  MandarMensagemPerfil(){}
+  TestarFiltro(){}
+}
+
+class Buscador{
+  constructor() {
+    this.texto = ''
+  }
+
+  Digitar(){}
+  Deletar(){}
+  Pesquisar(){}
+}
+
+class BuscaGoogle{
+  constructor(){
+    this.textoPesquisa = '';
+    this.qntdDeResultados = 0;
+    this.resultados = [{}, {}]
+  }
+
+  Acessar(){}
+}
+
+class NotificacaoFacebook{
+  constructor(){
+    this.nomePessoa = '';
+    this.horario = '';
+    this.tipoAcao = '';
+    this.haQuantoTempo = 0;
+  }
+
+  Acessar(){}
+}
+
+class CursoUdemy{
+  constructor() {
+    this.nomeCurso = ''
+    this.nomeAutor = ''
+    this.tipoCurso = ''
+    this.qntdHoras = 0
+    this.banner = ''
+    this.foto = ''
+    this.qntdAulas = 0
+    this.aulas = [{}, {}]
+  }
+
+  AcessarAulas(){}
+  AdicionarComentario(){}
+  DarLike(){}
+  PularAulas(){}
+  MarcarAulaComoFeita(){}
+  MarcarAulaNaoComoFeita(){}
 }
