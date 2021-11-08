@@ -212,5 +212,45 @@ class PedidoDelivery{
     this.temDesconto = true
     this.precoFrete = ''
     this.horarioChegadaComida = ''
+    this.meioDeTriagemMotoboy = ''
+    this.nomeMotoboy = ''
   }
+
+  Escolher(){}
+  Pedir(){}
+  Pagar(){}
+}
+
+class AgendamentoDentista{
+  constructor(){
+    this.nomePaciente = '';
+    this.cpf = 0;
+    this.faixaEtariaPaciente = 0;
+    this.doutor = '';
+    this.data = ''
+    this.operacao = '';
+    this.horario = 0;
+    this.preco = 0;
+  }
+
+  Agendar(){}
+  Cancelar(){}
+  MudarData(){}
+  MudarHorario(){}
+  MudarOperacao(){}
+  MudarDoutor(){}
+}
+
+class ConexaoBC{
+  constructor(){
+    this.senha = '';
+    this.root = '';
+    this.nomeBancoDados = '';
+    this.host = '';
+    this.dialect = '';
+    this.timezone = '';
+  }
+
+  Connectar(){}
+  Desconectar(){}
 }
