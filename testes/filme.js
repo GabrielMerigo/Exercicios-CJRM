@@ -1,15 +1,15 @@
 class Filme {
-  constructor() {
-    this.titulo = '';
-    this.ano = 2000;
-    this.genero = '';
-    this.diretor = '';
-    this.atores = [];
+  constructor(titulo, ano, genero, diretor, duracao, atores) {
+    this.titulo = titulo;
+    this.ano = ano;
+    this.genero = genero;
+    this.diretor = diretor;
     this.duracao = 0;
+    this.atores = [];
   }
 
   Reproduzir() {
-    console.log('Reproduzir...')
+    console.log(this)
   }
 
   Pausar() {
@@ -165,7 +165,7 @@ class Aluno {
     this.nomeAluno = ''
     this.serie = ''
     this.idade = ''
-    this.cpf = 000
+    this.cpf = 0;
     this.acessoAQuaisLivros = []
     this.acessoAQuaisAulas = []
     this.atividadesPendentes = [{}, {}]
@@ -183,7 +183,7 @@ class Aluno {
 class Encomenda {
   constructor() {
     this.local = ''
-    this.precoFrete = 000
+    this.precoFrete = 0;
     this.produto = ''
     this.pesoProduto = ''
     this.isFlex = true;
@@ -395,3 +395,17 @@ class CursoUdemy{
   MarcarAulaComoFeita(){}
   MarcarAulaNaoComoFeita(){}
 }
+
+
+class Calculadora{
+  static Sum(a, b) {
+    console.log(a + b);
+  }
+
+  static Sub(a, b){
+    console.log(a - b);
+  }
+}
+
+
+console.log(Calculadora)
