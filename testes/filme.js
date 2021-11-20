@@ -407,5 +407,4 @@ class Calculadora{
   }
 }
 
-
 console.log(Calculadora)
