@@ -16,6 +16,12 @@ class Creater{
   }
 }
 
+class CreaterPDF{
+  Create(file){
+    console.log('the file in PDF was created: ' + file)
+  }
+}
+
 class Delete{
   Delete(file){
     console.log('the file was deleted' + file)
@@ -33,4 +39,18 @@ class FileManipulator{
 }
 
 const fileManipulator = new FileManipulator();
-console.log(fileManipulator.reader.Read('path1234.txt'))
+
+class UserManager{
+  constructor(){
+    this.createrPDF = new CreaterPDF();
+    this.writer = new Writer();
+  }
+
+  SaveUsers(){
+    console.log('The users were saved.')
+  }
+}
+
+const userManager = new UserManager();
+
+userManager.createrPDF.Create('teste')
